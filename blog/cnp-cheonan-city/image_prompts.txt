@@ -1,0 +1,170 @@
+천안시청 CNP차앤박피부과 블로그 · AI 이미지 프롬프트
+
+[사용법]
+· 영문 프롬프트가 미드저니, 챗GPT(DALL·E), 제미나이 등 대부분의 도구에서 결과가 안정적입니다. 한글만 되는 도구는 한글 프롬프트를 쓰세요.
+· '제외할 요소'는 네거티브 프롬프트 칸에 넣습니다. 칸이 없는 도구는 영문 프롬프트 끝에 'Avoid: ...' 형태로 붙이세요.
+· 미드저니는 끝에 --ar 16:9 --style raw 를 붙이면 블로그 사진 칸 비율과 맞고 덜 인위적으로 나옵니다.
+· 한글 글자는 AI가 자주 틀립니다. 글자는 비워 두고 캔바·미리캔버스에서 올리세요.
+· 같은 원고의 이미지는 같은 날 같은 도구로 만들면 색감이 통일됩니다.
+
+[어색하지 않게 만드는 점검]
+· 손가락 개수와 손 모양, 눈·치아, 거울 속 반사가 맞는지 확인
+· 피부가 매끈한 플라스틱처럼 보이면 다시 생성 (모공·결이 보이는 쪽이 자연스럽습니다)
+· 제품에 상표·글자가 생기면 지우거나 다시 생성
+
+[의료광고 주의]
+· 시술 전후 비교처럼 보이는 이미지, 실제 환자처럼 보이는 피부 병변 클로즈업은 쓰지 않습니다.
+· 실제 의료진이나 병원 내부처럼 보이는 AI 이미지는 만들지 않습니다. 병원 사진이 필요하면 실제 사진을 쓰세요.
+· 바늘·시술 장면, 효과를 과장하는 이미지는 넣지 않습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+천안피부과 | 씻을수록 건조해지는 이유, 세안 습관에 답이 있습니다
+━━━━━━━━━━━━━━━━━━━━━━
+
+■ 이미지 1. 세면대 / 물 / 수건 이미지
+용도 : 도입부 분위기 사진  /  실사 사진  /  비율 16:9
+
+[영문 프롬프트]
+Close-up of two hands cupping lukewarm water over a white ceramic washbasin, a folded soft light-grey cotton towel and a small unbranded pump bottle of gentle cleanser beside it, morning light from a small bathroom window, quiet and clean mood, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain
+
+[한글 프롬프트]
+흰 세면대 위에서 두 손으로 미지근한 물을 받는 장면, 옆에 접힌 연회색 수건과 상표 없는 세안제 펌프병, 아침 창가 자연광, 깨끗하고 차분한 분위기, 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+■ 이미지 2. 체크리스트 카드 이미지
+용도 : 셀프 체크 카드의 배경  /  실사 사진  /  비율 16:9
+
+[영문 프롬프트]
+Top-down flat lay of a light grey linen surface with one blank white paper card in the center, the corner of a folded towel and a glass of water at the edges, large empty space in the middle, soft diffused shadow, minimal, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain
+
+[한글 프롬프트]
+연회색 린넨 위에 빈 흰 종이 카드 한 장이 놓인 탑뷰, 가장자리에 수건 끝과 물컵, 가운데는 비어 있음, 은은한 그림자, 미니멀
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+세안 습관 셀프 체크 / 3개 이상이면 습관부터 점검
+
+━━━━━━━━━━━━━━━━━━━━━━
+천안 여드름 | 짜기 전에 확인해야 할 30초 구별법
+━━━━━━━━━━━━━━━━━━━━━━
+
+■ 이미지 1. 거울 보는 사람 일러스트
+용도 : 도입부 공감 장면  /  일러스트  /  비율 16:9
+
+[영문 프롬프트]
+A young Korean adult in pajamas leaning toward a bathroom mirror at night, toothbrush in one hand, the other hand raised near the cheek but not touching it, hesitant expression, warm small lamp light, skin drawn plainly without visible acne detail, calm editorial illustration, flat shapes with subtle paper grain, muted palette of soft teal, warm beige and light grey, gentle and respectful tone, simple clean composition
+
+[한글 프롬프트]
+밤에 잠옷 차림으로 욕실 거울에 얼굴을 가까이 대고 망설이는 20대 한국인, 한 손엔 칫솔, 다른 손은 볼 근처에서 멈춤, 따뜻한 조명, 피부 트러블은 그리지 않음, 차분한 일러스트
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+■ 이미지 2. 여드름 단계 일러스트
+용도 : 여드름 4단계 설명 그림  /  일러스트  /  비율 16:9
+
+[영문 프롬프트]
+Educational illustration of four side-by-side cross-sections of a skin pore in a row: a small closed comedone, a red raised inflamed bump, a bump with a soft white-yellow center, and a deep rounded swelling under the skin; simple flat vector style, soft pastel skin tones, thin teal outlines, plain white background, no labels, calm editorial illustration, flat shapes with subtle paper grain, muted palette of soft teal, warm beige and light grey, gentle and respectful tone, simple clean composition
+
+[한글 프롬프트]
+피부 모공 단면 4개를 나란히 그린 교육용 일러스트: 작은 좁쌀, 붉게 솟은 염증, 가운데 노란 고름, 피부 깊은 곳의 둥근 부기. 단순한 플랫 벡터, 파스텔 피부색, 얇은 청록 외곽선, 흰 배경, 글자 없음
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+① 좁쌀  ② 붉은 염증  ③ 고름  ④ 깊은 부기 (각 그림 아래 번호·이름)
+
+━━━━━━━━━━━━━━━━━━━━━━
+여드름 자국 | 유리컵 하나로 자국 종류를 구별하는 방법
+━━━━━━━━━━━━━━━━━━━━━━
+
+■ 이미지 1. 유리컵으로 피부를 누르는 사진/일러스트
+용도 : 유리컵 테스트 방법 사진  /  실사 사진  /  비율 16:9
+
+[영문 프롬프트]
+Close-up of a hand gently pressing the bottom of a clear drinking glass against the cheek of a Korean woman in her 20s, face cropped from nose to jaw, calm neutral expression, natural skin texture, soft daylight from the side, bathroom softly blurred in the background, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain
+
+[한글 프롬프트]
+20대 한국 여성이 투명한 유리컵 바닥을 볼에 살짝 대고 누르는 클로즈업, 코부터 턱까지만 보이게 크롭, 자연스러운 피부결, 옆에서 들어오는 부드러운 자연광, 배경은 흐린 욕실
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+■ 이미지 2. 4가지 타입 비교 카드 이미지
+용도 : 자국 4종류 비교 카드  /  일러스트  /  비율 16:9
+
+[영문 프롬프트]
+Four small square tiles in one row, each a simple flat illustration of a patch of skin surface: a soft pink-red blotch, a light brown spot, a small shallow round dip shown with gentle shading, a slightly raised smooth bump; minimal vector, soft pastel palette, white background, generous spacing, no labels, calm editorial illustration, flat shapes with subtle paper grain, muted palette of soft teal, warm beige and light grey, gentle and respectful tone, simple clean composition
+
+[한글 프롬프트]
+정사각형 타일 4개를 한 줄로 배치, 각각 피부 표면 일러스트: 연분홍 붉은 자국, 옅은 갈색 자국, 얕게 패인 홈, 살짝 솟은 매끈한 볼록. 미니멀 벡터, 파스텔 톤, 흰 배경, 글자 없음
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+붉은 자국 / 갈색 자국 / 패인 흉터 / 볼록한 흉터
+
+━━━━━━━━━━━━━━━━━━━━━━
+천안 기미 | 여름이 지나고 광대가 거뭇해졌다면, 레이저보다 먼저 확인할 것
+━━━━━━━━━━━━━━━━━━━━━━
+
+■ 이미지 1. 가을 햇살 / 낙엽 이미지
+용도 : 계절감 도입 사진  /  실사 사진  /  비율 16:9
+
+[영문 프롬프트]
+Late-afternoon autumn sunlight through a large window falling on a light wooden table with a few fallen ginkgo and maple leaves and a white ceramic mug, warm golden light with long soft shadows, calm and quiet, no people, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain
+
+[한글 프롬프트]
+큰 창으로 들어오는 늦은 오후 가을 햇살, 밝은 원목 테이블 위 은행잎과 단풍잎 몇 장, 흰 머그컵, 길고 부드러운 그림자, 사람 없음, 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+■ 이미지 2. 선크림 / 모자 이미지
+용도 : 자외선 차단 생활수칙 사진  /  실사 사진  /  비율 16:9
+
+[영문 프롬프트]
+Still life of an unbranded plain white sunscreen tube, a beige bucket hat and folded sunglasses on a light linen cloth near a bright window, autumn morning light, minimal composition, blank packaging, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain
+
+[한글 프롬프트]
+상표 없는 흰 선크림 튜브, 베이지 버킷햇, 접힌 선글라스가 밝은 창가 린넨 위에 놓인 정물, 가을 아침빛, 미니멀, 포장에 글자 없음
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+━━━━━━━━━━━━━━━━━━━━━━
+천안 리프팅 | 울쎄라와 써마지 사이에서 고민 중이라면, 거울부터 보십시오
+━━━━━━━━━━━━━━━━━━━━━━
+
+■ 이미지 1. 거울 앞에서 턱선을 만지는 일러스트
+용도 : 리프팅 고민 공감 장면  /  일러스트  /  비율 16:9
+
+[영문 프롬프트]
+A Korean woman in her 40s standing in front of a round wall mirror, lightly touching her jawline with her fingertips, thoughtful calm expression, soft side light, elegant and respectful, natural signs of age drawn gently without exaggeration, calm editorial illustration, flat shapes with subtle paper grain, muted palette of soft teal, warm beige and light grey, gentle and respectful tone, simple clean composition
+
+[한글 프롬프트]
+둥근 거울 앞에서 손끝으로 턱선을 가볍게 만지는 40대 한국 여성, 생각에 잠긴 차분한 표정, 옆에서 오는 부드러운 빛, 과장 없는 자연스러운 나이, 우아한 일러스트
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+■ 이미지 2. 3단계 체크 카드 이미지
+용도 : 거울 셀프 체크 3단계 카드  /  일러스트  /  비율 16:9
+
+[영문 프롬프트]
+Three minimal line-art icons in a horizontal row on a soft off-white background: a face in profile tilting slightly down, a front-facing face with a small magnifying glass beside it, a face in side profile; thin teal lines, lots of whitespace, no labels, calm editorial illustration, flat shapes with subtle paper grain, muted palette of soft teal, warm beige and light grey, gentle and respectful tone, simple clean composition
+
+[한글 프롬프트]
+연한 미색 배경 위에 가로로 놓인 선화 아이콘 3개: 고개를 살짝 숙인 옆얼굴, 돋보기가 있는 정면 얼굴, 옆모습 얼굴. 얇은 청록 선, 여백 넉넉, 글자 없음
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+STEP 1 고개 숙여 보기 / STEP 2 정면 가까이 / STEP 3 옆모습
