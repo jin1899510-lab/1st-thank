@@ -76,14 +76,23 @@ hr.div{border:0;height:1px;background:var(--line);margin:8px 0;width:100%}
 .pr-k{color:var(--muted);font-size:12px;font-weight:500}
 .pr-block{margin:10px 0;min-width:0}
 .pr-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
-.prompt pre,.st pre{margin:0;white-space:pre-wrap;word-break:break-word;background:var(--ph);padding:10px 12px;border-radius:4px;font:12.5px/1.6 ui-monospace,Menlo,Consolas,monospace;color:var(--ink)}
+.prompt pre,.st pre,.card pre{margin:0;white-space:pre-wrap;word-break:break-word;background:var(--ph);padding:10px 12px;border-radius:4px;font:12.5px/1.6 ui-monospace,Menlo,Consolas,monospace;color:var(--ink)}
 .btn.sm{padding:5px 9px;font-size:12px}
 .views{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;width:max-content;max-width:100%}
 .view{border:0;background:var(--paper);color:var(--muted);font:500 14px/1 var(--body);padding:10px 16px;cursor:pointer}
 .view[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 body.mode-paste .tools,body.mode-paste .post{display:none!important}
 body.mode-view .paste{display:none!important}
-.paste{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:20px clamp(14px,4vw,32px)}
+.paste{display:flex;flex-direction:column;gap:14px;background:transparent;border:0;padding:0}
+[hidden]{display:none!important}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:18px clamp(14px,4vw,28px);display:flex;flex-direction:column;gap:12px;min-width:0}
+.card-h{display:flex;align-items:baseline;justify-content:space-between}
+.card-h h3{margin:0;font-family:var(--display);font-size:19px}
+.meta{font-size:13px;color:var(--muted)}
+.mini{display:grid;grid-template-columns:1fr;gap:4px}
+.opts{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.opts label{display:flex;gap:5px;align-items:center;cursor:pointer}
+.whole .pre.big{max-height:340px}
 .steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
 .st{border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
 .st.img{background:var(--teal-soft);border-color:transparent}
@@ -115,10 +124,10 @@ body.clean .note{display:none}
   <div class="top">
     <span class="eyebrow">네이버 블로그 원고 미리보기</span>
     <h2>천안시청 CNP차앤박피부과 · 10월 원고 5편</h2>
-    <p>'붙여넣기 순서'에서 위에서부터 차례로 복사 버튼을 눌러 네이버 에디터에 붙여넣으세요. 이미지 단계에서는 프롬프트로 사진을 만들어 그 자리에 올리면 됩니다. '블로그 미리보기'는 완성 모습입니다.</p><p hidden> 점선 칸은 사진을 넣을 자리이고, 칸 아래 'AI 이미지 프롬프트'를 열면 그 사진을 만들 프롬프트가 있습니다. 노란 칸은 게시 전 확인할 메모입니다.</p>
+    <p>원고마다 글은 '본문 전체 복사' 한 번, 이미지는 '프롬프트 전체 복사' 한 번으로 가져갈 수 있습니다. 본문에는 사진 넣을 자리가 [사진 1 넣는 곳]처럼 표시되며, 체크를 끄면 표시 없이 복사됩니다. '블로그 미리보기'는 완성 모습입니다.</p><p hidden> 점선 칸은 사진을 넣을 자리이고, 칸 아래 'AI 이미지 프롬프트'를 열면 그 사진을 만들 프롬프트가 있습니다. 노란 칸은 게시 전 확인할 메모입니다.</p>
   </div>
   <div class="views" role="group" aria-label="보기 방식">
-    <button class="view" type="button" data-mode="paste" aria-pressed="true">붙여넣기 순서</button>
+    <button class="view" type="button" data-mode="paste" aria-pressed="true">복사하기</button>
     <button class="view" type="button" data-mode="view" aria-pressed="false">블로그 미리보기</button>
   </div>
   <nav class="tabs" role="tablist" aria-label="원고 선택"><button class="tab" role="tab" id="tab0" aria-controls="post0" data-i="0"><span class="tn">1</span>세안 습관</button><button class="tab" role="tab" id="tab1" aria-controls="post1" data-i="1"><span class="tn">2</span>여드름 압출</button><button class="tab" role="tab" id="tab2" aria-controls="post2" data-i="2"><span class="tn">3</span>여드름 자국</button><button class="tab" role="tab" id="tab3" aria-controls="post3" data-i="3"><span class="tn">4</span>가을 기미</button><button class="tab" role="tab" id="tab4" aria-controls="post4" data-i="4"><span class="tn">5</span>리프팅 선택</button></nav>
@@ -184,9 +193,12 @@ body.clean .note{display:none}
 <p class="fine">본 글은 일반적인 피부 건강 정보 제공을 목적으로 하며,<br>개인의 피부 상태에 따라 적합한 방법은 다를 수 있습니다.<br>정확한 진단과 치료는 피부과 전문의 진료를 통해 결정하시기 바랍니다.</p></div>
 <footer class="post-foot"><div class="chips"><span class="chip">#천안피부과</span><span class="chip">#불당동피부과</span><span class="chip">#천안시청피부과</span><span class="chip">#차앤박피부과</span><span class="chip">#세안방법</span><span class="chip">#건조한피부</span><span class="chip">#환절기피부관리</span><span class="chip">#얼굴당김</span><span class="chip">#천안불당동</span></div>
 <details class="alt note"><summary>다른 제목 후보 2개</summary><ul><li>불당동 피부과가 말하는 &#x27;덜 씻어야 편해지는&#x27; 피부</li><li>환절기 얼굴 당김, 크림보다 먼저 세안법을 점검하십시오</li></ul></details></footer>
-</article><section class="paste" id="paste0" hidden><ol class="steps"><li class="st"><div class="st-h"><span class="sn">1</span>제목칸에 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">제목</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">천안피부과 | 씻을수록 건조해지는 이유, 세안 습관에 답이 있습니다</pre></div></li><li class="st"><div class="st-h"><span class="sn">2</span>본문 1 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 1</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">안녕하세요.
+</article><section class="paste" id="paste0" hidden><div class="card"><div class="card-h"><h3>글</h3><span class="meta">사진 2장 자리</span></div><div class="mini"><div class="pr-block"><div class="pr-head"><span class="pr-k">제목</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">천안피부과 | 씻을수록 건조해지는 이유, 세안 습관에 답이 있습니다</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">태그</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">#천안피부과 #불당동피부과 #천안시청피부과 #차앤박피부과 #세안방법 #건조한피부 #환절기피부관리 #얼굴당김 #천안불당동</pre></div></div><div class="pr-block whole"><div class="pr-head"><span class="pr-k">본문 전체</span><span class="opts"><label><input type="checkbox" class="opt-mark" id="mark0" checked> 사진 위치 표시</label><button type="button" class="btn" data-copy>본문 전체 복사</button></span></div><pre class="pre big on">안녕하세요.
 천안시청 CNP차앤박피부과입니다.
-</pre></div></li><li class="st img"><div class="st-h"><span class="sn">3</span>이미지 1 만들어서 넣기 · 세면대 / 물 / 수건 이미지</div><div class="pr-row"><span class="pr-k">용도</span><span>도입부 분위기 사진 · 실사 사진 · 비율 16:9</span></div><div class="pr-block"><div class="pr-head"><span class="pr-k">영문 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">Close-up of two hands cupping lukewarm water over a white ceramic washbasin, a folded soft light-grey cotton towel and a small unbranded pump bottle of gentle cleanser beside it, morning light from a small bathroom window, quiet and clean mood, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">한글 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">흰 세면대 위에서 두 손으로 미지근한 물을 받는 장면, 옆에 접힌 연회색 수건과 상표 없는 세안제 펌프병, 아침 창가 자연광, 깨끗하고 차분한 분위기, 실사 사진</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">제외할 요소 (네거티브)</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions</pre></div></li><li class="st"><div class="st-h"><span class="sn">4</span>본문 2 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 2</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">아침 세안 직후, 스킨을 바르기도 전에 얼굴이 당기는 느낌.
+
+[사진 1 넣는 곳 - 넣은 뒤 이 줄 삭제]
+
+아침 세안 직후, 스킨을 바르기도 전에 얼굴이 당기는 느낌.
 날씨가 선선해지면서 진료실에서 가장 자주 듣는 이야기 중 하나입니다.
 
 &quot;얼굴이 따갑다&quot;, &quot;각질이 일어난다&quot;고 말씀하시는 분들과 대화를 나눠 보면
@@ -233,7 +245,10 @@ body.clean .note{display:none}
 ━━━━━━━━━━━━━━━━━━━━━━
 ■ 오늘부터 바꿀 수 있는 5가지
 ━━━━━━━━━━━━━━━━━━━━━━
-</pre></div></li><li class="st img"><div class="st-h"><span class="sn">5</span>이미지 2 만들어서 넣기 · 체크리스트 카드 이미지</div><div class="pr-row"><span class="pr-k">용도</span><span>셀프 체크 카드의 배경 · 실사 사진 · 비율 16:9</span></div><div class="pr-block"><div class="pr-head"><span class="pr-k">영문 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">Top-down flat lay of a light grey linen surface with one blank white paper card in the center, the corner of a folded towel and a glass of water at the edges, large empty space in the middle, soft diffused shadow, minimal, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">한글 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">연회색 린넨 위에 빈 흰 종이 카드 한 장이 놓인 탑뷰, 가장자리에 수건 끝과 물컵, 가운데는 비어 있음, 은은한 그림자, 미니멀</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">제외할 요소 (네거티브)</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions</pre></div><div class="pr-row"><span class="pr-k">글자 넣기</span><span>세안 습관 셀프 체크 / 3개 이상이면 습관부터 점검<small>글자는 AI로 만들지 말고 캔바·미리캔버스에서 올리세요</small></span></div></li><li class="st"><div class="st-h"><span class="sn">6</span>본문 3 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 3</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">1. 물 온도는 미지근하게
+
+[사진 2 넣는 곳 - 넣은 뒤 이 줄 삭제]
+
+1. 물 온도는 미지근하게
 손목에 대었을 때 따뜻함이 거의 느껴지지 않는 정도면 충분합니다.
 샤워 시간은 10분 안팎으로 줄이는 것을 권합니다.
 
@@ -289,10 +304,152 @@ CNP차앤박피부과의원 천안시청점
 진료 : 평일 10:00 ~ 19:30 (점심 13:00 ~ 14:00)
 　　　토요일 09:00 ~ 15:00 / 일요일 휴진
 ※ 진료 일정은 변동될 수 있으니 내원 전 전화로 확인 바랍니다.
-</pre></div></li><li class="st"><div class="st-h"><span class="sn">7</span>네이버 지도 넣기</div><p class="hint">에디터 상단 '장소' 버튼 → 'CNP차앤박피부과 천안시청점' 검색 → 추가</p></li><li class="st"><div class="st-h"><span class="sn">8</span>본문 4 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 4</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">본 글은 일반적인 피부 건강 정보 제공을 목적으로 하며,
+
+[네이버 지도 넣는 곳 - 장소 버튼으로 추가한 뒤 이 줄 삭제]
+
+본 글은 일반적인 피부 건강 정보 제공을 목적으로 하며,
 개인의 피부 상태에 따라 적합한 방법은 다를 수 있습니다.
 정확한 진단과 치료는 피부과 전문의 진료를 통해 결정하시기 바랍니다.
-</pre></div></li><li class="st"><div class="st-h"><span class="sn">9</span>태그칸에 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">태그</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">#천안피부과 #불당동피부과 #천안시청피부과 #차앤박피부과 #세안방법 #건조한피부 #환절기피부관리 #얼굴당김 #천안불당동</pre></div></li></ol></section><article class="post" id="post1" role="tabpanel" aria-labelledby="tab1" hidden>
+</pre><pre class="pre big off" hidden>안녕하세요.
+천안시청 CNP차앤박피부과입니다.
+
+아침 세안 직후, 스킨을 바르기도 전에 얼굴이 당기는 느낌.
+날씨가 선선해지면서 진료실에서 가장 자주 듣는 이야기 중 하나입니다.
+
+&quot;얼굴이 따갑다&quot;, &quot;각질이 일어난다&quot;고 말씀하시는 분들과 대화를 나눠 보면
+공통점이 하나 있습니다.
+
+깨끗하게 씻기 위해 누구보다 열심히 노력하신다는 점입니다.
+
+오늘은 그 노력이 오히려 피부를 지치게 만드는 경우,
+그리고 내일 아침부터 바꿀 수 있는 방법을 정리했습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 많이 씻을수록 피부가 깨끗해질까
+━━━━━━━━━━━━━━━━━━━━━━
+
+피부 가장 바깥에는 얇은 기름막과 각질층이 벽돌처럼 쌓여
+외부 자극을 막는 보호벽 역할을 합니다.
+
+세정제는 노폐물만 골라서 지우지 못합니다.
+이 보호벽의 기름 성분까지 함께 덜어 냅니다.
+
+너무 자주, 너무 뜨겁게, 너무 세게 씻으면
+· 보호벽이 얇아지고
+· 수분이 쉽게 증발하며
+· 작은 자극에도 화끈거리는 피부가 되기 쉽습니다.
+
+깨끗한 피부와 건강한 피부는 같은 말이 아닙니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 세안 습관 셀프 체크
+━━━━━━━━━━━━━━━━━━━━━━
+
+해당하는 항목의 개수를 세어 보십시오.
+
+☐ 샤워 물은 뜨거워야 개운하다
+☐ 번들거리면 하루 3번 이상 폼클렌저를 쓴다
+☐ 화장을 거의 안 한 날에도 이중 세안을 한다
+☐ 스크럽이나 각질 패드를 주 2회 이상 쓴다
+☐ 온몸을 샤워볼이나 때수건으로 꼼꼼히 민다
+☐ 수건으로 얼굴을 문질러 닦는다
+☐ 씻고 한참 지난 뒤에 크림을 바른다
+
+3개 이상이라면 화장품을 바꾸기 전에 습관부터 바꾸는 편이 낫습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 오늘부터 바꿀 수 있는 5가지
+━━━━━━━━━━━━━━━━━━━━━━
+
+1. 물 온도는 미지근하게
+손목에 대었을 때 따뜻함이 거의 느껴지지 않는 정도면 충분합니다.
+샤워 시간은 10분 안팎으로 줄이는 것을 권합니다.
+
+2. 세정제는 아침·저녁 두 번
+아침에 건조함을 느끼는 분이라면
+물 세안 또는 순한 세안제 소량으로도 괜찮습니다.
+
+3. 이중 세안과 스크럽은 필요한 날에만
+짙은 메이크업이나 워터프루프 제품을 쓴 날에만 이중 세안을 하십시오.
+얼굴이 따가운 상태라면 각질 제거는 잠시 중단합니다.
+
+4. 몸은 필요한 부위 위주로
+땀과 냄새가 나기 쉬운 겨드랑이, 사타구니, 발 위주로 세정제를 쓰고
+나머지 부위는 물로 가볍게 헹궈도 되는 경우가 많습니다.
+정강이와 팔에 하얀 각질이 일어나는 분께 특히 권합니다.
+
+5. 눌러서 닦고, 3분 안에 보습
+수건은 문지르지 말고 눌러서 물기만 흡수시킵니다.
+물기가 다 마르기 전에 보습제를 바르는 것이 핵심입니다.
+건조한 계절에는 로션보다 크림 제형이 더 적합할 수 있습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 습관 교정만으로 부족한 경우
+━━━━━━━━━━━━━━━━━━━━━━
+
+세안 습관을 바꾼 뒤에도 아래 증상이 이어진다면
+단순 건조가 아닌 피부염 등 다른 원인을 의심해 볼 수 있습니다.
+
+· 붉고 갈라지거나 진물이 2주 이상 지속되는 경우
+· 밤에 잠을 깰 정도로 가려운 경우
+· 특정 화장품이나 세제를 쓴 뒤 반복적으로 올라오는 경우
+· 얼굴이 쉽게 화끈거리고 붉은 상태가 오래가는 경우
+
+이때는 제품을 바꿔 가며 버티기보다
+피부과 전문의 진료로 원인을 확인하는 것이 먼저입니다.
+필요에 따라 알레르기 검사 등을 함께 고려할 수 있습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+좋은 크림을 하나 더 사는 것보다
+뜨거운 물을 한 번 덜 쓰는 것이 먼저일 수 있습니다.
+
+이번 주에는 한 가지만 골라 바꿔 보시기 바랍니다.
+
+천안시청 CNP차앤박피부과였습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+CNP차앤박피부과의원 천안시청점
+━━━━━━━━━━━━━━━━━━━━━━
+
+주소 : 충남 천안시 서북구 불당33길 24 리앤시티 6층
+전화 : 041-552-1199
+진료 : 평일 10:00 ~ 19:30 (점심 13:00 ~ 14:00)
+　　　토요일 09:00 ~ 15:00 / 일요일 휴진
+※ 진료 일정은 변동될 수 있으니 내원 전 전화로 확인 바랍니다.
+
+본 글은 일반적인 피부 건강 정보 제공을 목적으로 하며,
+개인의 피부 상태에 따라 적합한 방법은 다를 수 있습니다.
+정확한 진단과 치료는 피부과 전문의 진료를 통해 결정하시기 바랍니다.
+</pre></div></div><div class="card"><div class="card-h"><h3>이미지 프롬프트</h3><span class="meta">2개</span></div><div class="pr-block whole"><div class="pr-head"><span class="pr-k">사진 1~2 프롬프트 전체</span><button type="button" class="btn" data-copy>프롬프트 전체 복사</button></div><pre class="pre big">■ 사진 1. 세면대 / 물 / 수건 이미지
+용도 : 도입부 분위기 사진 / 실사 사진 / 비율 16:9
+
+[영문 프롬프트]
+Close-up of two hands cupping lukewarm water over a white ceramic washbasin, a folded soft light-grey cotton towel and a small unbranded pump bottle of gentle cleanser beside it, morning light from a small bathroom window, quiet and clean mood, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain
+
+[한글 프롬프트]
+흰 세면대 위에서 두 손으로 미지근한 물을 받는 장면, 옆에 접힌 연회색 수건과 상표 없는 세안제 펌프병, 아침 창가 자연광, 깨끗하고 차분한 분위기, 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+────────────────────
+
+■ 사진 2. 체크리스트 카드 이미지
+용도 : 셀프 체크 카드의 배경 / 실사 사진 / 비율 16:9
+
+[영문 프롬프트]
+Top-down flat lay of a light grey linen surface with one blank white paper card in the center, the corner of a folded towel and a glass of water at the edges, large empty space in the middle, soft diffused shadow, minimal, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain
+
+[한글 프롬프트]
+연회색 린넨 위에 빈 흰 종이 카드 한 장이 놓인 탑뷰, 가장자리에 수건 끝과 물컵, 가운데는 비어 있음, 은은한 그림자, 미니멀
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+세안 습관 셀프 체크 / 3개 이상이면 습관부터 점검
+</pre></div></div></section><article class="post" id="post1" role="tabpanel" aria-labelledby="tab1" hidden>
 <header class="post-head"><div class="cat">여드름</div><h1>천안 여드름 | 짜기 전에 확인해야 할 30초 구별법</h1>
 <div class="byline"><span class="avatar" aria-hidden="true">C</span><span><b>천안시청 CNP차앤박피부과</b><small>2026. 10. 19. · 피부과 전문의 칼럼</small></span></div></header>
 <div class="post-body"><p class="p">안녕하세요.<br>천안시청 CNP차앤박피부과입니다.</p>
@@ -350,9 +507,12 @@ CNP차앤박피부과의원 천안시청점
 <p class="fine">본 글은 일반적인 정보 제공을 목적으로 합니다.<br>모든 시술·치료는 개인의 피부 상태에 따라 효과와 회복 기간이 다르며,<br>붉어짐·부기·멍·색소 변화·피부 함몰 등의 부작용이 발생할 수 있습니다.<br>치료 여부는 피부과 전문의 상담 후 결정하시기 바랍니다.</p></div>
 <footer class="post-foot"><div class="chips"><span class="chip">#천안여드름</span><span class="chip">#불당동피부과</span><span class="chip">#천안피부과</span><span class="chip">#천안시청피부과</span><span class="chip">#차앤박피부과</span><span class="chip">#여드름압출</span><span class="chip">#화농성여드름</span><span class="chip">#여드름짜기</span><span class="chip">#여드름염증주사</span></div>
 <details class="alt note"><summary>다른 제목 후보 2개</summary><ul><li>불당동 피부과가 정리한 &#x27;손대면 안 되는 여드름&#x27;</li><li>여드름 압출, 집에서와 피부과에서 무엇이 다른가</li></ul></details></footer>
-</article><section class="paste" id="paste1" hidden><ol class="steps"><li class="st"><div class="st-h"><span class="sn">1</span>제목칸에 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">제목</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">천안 여드름 | 짜기 전에 확인해야 할 30초 구별법</pre></div></li><li class="st"><div class="st-h"><span class="sn">2</span>본문 1 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 1</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">안녕하세요.
+</article><section class="paste" id="paste1" hidden><div class="card"><div class="card-h"><h3>글</h3><span class="meta">사진 2장 자리</span></div><div class="mini"><div class="pr-block"><div class="pr-head"><span class="pr-k">제목</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">천안 여드름 | 짜기 전에 확인해야 할 30초 구별법</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">태그</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">#천안여드름 #불당동피부과 #천안피부과 #천안시청피부과 #차앤박피부과 #여드름압출 #화농성여드름 #여드름짜기 #여드름염증주사</pre></div></div><p class="memo">게시 전 확인 · 천안시청점 시행 장비명 기재 여부</p><div class="pr-block whole"><div class="pr-head"><span class="pr-k">본문 전체</span><span class="opts"><label><input type="checkbox" class="opt-mark" id="mark1" checked> 사진 위치 표시</label><button type="button" class="btn" data-copy>본문 전체 복사</button></span></div><pre class="pre big on">안녕하세요.
 천안시청 CNP차앤박피부과입니다.
-</pre></div></li><li class="st img"><div class="st-h"><span class="sn">3</span>이미지 1 만들어서 넣기 · 거울 보는 사람 일러스트</div><div class="pr-row"><span class="pr-k">용도</span><span>도입부 공감 장면 · 일러스트 · 비율 16:9</span></div><div class="pr-block"><div class="pr-head"><span class="pr-k">영문 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">A young Korean adult in pajamas leaning toward a bathroom mirror at night, toothbrush in one hand, the other hand raised near the cheek but not touching it, hesitant expression, warm small lamp light, skin drawn plainly without visible acne detail, calm editorial illustration, flat shapes with subtle paper grain, muted palette of soft teal, warm beige and light grey, gentle and respectful tone, simple clean composition</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">한글 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">밤에 잠옷 차림으로 욕실 거울에 얼굴을 가까이 대고 망설이는 20대 한국인, 한 손엔 칫솔, 다른 손은 볼 근처에서 멈춤, 따뜻한 조명, 피부 트러블은 그리지 않음, 차분한 일러스트</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">제외할 요소 (네거티브)</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions</pre></div></li><li class="st"><div class="st-h"><span class="sn">4</span>본문 2 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 2</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">밤 11시, 양치를 하다 거울에서 발견한 하얀 여드름 하나.
+
+[사진 1 넣는 곳 - 넣은 뒤 이 줄 삭제]
+
+밤 11시, 양치를 하다 거울에서 발견한 하얀 여드름 하나.
 &quot;이것만 짜고 잘까&quot; 하는 생각은 누구나 한 번쯤 해 보셨을 겁니다.
 
 그런데 여드름 자국과 흉터 상담을 하다 보면
@@ -380,7 +540,10 @@ CNP차앤박피부과의원 천안시청점
 ━━━━━━━━━━━━━━━━━━━━━━
 ■ 30초 셀프 진단 : 내 여드름은 어떤 타입인가
 ━━━━━━━━━━━━━━━━━━━━━━
-</pre></div></li><li class="st img"><div class="st-h"><span class="sn">5</span>이미지 2 만들어서 넣기 · 여드름 단계 일러스트</div><div class="pr-row"><span class="pr-k">용도</span><span>여드름 4단계 설명 그림 · 일러스트 · 비율 16:9</span></div><div class="pr-block"><div class="pr-head"><span class="pr-k">영문 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">Educational illustration of four side-by-side cross-sections of a skin pore in a row: a small closed comedone, a red raised inflamed bump, a bump with a soft white-yellow center, and a deep rounded swelling under the skin; simple flat vector style, soft pastel skin tones, thin teal outlines, plain white background, no labels, calm editorial illustration, flat shapes with subtle paper grain, muted palette of soft teal, warm beige and light grey, gentle and respectful tone, simple clean composition</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">한글 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">피부 모공 단면 4개를 나란히 그린 교육용 일러스트: 작은 좁쌀, 붉게 솟은 염증, 가운데 노란 고름, 피부 깊은 곳의 둥근 부기. 단순한 플랫 벡터, 파스텔 피부색, 얇은 청록 외곽선, 흰 배경, 글자 없음</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">제외할 요소 (네거티브)</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions</pre></div><div class="pr-row"><span class="pr-k">글자 넣기</span><span>① 좁쌀  ② 붉은 염증  ③ 고름  ④ 깊은 부기 (각 그림 아래 번호·이름)<small>글자는 AI로 만들지 말고 캔바·미리캔버스에서 올리세요</small></span></div></li><li class="st"><div class="st-h"><span class="sn">6</span>본문 3 붙여넣기</div><p class="memo">게시 전 확인 · 천안시청점 시행 장비명 기재 여부 (이 문단 안에서 해당 부분 수정)</p><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 3</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">① 작고 오돌토돌하며 통증이 없다
+
+[사진 2 넣는 곳 - 넣은 뒤 이 줄 삭제]
+
+① 작고 오돌토돌하며 통증이 없다
 → 좁쌀 여드름(면포)일 가능성
 → 짜기보다 세안·보습 습관 점검이 먼저
 → 오래 지속되면 진료로 관리 방향을 잡는 것이 좋습니다.
@@ -461,11 +624,160 @@ CNP차앤박피부과의원 천안시청점
 진료 : 평일 10:00 ~ 19:30 (점심 13:00 ~ 14:00)
 　　　토요일 09:00 ~ 15:00 / 일요일 휴진
 ※ 진료 일정은 변동될 수 있으니 내원 전 전화로 확인 바랍니다.
-</pre></div></li><li class="st"><div class="st-h"><span class="sn">7</span>네이버 지도 넣기</div><p class="hint">에디터 상단 '장소' 버튼 → 'CNP차앤박피부과 천안시청점' 검색 → 추가</p></li><li class="st"><div class="st-h"><span class="sn">8</span>본문 4 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 4</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">본 글은 일반적인 정보 제공을 목적으로 합니다.
+
+[네이버 지도 넣는 곳 - 장소 버튼으로 추가한 뒤 이 줄 삭제]
+
+본 글은 일반적인 정보 제공을 목적으로 합니다.
 모든 시술·치료는 개인의 피부 상태에 따라 효과와 회복 기간이 다르며,
 붉어짐·부기·멍·색소 변화·피부 함몰 등의 부작용이 발생할 수 있습니다.
 치료 여부는 피부과 전문의 상담 후 결정하시기 바랍니다.
-</pre></div></li><li class="st"><div class="st-h"><span class="sn">9</span>태그칸에 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">태그</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">#천안여드름 #불당동피부과 #천안피부과 #천안시청피부과 #차앤박피부과 #여드름압출 #화농성여드름 #여드름짜기 #여드름염증주사</pre></div></li></ol></section><article class="post" id="post2" role="tabpanel" aria-labelledby="tab2" hidden>
+</pre><pre class="pre big off" hidden>안녕하세요.
+천안시청 CNP차앤박피부과입니다.
+
+밤 11시, 양치를 하다 거울에서 발견한 하얀 여드름 하나.
+&quot;이것만 짜고 잘까&quot; 하는 생각은 누구나 한 번쯤 해 보셨을 겁니다.
+
+그런데 여드름 자국과 흉터 상담을 하다 보면
+&quot;그때 짜지 말 걸 그랬다&quot;는 말씀을 자주 듣게 됩니다.
+
+짜기 전 30초, 내 여드름이 어떤 상태인지 먼저 확인하는 방법을 소개합니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 손으로 짜면 생기는 일
+━━━━━━━━━━━━━━━━━━━━━━
+
+여드름은 피지와 염증이 모공 안에 갇힌 상태입니다.
+
+손가락으로 누르면 압력이 위로만 빠지지 않습니다.
+모공 벽이 옆이나 아래로 터지면서
+염증이 피부 안쪽으로 번질 수 있습니다.
+
+그 결과
+· 붓기와 통증이 더 커지거나
+· 붉은 자국, 갈색 자국이 오래 남고
+· 심한 경우 움푹 패인 흉터로 이어지기도 합니다.
+
+시중의 압출기 역시 힘 조절과 위생 관리가 어려워 권하지 않습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 30초 셀프 진단 : 내 여드름은 어떤 타입인가
+━━━━━━━━━━━━━━━━━━━━━━
+
+① 작고 오돌토돌하며 통증이 없다
+→ 좁쌀 여드름(면포)일 가능성
+→ 짜기보다 세안·보습 습관 점검이 먼저
+→ 오래 지속되면 진료로 관리 방향을 잡는 것이 좋습니다.
+
+② 붉게 솟아 있고 누르면 아프다 (고름 없음)
+→ 염증이 시작된 단계
+→ 이 시점에 짜면 덧나기 쉽습니다. 건드리지 않는 것이 원칙입니다.
+
+③ 가운데 노란 고름이 보인다
+→ 가장 짜고 싶은 단계
+→ 손으로 짜다 상처가 커지는 경우가 많습니다.
+
+④ 크고 단단하게 부어 있으며 며칠째 그대로다
+→ 깊은 곳에 생긴 염증일 가능성
+→ 겉에서 눌러도 나오지 않습니다. 절대 짜지 말고 진료를 받으시기 바랍니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 피부과에서는 어떻게 하는가
+━━━━━━━━━━━━━━━━━━━━━━
+
+여드름의 종류와 범위를 확인한 뒤
+피부과 전문의가 적합한 방법을 정합니다.
+
+· 여드름 압출
+소독된 기구로 피부 손상을 줄이는 방향으로 내용물을 제거합니다.
+모든 여드름이 압출 대상은 아니므로 진료 후 결정합니다.
+
+· 여드름 염증주사
+크게 부어 통증이 있는 여드름에 소량의 약물을 주입해
+염증 완화를 돕는 방법입니다.
+주사 부위가 일시적으로 꺼지거나 색이 변할 수 있어
+용량과 부위를 신중히 정합니다.
+
+· 약물 치료
+바르는 약과 먹는 약은 여드름 정도, 나이, 임신 계획 등을 함께 고려합니다.
+먹는 약 중에는 임신 중 복용해서는 안 되는 약도 있으므로
+반드시 진료 시 말씀해 주시기 바랍니다.
+
+· 필요에 따라 레이저·관리 병행
+
+여드름은 한 번에 끝나기보다 피부 상태를 보며 꾸준히 조절해 가는 경우가 많고,
+효과와 회복 기간에는 개인차가 있습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 짜고 싶을 때 대신 할 수 있는 것
+━━━━━━━━━━━━━━━━━━━━━━
+
+1. 여드름 패치 붙이기 – 손이 가는 것을 막는 용도로 도움이 됩니다.
+2. 턱 괴기, 무의식적으로 만지는 습관 줄이기
+3. 세안은 하루 2번, 거품으로 가볍게 – 문지르면 자극만 늘어납니다.
+4. 두꺼운 크림, 오일 제품은 잠시 중단
+5. 베개 커버 자주 교체, 휴대폰 화면 수시로 닦기
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 진료를 미루지 말아야 할 때
+━━━━━━━━━━━━━━━━━━━━━━
+
+· 같은 자리에 크고 아픈 여드름이 반복될 때
+· 나은 자리에 자국이나 패임이 남기 시작할 때
+· 시험, 면접, 결혼식 등 중요한 일정이 다가올 때
+· 2~3개월 홈케어에도 변화가 없을 때
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+여드름은 시간이 지나면 가라앉지만
+흉터는 시간이 지나도 쉽게 돌아오지 않습니다.
+
+오늘 밤에는 손 대신 패치 하나를 붙이고 주무시길 권합니다.
+
+천안시청 CNP차앤박피부과였습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+CNP차앤박피부과의원 천안시청점
+━━━━━━━━━━━━━━━━━━━━━━
+
+주소 : 충남 천안시 서북구 불당33길 24 리앤시티 6층
+전화 : 041-552-1199
+진료 : 평일 10:00 ~ 19:30 (점심 13:00 ~ 14:00)
+　　　토요일 09:00 ~ 15:00 / 일요일 휴진
+※ 진료 일정은 변동될 수 있으니 내원 전 전화로 확인 바랍니다.
+
+본 글은 일반적인 정보 제공을 목적으로 합니다.
+모든 시술·치료는 개인의 피부 상태에 따라 효과와 회복 기간이 다르며,
+붉어짐·부기·멍·색소 변화·피부 함몰 등의 부작용이 발생할 수 있습니다.
+치료 여부는 피부과 전문의 상담 후 결정하시기 바랍니다.
+</pre></div></div><div class="card"><div class="card-h"><h3>이미지 프롬프트</h3><span class="meta">2개</span></div><div class="pr-block whole"><div class="pr-head"><span class="pr-k">사진 1~2 프롬프트 전체</span><button type="button" class="btn" data-copy>프롬프트 전체 복사</button></div><pre class="pre big">■ 사진 1. 거울 보는 사람 일러스트
+용도 : 도입부 공감 장면 / 일러스트 / 비율 16:9
+
+[영문 프롬프트]
+A young Korean adult in pajamas leaning toward a bathroom mirror at night, toothbrush in one hand, the other hand raised near the cheek but not touching it, hesitant expression, warm small lamp light, skin drawn plainly without visible acne detail, calm editorial illustration, flat shapes with subtle paper grain, muted palette of soft teal, warm beige and light grey, gentle and respectful tone, simple clean composition
+
+[한글 프롬프트]
+밤에 잠옷 차림으로 욕실 거울에 얼굴을 가까이 대고 망설이는 20대 한국인, 한 손엔 칫솔, 다른 손은 볼 근처에서 멈춤, 따뜻한 조명, 피부 트러블은 그리지 않음, 차분한 일러스트
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+────────────────────
+
+■ 사진 2. 여드름 단계 일러스트
+용도 : 여드름 4단계 설명 그림 / 일러스트 / 비율 16:9
+
+[영문 프롬프트]
+Educational illustration of four side-by-side cross-sections of a skin pore in a row: a small closed comedone, a red raised inflamed bump, a bump with a soft white-yellow center, and a deep rounded swelling under the skin; simple flat vector style, soft pastel skin tones, thin teal outlines, plain white background, no labels, calm editorial illustration, flat shapes with subtle paper grain, muted palette of soft teal, warm beige and light grey, gentle and respectful tone, simple clean composition
+
+[한글 프롬프트]
+피부 모공 단면 4개를 나란히 그린 교육용 일러스트: 작은 좁쌀, 붉게 솟은 염증, 가운데 노란 고름, 피부 깊은 곳의 둥근 부기. 단순한 플랫 벡터, 파스텔 피부색, 얇은 청록 외곽선, 흰 배경, 글자 없음
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+① 좁쌀  ② 붉은 염증  ③ 고름  ④ 깊은 부기 (각 그림 아래 번호·이름)
+</pre></div></div></section><article class="post" id="post2" role="tabpanel" aria-labelledby="tab2" hidden>
 <header class="post-head"><div class="cat">여드름 자국</div><h1>여드름 자국 | 유리컵 하나로 자국 종류를 구별하는 방법</h1>
 <div class="byline"><span class="avatar" aria-hidden="true">C</span><span><b>천안시청 CNP차앤박피부과</b><small>2026. 10. 19. · 피부과 전문의 칼럼</small></span></div></header>
 <div class="post-body"><p class="p">안녕하세요.<br>천안시청 CNP차앤박피부과입니다.</p>
@@ -518,9 +830,12 @@ CNP차앤박피부과의원 천안시청점
 <p class="fine">본 글은 일반적인 정보 제공을 목적으로 합니다.<br>레이저·주사 등 모든 시술은 개인에 따라 효과와 회복 기간이 다르며,<br>홍반·부종·딱지·색소침착·색소 저하·피부 함몰 등의 부작용이 발생할 수 있습니다.<br>치료 여부와 방법은 피부과 전문의 상담 후 결정하시기 바랍니다.</p></div>
 <footer class="post-foot"><div class="chips"><span class="chip">#여드름자국</span><span class="chip">#여드름흉터</span><span class="chip">#천안여드름흉터</span><span class="chip">#붉은여드름자국</span><span class="chip">#천안피부과</span><span class="chip">#불당동피부과</span><span class="chip">#천안시청피부과</span><span class="chip">#차앤박피부과</span><span class="chip">#켈로이드</span></div>
 <details class="alt note"><summary>다른 제목 후보 2개</summary><ul><li>천안 여드름 흉터, 붉은 자국·갈색 자국·패인 흉터는 서로 다릅니다</li><li>여드름은 나았는데 자국은 왜 남는가, 불당동 피부과 정리</li></ul></details></footer>
-</article><section class="paste" id="paste2" hidden><ol class="steps"><li class="st"><div class="st-h"><span class="sn">1</span>제목칸에 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">제목</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">여드름 자국 | 유리컵 하나로 자국 종류를 구별하는 방법</pre></div></li><li class="st"><div class="st-h"><span class="sn">2</span>본문 1 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 1</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">안녕하세요.
+</article><section class="paste" id="paste2" hidden><div class="card"><div class="card-h"><h3>글</h3><span class="meta">사진 2장 자리</span></div><div class="mini"><div class="pr-block"><div class="pr-head"><span class="pr-k">제목</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">여드름 자국 | 유리컵 하나로 자국 종류를 구별하는 방법</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">태그</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">#여드름자국 #여드름흉터 #천안여드름흉터 #붉은여드름자국 #천안피부과 #불당동피부과 #천안시청피부과 #차앤박피부과 #켈로이드</pre></div></div><p class="memo">게시 전 확인 · 지점 장비명(예: 브이빔) 기재 여부</p><div class="pr-block whole"><div class="pr-head"><span class="pr-k">본문 전체</span><span class="opts"><label><input type="checkbox" class="opt-mark" id="mark2" checked> 사진 위치 표시</label><button type="button" class="btn" data-copy>본문 전체 복사</button></span></div><pre class="pre big on">안녕하세요.
 천안시청 CNP차앤박피부과입니다.
-</pre></div></li><li class="st img"><div class="st-h"><span class="sn">3</span>이미지 1 만들어서 넣기 · 유리컵으로 피부를 누르는 사진/일러스트</div><div class="pr-row"><span class="pr-k">용도</span><span>유리컵 테스트 방법 사진 · 실사 사진 · 비율 16:9</span></div><div class="pr-block"><div class="pr-head"><span class="pr-k">영문 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">Close-up of a hand gently pressing the bottom of a clear drinking glass against the cheek of a Korean woman in her 20s, face cropped from nose to jaw, calm neutral expression, natural skin texture, soft daylight from the side, bathroom softly blurred in the background, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">한글 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">20대 한국 여성이 투명한 유리컵 바닥을 볼에 살짝 대고 누르는 클로즈업, 코부터 턱까지만 보이게 크롭, 자연스러운 피부결, 옆에서 들어오는 부드러운 자연광, 배경은 흐린 욕실</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">제외할 요소 (네거티브)</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions</pre></div></li><li class="st"><div class="st-h"><span class="sn">4</span>본문 2 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 2</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">여드름은 가라앉았는데 그 자리에 남은 붉고 거뭇한 흔적.
+
+[사진 1 넣는 곳 - 넣은 뒤 이 줄 삭제]
+
+여드름은 가라앉았는데 그 자리에 남은 붉고 거뭇한 흔적.
 여드름 치료만큼 많이 받는 질문이 바로 이 &#x27;자국&#x27;에 관한 것입니다.
 
 흔히 하나로 묶어 &#x27;자국&#x27;이라고 부르지만
@@ -559,7 +874,10 @@ CNP차앤박피부과의원 천안시청점
 ━━━━━━━━━━━━━━━━━━━━━━
 ■ 종류별 특징
 ━━━━━━━━━━━━━━━━━━━━━━
-</pre></div></li><li class="st img"><div class="st-h"><span class="sn">5</span>이미지 2 만들어서 넣기 · 4가지 타입 비교 카드 이미지</div><div class="pr-row"><span class="pr-k">용도</span><span>자국 4종류 비교 카드 · 일러스트 · 비율 16:9</span></div><div class="pr-block"><div class="pr-head"><span class="pr-k">영문 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">Four small square tiles in one row, each a simple flat illustration of a patch of skin surface: a soft pink-red blotch, a light brown spot, a small shallow round dip shown with gentle shading, a slightly raised smooth bump; minimal vector, soft pastel palette, white background, generous spacing, no labels, calm editorial illustration, flat shapes with subtle paper grain, muted palette of soft teal, warm beige and light grey, gentle and respectful tone, simple clean composition</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">한글 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">정사각형 타일 4개를 한 줄로 배치, 각각 피부 표면 일러스트: 연분홍 붉은 자국, 옅은 갈색 자국, 얕게 패인 홈, 살짝 솟은 매끈한 볼록. 미니멀 벡터, 파스텔 톤, 흰 배경, 글자 없음</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">제외할 요소 (네거티브)</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions</pre></div><div class="pr-row"><span class="pr-k">글자 넣기</span><span>붉은 자국 / 갈색 자국 / 패인 흉터 / 볼록한 흉터<small>글자는 AI로 만들지 말고 캔바·미리캔버스에서 올리세요</small></span></div></li><li class="st"><div class="st-h"><span class="sn">6</span>본문 3 붙여넣기</div><p class="memo">게시 전 확인 · 지점 장비명(예: 브이빔) 기재 여부 (이 문단 안에서 해당 부분 수정)</p><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 3</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">① 붉은 자국
+
+[사진 2 넣는 곳 - 넣은 뒤 이 줄 삭제]
+
+① 붉은 자국
 염증이 지나간 자리에 늘어난 미세 혈관이 남아 붉게 보이는 상태입니다.
 · 시간이 지나며 옅어지기도 하지만 수개월 이상 남는 경우도 있습니다.
 · 사우나, 음주, 뜨거운 물처럼 얼굴이 달아오르면 더 붉어 보입니다.
@@ -617,11 +935,148 @@ CNP차앤박피부과의원 천안시청점
 진료 : 평일 10:00 ~ 19:30 (점심 13:00 ~ 14:00)
 　　　토요일 09:00 ~ 15:00 / 일요일 휴진
 ※ 진료 일정은 변동될 수 있으니 내원 전 전화로 확인 바랍니다.
-</pre></div></li><li class="st"><div class="st-h"><span class="sn">7</span>네이버 지도 넣기</div><p class="hint">에디터 상단 '장소' 버튼 → 'CNP차앤박피부과 천안시청점' 검색 → 추가</p></li><li class="st"><div class="st-h"><span class="sn">8</span>본문 4 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 4</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">본 글은 일반적인 정보 제공을 목적으로 합니다.
+
+[네이버 지도 넣는 곳 - 장소 버튼으로 추가한 뒤 이 줄 삭제]
+
+본 글은 일반적인 정보 제공을 목적으로 합니다.
 레이저·주사 등 모든 시술은 개인에 따라 효과와 회복 기간이 다르며,
 홍반·부종·딱지·색소침착·색소 저하·피부 함몰 등의 부작용이 발생할 수 있습니다.
 치료 여부와 방법은 피부과 전문의 상담 후 결정하시기 바랍니다.
-</pre></div></li><li class="st"><div class="st-h"><span class="sn">9</span>태그칸에 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">태그</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">#여드름자국 #여드름흉터 #천안여드름흉터 #붉은여드름자국 #천안피부과 #불당동피부과 #천안시청피부과 #차앤박피부과 #켈로이드</pre></div></li></ol></section><article class="post" id="post3" role="tabpanel" aria-labelledby="tab3" hidden>
+</pre><pre class="pre big off" hidden>안녕하세요.
+천안시청 CNP차앤박피부과입니다.
+
+여드름은 가라앉았는데 그 자리에 남은 붉고 거뭇한 흔적.
+여드름 치료만큼 많이 받는 질문이 바로 이 &#x27;자국&#x27;에 관한 것입니다.
+
+흔히 하나로 묶어 &#x27;자국&#x27;이라고 부르지만
+그 안에는 원인이 전혀 다른 여러 상태가 섞여 있습니다.
+종류에 따라 기다려야 할 것, 생활 관리가 중요한 것, 진료가 필요한 것이 나뉩니다.
+
+집에서 해 볼 수 있는 간단한 구별법부터 소개합니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ STEP 1. 유리컵 테스트
+━━━━━━━━━━━━━━━━━━━━━━
+
+투명한 유리컵 바닥이나 손가락으로 자국을 지그시 눌러 봅니다.
+
+· 누르면 색이 하얗게 빠졌다가 떼면 다시 붉어진다
+→ 붉은 자국일 가능성
+
+· 눌러도 갈색·검붉은 색이 그대로 남는다
+→ 갈색 자국(색소침착)일 가능성
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ STEP 2. 옆 조명 테스트
+━━━━━━━━━━━━━━━━━━━━━━
+
+방 불을 끄고 휴대폰 손전등을 얼굴 옆에서 비춰 봅니다.
+
+· 그림자가 지면서 움푹 들어가 보인다
+→ 패인 흉터일 가능성
+
+· 볼록하게 솟아 있고 만지면 단단하다
+→ 비후성 흉터·켈로이드일 가능성
+
+어디까지나 참고용입니다.
+실제로는 여러 종류가 함께 섞여 있는 경우가 훨씬 많습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 종류별 특징
+━━━━━━━━━━━━━━━━━━━━━━
+
+① 붉은 자국
+염증이 지나간 자리에 늘어난 미세 혈관이 남아 붉게 보이는 상태입니다.
+· 시간이 지나며 옅어지기도 하지만 수개월 이상 남는 경우도 있습니다.
+· 사우나, 음주, 뜨거운 물처럼 얼굴이 달아오르면 더 붉어 보입니다.
+· 진료 시 혈관을 겨냥하는 레이저 등을 고려하기도 합니다.
+
+② 갈색 자국
+염증이 있던 자리에 멜라닌 색소가 남은 상태입니다.
+· 햇빛에 노출되면 더 진해지고 오래가는 경향이 있습니다.
+· 따라서 자외선 차단이 가장 기본입니다.
+· 자꾸 만지거나 각질을 과하게 벗기면 오히려 짙어질 수 있습니다.
+
+③ 패인 흉터
+염증이 깊었거나 반복해서 짰던 자리의 피부 조직이 손상되어 꺼진 상태입니다.
+· 붉은 자국, 갈색 자국과 달리 저절로 차오르기는 어렵습니다.
+· 흉터의 모양에 따라 치료 방법이 달라지며
+ 여러 차례에 걸쳐 단계적으로 개선을 목표로 하는 경우가 많습니다.
+
+④ 볼록한 흉터
+턱선, 가슴, 등, 어깨에 잘 생기며 가렵거나 당기는 느낌이 동반되기도 합니다.
+켈로이드는 원래 상처보다 넓게 퍼질 수 있습니다.
+· 뜯거나 짜는 자극은 반드시 피해야 합니다.
+· 진료를 통해 흉터 주사 등으로 크기와 증상을 조절하는 방법을 상의할 수 있습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 종류와 관계없이 지켜야 할 4가지
+━━━━━━━━━━━━━━━━━━━━━━
+
+1. 흐린 날에도 자외선 차단
+2. 딱지 떼기, 짜기, 문지르기 금지
+3. 새 여드름 줄이기가 우선 – 자국 관리보다 자국이 더 생기지 않게 하는 것이 먼저입니다.
+4. 빨리 없애려는 과한 필링 자제
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 진료를 권하는 경우
+━━━━━━━━━━━━━━━━━━━━━━
+
+· 6개월 이상 자국에 큰 변화가 없을 때
+· 움푹 패인 부위가 보이기 시작할 때
+· 볼록한 흉터가 점점 커질 때
+· 여드름이 계속 나면서 자국이 쌓이고 있을 때
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+같은 &#x27;자국&#x27;이라도 종류가 다르면 다루는 방법도 다릅니다.
+내 자국이 어떤 상태인지 아는 것이 관리의 출발점입니다.
+
+천안시청 CNP차앤박피부과였습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+CNP차앤박피부과의원 천안시청점
+━━━━━━━━━━━━━━━━━━━━━━
+
+주소 : 충남 천안시 서북구 불당33길 24 리앤시티 6층
+전화 : 041-552-1199
+진료 : 평일 10:00 ~ 19:30 (점심 13:00 ~ 14:00)
+　　　토요일 09:00 ~ 15:00 / 일요일 휴진
+※ 진료 일정은 변동될 수 있으니 내원 전 전화로 확인 바랍니다.
+
+본 글은 일반적인 정보 제공을 목적으로 합니다.
+레이저·주사 등 모든 시술은 개인에 따라 효과와 회복 기간이 다르며,
+홍반·부종·딱지·색소침착·색소 저하·피부 함몰 등의 부작용이 발생할 수 있습니다.
+치료 여부와 방법은 피부과 전문의 상담 후 결정하시기 바랍니다.
+</pre></div></div><div class="card"><div class="card-h"><h3>이미지 프롬프트</h3><span class="meta">2개</span></div><div class="pr-block whole"><div class="pr-head"><span class="pr-k">사진 1~2 프롬프트 전체</span><button type="button" class="btn" data-copy>프롬프트 전체 복사</button></div><pre class="pre big">■ 사진 1. 유리컵으로 피부를 누르는 사진/일러스트
+용도 : 유리컵 테스트 방법 사진 / 실사 사진 / 비율 16:9
+
+[영문 프롬프트]
+Close-up of a hand gently pressing the bottom of a clear drinking glass against the cheek of a Korean woman in her 20s, face cropped from nose to jaw, calm neutral expression, natural skin texture, soft daylight from the side, bathroom softly blurred in the background, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain
+
+[한글 프롬프트]
+20대 한국 여성이 투명한 유리컵 바닥을 볼에 살짝 대고 누르는 클로즈업, 코부터 턱까지만 보이게 크롭, 자연스러운 피부결, 옆에서 들어오는 부드러운 자연광, 배경은 흐린 욕실
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+────────────────────
+
+■ 사진 2. 4가지 타입 비교 카드 이미지
+용도 : 자국 4종류 비교 카드 / 일러스트 / 비율 16:9
+
+[영문 프롬프트]
+Four small square tiles in one row, each a simple flat illustration of a patch of skin surface: a soft pink-red blotch, a light brown spot, a small shallow round dip shown with gentle shading, a slightly raised smooth bump; minimal vector, soft pastel palette, white background, generous spacing, no labels, calm editorial illustration, flat shapes with subtle paper grain, muted palette of soft teal, warm beige and light grey, gentle and respectful tone, simple clean composition
+
+[한글 프롬프트]
+정사각형 타일 4개를 한 줄로 배치, 각각 피부 표면 일러스트: 연분홍 붉은 자국, 옅은 갈색 자국, 얕게 패인 홈, 살짝 솟은 매끈한 볼록. 미니멀 벡터, 파스텔 톤, 흰 배경, 글자 없음
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+붉은 자국 / 갈색 자국 / 패인 흉터 / 볼록한 흉터
+</pre></div></div></section><article class="post" id="post3" role="tabpanel" aria-labelledby="tab3" hidden>
 <header class="post-head"><div class="cat">색소 · 기미</div><h1>천안 기미 | 여름이 지나고 광대가 거뭇해졌다면, 레이저보다 먼저 확인할 것</h1>
 <div class="byline"><span class="avatar" aria-hidden="true">C</span><span><b>천안시청 CNP차앤박피부과</b><small>2026. 10. 19. · 피부과 전문의 칼럼</small></span></div></header>
 <div class="post-body"><p class="p">안녕하세요.<br>천안시청 CNP차앤박피부과입니다.</p>
@@ -661,9 +1116,12 @@ CNP차앤박피부과의원 천안시청점
 <p class="fine">본 글은 일반적인 정보 제공을 목적으로 합니다.<br>색소 치료는 개인의 피부 상태·생활 환경에 따라 효과와 유지 기간이 다르며,<br>홍반·부종·딱지·색소침착 또는 색소 저하 등의 부작용이 발생할 수 있습니다.<br>치료 여부와 방법은 피부과 전문의 상담 후 결정하시기 바랍니다.</p></div>
 <footer class="post-foot"><div class="chips"><span class="chip">#천안기미</span><span class="chip">#기미관리</span><span class="chip">#가을기미</span><span class="chip">#천안피부과</span><span class="chip">#불당동피부과</span><span class="chip">#천안시청피부과</span><span class="chip">#차앤박피부과</span><span class="chip">#색소관리</span><span class="chip">#선크림</span></div>
 <details class="alt note"><summary>다른 제목 후보 2개</summary><ul><li>가을에 기미가 더 진해 보이는 이유, 불당동 피부과 정리</li><li>기미 관리, &#x27;없애기&#x27;보다 &#x27;다루기&#x27;가 먼저인 이유</li></ul></details></footer>
-</article><section class="paste" id="paste3" hidden><ol class="steps"><li class="st"><div class="st-h"><span class="sn">1</span>제목칸에 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">제목</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">천안 기미 | 여름이 지나고 광대가 거뭇해졌다면, 레이저보다 먼저 확인할 것</pre></div></li><li class="st"><div class="st-h"><span class="sn">2</span>본문 1 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 1</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">안녕하세요.
+</article><section class="paste" id="paste3" hidden><div class="card"><div class="card-h"><h3>글</h3><span class="meta">사진 2장 자리</span></div><div class="mini"><div class="pr-block"><div class="pr-head"><span class="pr-k">제목</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">천안 기미 | 여름이 지나고 광대가 거뭇해졌다면, 레이저보다 먼저 확인할 것</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">태그</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">#천안기미 #기미관리 #가을기미 #천안피부과 #불당동피부과 #천안시청피부과 #차앤박피부과 #색소관리 #선크림</pre></div></div><div class="pr-block whole"><div class="pr-head"><span class="pr-k">본문 전체</span><span class="opts"><label><input type="checkbox" class="opt-mark" id="mark3" checked> 사진 위치 표시</label><button type="button" class="btn" data-copy>본문 전체 복사</button></span></div><pre class="pre big on">안녕하세요.
 천안시청 CNP차앤박피부과입니다.
-</pre></div></li><li class="st img"><div class="st-h"><span class="sn">3</span>이미지 1 만들어서 넣기 · 가을 햇살 / 낙엽 이미지</div><div class="pr-row"><span class="pr-k">용도</span><span>계절감 도입 사진 · 실사 사진 · 비율 16:9</span></div><div class="pr-block"><div class="pr-head"><span class="pr-k">영문 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">Late-afternoon autumn sunlight through a large window falling on a light wooden table with a few fallen ginkgo and maple leaves and a white ceramic mug, warm golden light with long soft shadows, calm and quiet, no people, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">한글 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">큰 창으로 들어오는 늦은 오후 가을 햇살, 밝은 원목 테이블 위 은행잎과 단풍잎 몇 장, 흰 머그컵, 길고 부드러운 그림자, 사람 없음, 실사 사진</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">제외할 요소 (네거티브)</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions</pre></div></li><li class="st"><div class="st-h"><span class="sn">4</span>본문 2 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 2</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">선선한 바람이 부는 10월,
+
+[사진 1 넣는 곳 - 넣은 뒤 이 줄 삭제]
+
+선선한 바람이 부는 10월,
 화장을 지우고 거울을 보다 광대 위 거뭇한 색소가 눈에 들어오는 시기입니다.
 
 여름 동안 받은 자외선의 영향이 시간을 두고 드러나고,
@@ -703,7 +1161,10 @@ CNP차앤박피부과의원 천안시청점
 ━━━━━━━━━━━━━━━━━━━━━━
 ■ 셋. 집에서 먼저 바꿔야 할 것
 ━━━━━━━━━━━━━━━━━━━━━━
-</pre></div></li><li class="st img"><div class="st-h"><span class="sn">5</span>이미지 2 만들어서 넣기 · 선크림 / 모자 이미지</div><div class="pr-row"><span class="pr-k">용도</span><span>자외선 차단 생활수칙 사진 · 실사 사진 · 비율 16:9</span></div><div class="pr-block"><div class="pr-head"><span class="pr-k">영문 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">Still life of an unbranded plain white sunscreen tube, a beige bucket hat and folded sunglasses on a light linen cloth near a bright window, autumn morning light, minimal composition, blank packaging, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">한글 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">상표 없는 흰 선크림 튜브, 베이지 버킷햇, 접힌 선글라스가 밝은 창가 린넨 위에 놓인 정물, 가을 아침빛, 미니멀, 포장에 글자 없음</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">제외할 요소 (네거티브)</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions</pre></div></li><li class="st"><div class="st-h"><span class="sn">6</span>본문 3 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 3</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">· 선크림은 사계절 내내 – 흐린 날, 실내 창가, 운전 중에도
+
+[사진 2 넣는 곳 - 넣은 뒤 이 줄 삭제]
+
+· 선크림은 사계절 내내 – 흐린 날, 실내 창가, 운전 중에도
 · 충분한 양을 바르고 2~3시간마다 덧바르기 – 얇게 펴 바르면 차단 효과가 떨어집니다.
 · 모자·양산 등 물리적 차단 병행
 · 문지르는 습관 줄이기 – 스크럽, 얼굴 마사지기, 강한 클렌징도 마찰 자극입니다.
@@ -757,11 +1218,142 @@ CNP차앤박피부과의원 천안시청점
 진료 : 평일 10:00 ~ 19:30 (점심 13:00 ~ 14:00)
 　　　토요일 09:00 ~ 15:00 / 일요일 휴진
 ※ 진료 일정은 변동될 수 있으니 내원 전 전화로 확인 바랍니다.
-</pre></div></li><li class="st"><div class="st-h"><span class="sn">7</span>네이버 지도 넣기</div><p class="hint">에디터 상단 '장소' 버튼 → 'CNP차앤박피부과 천안시청점' 검색 → 추가</p></li><li class="st"><div class="st-h"><span class="sn">8</span>본문 4 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 4</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">본 글은 일반적인 정보 제공을 목적으로 합니다.
+
+[네이버 지도 넣는 곳 - 장소 버튼으로 추가한 뒤 이 줄 삭제]
+
+본 글은 일반적인 정보 제공을 목적으로 합니다.
 색소 치료는 개인의 피부 상태·생활 환경에 따라 효과와 유지 기간이 다르며,
 홍반·부종·딱지·색소침착 또는 색소 저하 등의 부작용이 발생할 수 있습니다.
 치료 여부와 방법은 피부과 전문의 상담 후 결정하시기 바랍니다.
-</pre></div></li><li class="st"><div class="st-h"><span class="sn">9</span>태그칸에 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">태그</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">#천안기미 #기미관리 #가을기미 #천안피부과 #불당동피부과 #천안시청피부과 #차앤박피부과 #색소관리 #선크림</pre></div></li></ol></section><article class="post" id="post4" role="tabpanel" aria-labelledby="tab4" hidden>
+</pre><pre class="pre big off" hidden>안녕하세요.
+천안시청 CNP차앤박피부과입니다.
+
+선선한 바람이 부는 10월,
+화장을 지우고 거울을 보다 광대 위 거뭇한 색소가 눈에 들어오는 시기입니다.
+
+여름 동안 받은 자외선의 영향이 시간을 두고 드러나고,
+건조해진 공기로 피부 톤이 칙칙해지면서 색소가 더 눈에 띕니다.
+
+&quot;가을은 레이저 시즌&quot;이라는 말이 있습니다.
+레이저를 알아보기 전에 먼저 짚어야 할 내용을 다섯 가지로 정리했습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 하나. 그것이 정말 기미인가
+━━━━━━━━━━━━━━━━━━━━━━
+
+얼굴의 갈색 반점이 모두 기미는 아닙니다.
+
+· 기미 : 양쪽 광대·이마·윗입술에 대칭으로, 경계가 흐릿하게 번진 형태
+· 주근깨 : 작은 점이 흩뿌려진 형태, 어릴 때부터 있는 경우가 많음
+· 잡티(흑자) : 경계가 비교적 뚜렷한 갈색 반점, 나이가 들며 늘어나는 경향
+· 광대 부위의 회갈색·푸른빛 반점 : 기미와 혼동하기 쉬운 다른 색소일 수 있음
+· 염증 후 색소침착 : 여드름, 상처, 자극 이후 남은 색소
+
+한 얼굴에 여러 종류가 섞여 있는 경우가 흔합니다.
+특히 기미는 자극을 받으면 오히려 짙어질 수 있어
+다른 색소처럼 강하게 치료하면 안 되는 경우가 있습니다.
+정확한 구분이 첫 단계인 이유입니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 둘. 기미는 &#x27;지우는 것&#x27;보다 &#x27;조절하는 것&#x27;에 가깝다
+━━━━━━━━━━━━━━━━━━━━━━
+
+기미는 자외선, 호르몬 변화, 마찰, 열 등 여러 요인이 함께 작용합니다.
+그래서 옅어진 뒤에도 생활 환경에 따라 다시 짙어질 수 있습니다.
+
+한 번에 없애는 것보다
+옅게 만든 상태를 꾸준히 유지하는 관리라고 이해하시는 것이
+결과에 대한 만족도도, 관리의 지속성도 높습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 셋. 집에서 먼저 바꿔야 할 것
+━━━━━━━━━━━━━━━━━━━━━━
+
+· 선크림은 사계절 내내 – 흐린 날, 실내 창가, 운전 중에도
+· 충분한 양을 바르고 2~3시간마다 덧바르기 – 얇게 펴 바르면 차단 효과가 떨어집니다.
+· 모자·양산 등 물리적 차단 병행
+· 문지르는 습관 줄이기 – 스크럽, 얼굴 마사지기, 강한 클렌징도 마찰 자극입니다.
+· 사우나, 찜질, 뜨거운 스팀 등 얼굴의 열 자극 피하기
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 넷. 피부과에서의 접근
+━━━━━━━━━━━━━━━━━━━━━━
+
+피부 상태를 확인한 뒤 필요한 방법을 조합하는 경우가 많습니다.
+
+· 바르는 약·미백 성분 : 색소 생성을 조절하는 성분을 처방하거나 권합니다.
+· 먹는 약 : 건강 상태와 복용 중인 약을 확인한 뒤 신중히 결정합니다.
+· 저출력 색소 레이저 : 기미는 자극에 민감하므로 강도와 간격을 조절해 여러 차례 나누어 진행하는 것이 일반적입니다.
+· 섞여 있는 잡티·주근깨 : 해당 부위만 별도로 치료하기도 합니다.
+
+특정 레이저 하나에 의존하기보다
+얼굴에 섞인 색소 종류에 맞춰 방법을 고르는 것이 중요합니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 다섯. 결과는 시술 후 몇 주의 관리가 좌우한다
+━━━━━━━━━━━━━━━━━━━━━━
+
+· 시술 부위 자외선 차단을 평소보다 철저히
+· 보습은 충분히, 자극적인 성분은 일정 기간 중단
+· 딱지가 생기면 억지로 떼지 않기
+· 붉어짐이나 따가움이 예상보다 오래가면 즉시 병원에 알리기
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 진료가 먼저 필요한 경우
+━━━━━━━━━━━━━━━━━━━━━━
+
+· 몇 달 사이 색소가 빠르게 늘어난 경우
+· 모양이 불규칙하고 색이 고르지 않으며 점점 커지는 점이 있는 경우 (단순 색소가 아닐 수 있습니다)
+· 레이저 후 오히려 짙어진 경험이 있는 경우
+· 임신·수유 중이거나 복용 중인 약이 있는 경우
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+무엇을 지울지 정하기 전에, 그것이 무엇인지부터 알아야 합니다.
+자외선이 약해지는 가을은 내 얼굴의 색소를 정확히 확인해 보기 좋은 시기입니다.
+
+천안시청 CNP차앤박피부과였습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+CNP차앤박피부과의원 천안시청점
+━━━━━━━━━━━━━━━━━━━━━━
+
+주소 : 충남 천안시 서북구 불당33길 24 리앤시티 6층
+전화 : 041-552-1199
+진료 : 평일 10:00 ~ 19:30 (점심 13:00 ~ 14:00)
+　　　토요일 09:00 ~ 15:00 / 일요일 휴진
+※ 진료 일정은 변동될 수 있으니 내원 전 전화로 확인 바랍니다.
+
+본 글은 일반적인 정보 제공을 목적으로 합니다.
+색소 치료는 개인의 피부 상태·생활 환경에 따라 효과와 유지 기간이 다르며,
+홍반·부종·딱지·색소침착 또는 색소 저하 등의 부작용이 발생할 수 있습니다.
+치료 여부와 방법은 피부과 전문의 상담 후 결정하시기 바랍니다.
+</pre></div></div><div class="card"><div class="card-h"><h3>이미지 프롬프트</h3><span class="meta">2개</span></div><div class="pr-block whole"><div class="pr-head"><span class="pr-k">사진 1~2 프롬프트 전체</span><button type="button" class="btn" data-copy>프롬프트 전체 복사</button></div><pre class="pre big">■ 사진 1. 가을 햇살 / 낙엽 이미지
+용도 : 계절감 도입 사진 / 실사 사진 / 비율 16:9
+
+[영문 프롬프트]
+Late-afternoon autumn sunlight through a large window falling on a light wooden table with a few fallen ginkgo and maple leaves and a white ceramic mug, warm golden light with long soft shadows, calm and quiet, no people, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain
+
+[한글 프롬프트]
+큰 창으로 들어오는 늦은 오후 가을 햇살, 밝은 원목 테이블 위 은행잎과 단풍잎 몇 장, 흰 머그컵, 길고 부드러운 그림자, 사람 없음, 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+────────────────────
+
+■ 사진 2. 선크림 / 모자 이미지
+용도 : 자외선 차단 생활수칙 사진 / 실사 사진 / 비율 16:9
+
+[영문 프롬프트]
+Still life of an unbranded plain white sunscreen tube, a beige bucket hat and folded sunglasses on a light linen cloth near a bright window, autumn morning light, minimal composition, blank packaging, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain
+
+[한글 프롬프트]
+상표 없는 흰 선크림 튜브, 베이지 버킷햇, 접힌 선글라스가 밝은 창가 린넨 위에 놓인 정물, 가을 아침빛, 미니멀, 포장에 글자 없음
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+</pre></div></div></section><article class="post" id="post4" role="tabpanel" aria-labelledby="tab4" hidden>
 <header class="post-head"><div class="cat">리프팅</div><h1>천안 리프팅 | 울쎄라와 써마지 사이에서 고민 중이라면, 거울부터 보십시오</h1>
 <div class="byline"><span class="avatar" aria-hidden="true">C</span><span><b>천안시청 CNP차앤박피부과</b><small>2026. 10. 19. · 피부과 전문의 칼럼</small></span></div></header>
 <div class="post-body"><p class="p">안녕하세요.<br>천안시청 CNP차앤박피부과입니다.</p>
@@ -812,9 +1404,12 @@ CNP차앤박피부과의원 천안시청점
 <p class="fine">본 글은 일반적인 정보 제공을 목적으로 하며, 특정 시술을 권유하기 위한 것이 아닙니다.<br>모든 시술은 개인에 따라 효과와 유지 기간이 다르며,<br>통증·붓기·멍·붉어짐·일시적 감각 저하·화상 등의 부작용이 발생할 수 있습니다.<br>시술 여부는 피부과 전문의 상담 후 결정하시기 바랍니다.</p></div>
 <footer class="post-foot"><div class="chips"><span class="chip">#천안리프팅</span><span class="chip">#천안울쎄라</span><span class="chip">#울쎄라</span><span class="chip">#써마지</span><span class="chip">#리프팅시술</span><span class="chip">#천안피부과</span><span class="chip">#불당동피부과</span><span class="chip">#천안시청피부과</span><span class="chip">#차앤박피부과</span></div>
 <details class="alt note"><summary>다른 제목 후보 2개</summary><ul><li>리프팅, 장비 이름보다 중요한 것 – 불당동 피부과 셀프 체크</li><li>리프팅을 고르기 전 확인해야 할 세 가지</li></ul></details></footer>
-</article><section class="paste" id="paste4" hidden><ol class="steps"><li class="st"><div class="st-h"><span class="sn">1</span>제목칸에 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">제목</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">천안 리프팅 | 울쎄라와 써마지 사이에서 고민 중이라면, 거울부터 보십시오</pre></div></li><li class="st"><div class="st-h"><span class="sn">2</span>본문 1 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 1</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">안녕하세요.
+</article><section class="paste" id="paste4" hidden><div class="card"><div class="card-h"><h3>글</h3><span class="meta">사진 2장 자리</span></div><div class="mini"><div class="pr-block"><div class="pr-head"><span class="pr-k">제목</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">천안 리프팅 | 울쎄라와 써마지 사이에서 고민 중이라면, 거울부터 보십시오</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">태그</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">#천안리프팅 #천안울쎄라 #울쎄라 #써마지 #리프팅시술 #천안피부과 #불당동피부과 #천안시청피부과 #차앤박피부과</pre></div></div><p class="memo">게시 전 확인 · 천안시청점 써마지 시행 여부</p><div class="pr-block whole"><div class="pr-head"><span class="pr-k">본문 전체</span><span class="opts"><label><input type="checkbox" class="opt-mark" id="mark4" checked> 사진 위치 표시</label><button type="button" class="btn" data-copy>본문 전체 복사</button></span></div><pre class="pre big on">안녕하세요.
 천안시청 CNP차앤박피부과입니다.
-</pre></div></li><li class="st img"><div class="st-h"><span class="sn">3</span>이미지 1 만들어서 넣기 · 거울 앞에서 턱선을 만지는 일러스트</div><div class="pr-row"><span class="pr-k">용도</span><span>리프팅 고민 공감 장면 · 일러스트 · 비율 16:9</span></div><div class="pr-block"><div class="pr-head"><span class="pr-k">영문 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">A Korean woman in her 40s standing in front of a round wall mirror, lightly touching her jawline with her fingertips, thoughtful calm expression, soft side light, elegant and respectful, natural signs of age drawn gently without exaggeration, calm editorial illustration, flat shapes with subtle paper grain, muted palette of soft teal, warm beige and light grey, gentle and respectful tone, simple clean composition</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">한글 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">둥근 거울 앞에서 손끝으로 턱선을 가볍게 만지는 40대 한국 여성, 생각에 잠긴 차분한 표정, 옆에서 오는 부드러운 빛, 과장 없는 자연스러운 나이, 우아한 일러스트</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">제외할 요소 (네거티브)</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions</pre></div></li><li class="st"><div class="st-h"><span class="sn">4</span>본문 2 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 2</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">리프팅 상담을 오시는 분들 대부분은 이미 많은 정보를 찾아보고 오십니다.
+
+[사진 1 넣는 곳 - 넣은 뒤 이 줄 삭제]
+
+리프팅 상담을 오시는 분들 대부분은 이미 많은 정보를 찾아보고 오십니다.
 그리고 가장 먼저 이렇게 물으십니다.
 
 &quot;울쎄라와 써마지 중 어느 쪽이 더 좋습니까?&quot;
@@ -828,7 +1423,10 @@ CNP차앤박피부과의원 천안시청점
 ━━━━━━━━━━━━━━━━━━━━━━
 ■ 거울 셀프 체크 3단계
 ━━━━━━━━━━━━━━━━━━━━━━
-</pre></div></li><li class="st img"><div class="st-h"><span class="sn">5</span>이미지 2 만들어서 넣기 · 3단계 체크 카드 이미지</div><div class="pr-row"><span class="pr-k">용도</span><span>거울 셀프 체크 3단계 카드 · 일러스트 · 비율 16:9</span></div><div class="pr-block"><div class="pr-head"><span class="pr-k">영문 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">Three minimal line-art icons in a horizontal row on a soft off-white background: a face in profile tilting slightly down, a front-facing face with a small magnifying glass beside it, a face in side profile; thin teal lines, lots of whitespace, no labels, calm editorial illustration, flat shapes with subtle paper grain, muted palette of soft teal, warm beige and light grey, gentle and respectful tone, simple clean composition</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">한글 프롬프트</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">연한 미색 배경 위에 가로로 놓인 선화 아이콘 3개: 고개를 살짝 숙인 옆얼굴, 돋보기가 있는 정면 얼굴, 옆모습 얼굴. 얇은 청록 선, 여백 넉넉, 글자 없음</pre></div><div class="pr-block"><div class="pr-head"><span class="pr-k">제외할 요소 (네거티브)</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions</pre></div><div class="pr-row"><span class="pr-k">글자 넣기</span><span>STEP 1 고개 숙여 보기 / STEP 2 정면 가까이 / STEP 3 옆모습<small>글자는 AI로 만들지 말고 캔바·미리캔버스에서 올리세요</small></span></div></li><li class="st"><div class="st-h"><span class="sn">6</span>본문 3 붙여넣기</div><p class="memo">게시 전 확인 · 천안시청점 써마지 시행 여부 (이 문단 안에서 해당 부분 수정)</p><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 3</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">STEP 1. 고개를 살짝 숙여 봅니다
+
+[사진 2 넣는 곳 - 넣은 뒤 이 줄 삭제]
+
+STEP 1. 고개를 살짝 숙여 봅니다
 ☐ 턱선 아래로 살이 흘러내리는 것이 가장 신경 쓰인다
 ☐ 입꼬리 옆, 팔자 옆 볼살이 내려온 느낌이 있다
 → 윤곽선이 무너지는 &#x27;처짐&#x27; 고민에 가깝습니다.
@@ -912,11 +1510,149 @@ CNP차앤박피부과의원 천안시청점
 진료 : 평일 10:00 ~ 19:30 (점심 13:00 ~ 14:00)
 　　　토요일 09:00 ~ 15:00 / 일요일 휴진
 ※ 진료 일정은 변동될 수 있으니 내원 전 전화로 확인 바랍니다.
-</pre></div></li><li class="st"><div class="st-h"><span class="sn">7</span>네이버 지도 넣기</div><p class="hint">에디터 상단 '장소' 버튼 → 'CNP차앤박피부과 천안시청점' 검색 → 추가</p></li><li class="st"><div class="st-h"><span class="sn">8</span>본문 4 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">본문 4</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre big">본 글은 일반적인 정보 제공을 목적으로 하며, 특정 시술을 권유하기 위한 것이 아닙니다.
+
+[네이버 지도 넣는 곳 - 장소 버튼으로 추가한 뒤 이 줄 삭제]
+
+본 글은 일반적인 정보 제공을 목적으로 하며, 특정 시술을 권유하기 위한 것이 아닙니다.
 모든 시술은 개인에 따라 효과와 유지 기간이 다르며,
 통증·붓기·멍·붉어짐·일시적 감각 저하·화상 등의 부작용이 발생할 수 있습니다.
 시술 여부는 피부과 전문의 상담 후 결정하시기 바랍니다.
-</pre></div></li><li class="st"><div class="st-h"><span class="sn">9</span>태그칸에 붙여넣기</div><div class="pr-block"><div class="pr-head"><span class="pr-k">태그</span><button type="button" class="btn sm" data-copy>복사</button></div><pre class="pre">#천안리프팅 #천안울쎄라 #울쎄라 #써마지 #리프팅시술 #천안피부과 #불당동피부과 #천안시청피부과 #차앤박피부과</pre></div></li></ol></section>
+</pre><pre class="pre big off" hidden>안녕하세요.
+천안시청 CNP차앤박피부과입니다.
+
+리프팅 상담을 오시는 분들 대부분은 이미 많은 정보를 찾아보고 오십니다.
+그리고 가장 먼저 이렇게 물으십니다.
+
+&quot;울쎄라와 써마지 중 어느 쪽이 더 좋습니까?&quot;
+
+상담을 거듭할수록 느끼는 것은
+중요한 것은 장비의 이름이 아니라
+&#x27;내 얼굴에서 가장 신경 쓰이는 부분이 어디인가&#x27;라는 점입니다.
+
+거울 하나로 할 수 있는 셀프 체크부터 시작하겠습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 거울 셀프 체크 3단계
+━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 1. 고개를 살짝 숙여 봅니다
+☐ 턱선 아래로 살이 흘러내리는 것이 가장 신경 쓰인다
+☐ 입꼬리 옆, 팔자 옆 볼살이 내려온 느낌이 있다
+→ 윤곽선이 무너지는 &#x27;처짐&#x27; 고민에 가깝습니다.
+
+STEP 2. 정면에서 피부를 가까이 봅니다
+☐ 처짐보다 피부가 얇아지고 푸석해진 느낌이 크다
+☐ 눈가·볼의 잔주름과 늘어진 피부결이 신경 쓰인다
+→ 피부 자체의 &#x27;탄탄함&#x27; 고민에 가깝습니다.
+
+STEP 3. 옆모습을 봅니다
+☐ 볼이 꺼지고 얼굴이 전체적으로 마른 느낌이다
+→ 리프팅만으로는 아쉬움이 남을 수 있는 경우입니다.
+상담 시 반드시 말씀해 주시기 바랍니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 두 시술의 차이
+━━━━━━━━━━━━━━━━━━━━━━
+
+오래된 집을 손볼 때
+&#x27;기둥과 뼈대&#x27;를 보강할지, &#x27;벽지와 마감&#x27;을 손볼지 정하는 것과 비슷합니다.
+
+· 울쎄라 (울쎄라피 프라임 등)
+초음파 에너지를 이용하며 비교적 깊은 층(근막층 포함)을 겨냥합니다.
+처진 턱선, 이중턱, 볼 처짐 같은 윤곽 고민에서 주로 상담합니다.
+→ 비유하자면 &#x27;뼈대&#x27; 쪽
+
+· 써마지
+고주파 에너지를 이용하며 진피층 위주로 작용합니다.
+피부결, 잔주름, 전반적인 탄탄함 고민에서 주로 상담합니다.
+→ 비유하자면 &#x27;마감&#x27; 쪽
+
+실제 얼굴은 부위마다 상태가 다르기 때문에
+두 가지를 함께 고려하는 경우도 있습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 아쉬움이 남기 쉬운 경우
+━━━━━━━━━━━━━━━━━━━━━━
+
+· 처짐이 고민인데 피부결 위주 시술만 선택한 경우 (또는 그 반대)
+· 수술과 같은 극적인 변화를 기대한 경우 – 비수술 리프팅은 수술과 목표가 다릅니다.
+· 샷 수와 가격만 비교한 경우 – 같은 장비라도 얼굴 상태에 따라 부위별 에너지 배분이 달라집니다.
+· 볼륨이 꺼진 상태를 고려하지 않은 경우
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 상담 전 메모해 둘 질문
+━━━━━━━━━━━━━━━━━━━━━━
+
+Q1. 내 고민은 처짐, 피부결, 볼륨 부족 중 어디에 가까운가
+Q2. 이 시술은 얼굴의 어느 부위를 목표로 하는가
+Q3. 통증은 어떻게 관리하는가
+Q4. 시술 후 붓기·멍·저림은 어느 정도이며 얼마나 지속될 수 있는가
+Q5. 유지 기간과 다음 시술 간격은 어떻게 보는가
+
+충분한 설명을 들은 뒤 결정해도 늦지 않습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+■ 시술 전후 알아 둘 점
+━━━━━━━━━━━━━━━━━━━━━━
+
+· 통증의 정도는 사람마다, 부위마다 차이가 큽니다.
+· 시술 후 일시적인 붉어짐, 붓기, 압통, 멍, 부분적인 저림 등이 나타날 수 있습니다.
+· 드물게 화상, 신경 손상으로 인한 감각 이상 등이 보고되어 있으므로
+ 이상 증상이 있으면 즉시 병원에 연락하시기 바랍니다.
+· 변화는 즉시보다 수 주에서 수 개월에 걸쳐 서서히 나타나는 경우가 많으며 개인차가 있습니다.
+· 자외선 차단과 보습 등 기본 관리가 유지에 중요합니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+어떤 장비가 좋은지보다, 내 고민이 어디에 있는지가 먼저입니다.
+거울 앞 3단계 체크를 마친 뒤 메모를 가지고 상담에 오시면
+훨씬 구체적인 이야기를 나눌 수 있습니다.
+
+천안시청 CNP차앤박피부과였습니다.
+
+━━━━━━━━━━━━━━━━━━━━━━
+CNP차앤박피부과의원 천안시청점
+━━━━━━━━━━━━━━━━━━━━━━
+
+주소 : 충남 천안시 서북구 불당33길 24 리앤시티 6층
+전화 : 041-552-1199
+진료 : 평일 10:00 ~ 19:30 (점심 13:00 ~ 14:00)
+　　　토요일 09:00 ~ 15:00 / 일요일 휴진
+※ 진료 일정은 변동될 수 있으니 내원 전 전화로 확인 바랍니다.
+
+본 글은 일반적인 정보 제공을 목적으로 하며, 특정 시술을 권유하기 위한 것이 아닙니다.
+모든 시술은 개인에 따라 효과와 유지 기간이 다르며,
+통증·붓기·멍·붉어짐·일시적 감각 저하·화상 등의 부작용이 발생할 수 있습니다.
+시술 여부는 피부과 전문의 상담 후 결정하시기 바랍니다.
+</pre></div></div><div class="card"><div class="card-h"><h3>이미지 프롬프트</h3><span class="meta">2개</span></div><div class="pr-block whole"><div class="pr-head"><span class="pr-k">사진 1~2 프롬프트 전체</span><button type="button" class="btn" data-copy>프롬프트 전체 복사</button></div><pre class="pre big">■ 사진 1. 거울 앞에서 턱선을 만지는 일러스트
+용도 : 리프팅 고민 공감 장면 / 일러스트 / 비율 16:9
+
+[영문 프롬프트]
+A Korean woman in her 40s standing in front of a round wall mirror, lightly touching her jawline with her fingertips, thoughtful calm expression, soft side light, elegant and respectful, natural signs of age drawn gently without exaggeration, calm editorial illustration, flat shapes with subtle paper grain, muted palette of soft teal, warm beige and light grey, gentle and respectful tone, simple clean composition
+
+[한글 프롬프트]
+둥근 거울 앞에서 손끝으로 턱선을 가볍게 만지는 40대 한국 여성, 생각에 잠긴 차분한 표정, 옆에서 오는 부드러운 빛, 과장 없는 자연스러운 나이, 우아한 일러스트
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+────────────────────
+
+■ 사진 2. 3단계 체크 카드 이미지
+용도 : 거울 셀프 체크 3단계 카드 / 일러스트 / 비율 16:9
+
+[영문 프롬프트]
+Three minimal line-art icons in a horizontal row on a soft off-white background: a face in profile tilting slightly down, a front-facing face with a small magnifying glass beside it, a face in side profile; thin teal lines, lots of whitespace, no labels, calm editorial illustration, flat shapes with subtle paper grain, muted palette of soft teal, warm beige and light grey, gentle and respectful tone, simple clean composition
+
+[한글 프롬프트]
+연한 미색 배경 위에 가로로 놓인 선화 아이콘 3개: 고개를 살짝 숙인 옆얼굴, 돋보기가 있는 정면 얼굴, 옆모습 얼굴. 얇은 청록 선, 여백 넉넉, 글자 없음
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+STEP 1 고개 숙여 보기 / STEP 2 정면 가까이 / STEP 3 옆모습
+</pre></div></div></section>
   <textarea id="fallback" aria-label="복사용 텍스트" hidden style="width:100%;min-height:160px"></textarea>
 </div>
 
@@ -943,7 +1679,9 @@ function copy(txt,label){
 document.getElementById('cp-title').onclick=()=>copy(DATA[cur].title,'제목');
 document.getElementById('cp-body').onclick=()=>copy(DATA[cur].copy,'본문');
 document.getElementById('cp-tags').onclick=()=>copy(DATA[cur].tags,'태그');
-document.addEventListener('click',ev=>{const b=ev.target.closest('[data-copy]');if(!b)return;const pre=b.closest('.pr-block').querySelector('pre');navigator.clipboard.writeText(pre.textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',1500)}).catch(()=>{const r=document.createRange();r.selectNodeContents(pre);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='선택됨 · Ctrl+C';})});
+document.addEventListener('click',ev=>{const b=ev.target.closest('[data-copy]');if(!b)return;const pre=b.closest('.pr-block').querySelector('pre:not([hidden])');navigator.clipboard.writeText(pre.textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',1500)}).catch(()=>{const r=document.createRange();r.selectNodeContents(pre);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='선택됨 · Ctrl+C';})});
+document.addEventListener('change',ev=>{if(!ev.target.classList.contains('opt-mark'))return;const blk=ev.target.closest('.pr-block');
+  blk.querySelector('.on').hidden=!ev.target.checked;blk.querySelector('.off').hidden=ev.target.checked;});
 document.getElementById('opt-center').onchange=e=>document.body.classList.toggle('center',e.target.checked);
 document.getElementById('opt-clean').onchange=e=>document.body.classList.toggle('clean',e.target.checked);
 </script>
