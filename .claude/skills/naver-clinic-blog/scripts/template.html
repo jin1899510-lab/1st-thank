@@ -1,0 +1,193 @@
+<title>%%PAGE_TITLE%%</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: 블로그 한 편을 모바일 폭 종이 한 장처럼 가운데 두고, 위에는 원고 탭과 복사 도구 */
+:root{
+  --ground:#EEF2F2; --paper:#FFFFFF; --ink:#1B2629; --muted:#5E6D71; --line:#DCE3E4;
+  --teal:#0E6B6E; --teal-soft:#E2F0EF; --memo:#FFF3CF; --memo-ink:#6B5210; --ph:#F3F6F6;
+  --display:"Nanum Myeongjo","Noto Serif KR",serif;
+  --body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#121A1C; --paper:#1A2427; --ink:#E4ECEC; --muted:#9AAAAD; --line:#2C3A3D;
+  --teal:#5FC2BF; --teal-soft:#1F3436; --memo:#3A321B; --memo-ink:#F1D58A; --ph:#223033; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ground:#121A1C; --paper:#1A2427; --ink:#E4ECEC; --muted:#9AAAAD; --line:#2C3A3D;
+  --teal:#5FC2BF; --teal-soft:#1F3436; --memo:#3A321B; --memo-ink:#F1D58A; --ph:#223033; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.85;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px;word-break:keep-all}
+.wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.top{display:flex;flex-direction:column;gap:4px}
+.top .eyebrow{font-size:12px;letter-spacing:.08em;color:var(--teal);font-weight:700}
+.top h2{margin:0;font-family:var(--display);font-size:22px;line-height:1.35;text-wrap:balance}
+.top p{margin:0;color:var(--muted);font-size:14px}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+.tab{flex:0 0 auto;display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--paper);color:var(--ink);
+  font:500 14px/1 var(--body);padding:10px 14px;border-radius:999px;cursor:pointer}
+.tab .tn{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tab[aria-selected="true"]{background:var(--teal);border-color:var(--teal);color:var(--paper)}
+.tab[aria-selected="true"] .tn{color:var(--paper);opacity:.8}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between}
+.btns,.toggles{display:flex;flex-wrap:wrap;gap:6px}
+.btn{border:1px solid var(--teal);background:transparent;color:var(--teal);font:500 13px/1 var(--body);padding:9px 12px;border-radius:8px;cursor:pointer}
+.btn:hover{background:var(--teal-soft)}
+.toggles label{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);cursor:pointer}
+button:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.toast{min-height:20px;font-size:13px;color:var(--teal)}
+
+.post{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:36px clamp(18px,6vw,56px) 28px}
+.post-head{border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:28px}
+.cat{font-size:13px;color:var(--teal);font-weight:500;margin-bottom:8px}
+.post h1{font-family:var(--display);font-weight:800;font-size:clamp(22px,4.6vw,30px);line-height:1.4;margin:0 0 18px;text-wrap:balance}
+.byline{display:flex;align-items:center;gap:10px;font-size:14px}
+.byline span:last-child{display:flex;flex-direction:column;line-height:1.4}
+.byline small{color:var(--muted);font-size:12px}
+.avatar{width:36px;height:36px;border-radius:50%;background:var(--teal);color:var(--paper);display:grid;place-items:center;font-weight:700;font-family:var(--display)}
+.post-body{display:flex;flex-direction:column;gap:18px}
+.post-body p{margin:0}
+.post-body h2{font-family:var(--display);font-size:20px;line-height:1.45;margin:22px 0 0;padding:14px 0 10px;border-top:2px solid var(--ink);text-wrap:balance}
+.post-body h3{font-size:16px;font-weight:700;margin:6px 0 -10px;display:flex;gap:8px;align-items:baseline}
+.post-body h3 .k{color:var(--teal);font-variant-numeric:tabular-nums;flex:0 0 auto}
+.arrow{display:block;color:var(--teal);font-weight:500}
+.arrow::before{content:"→ "}
+.arrow + br{display:none}
+.q{background:var(--teal-soft);padding:10px 14px;border-radius:6px}
+.q b{color:var(--teal);margin-right:4px}
+ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+ul.dots li{position:relative;padding-left:16px}
+ul.dots li::before{content:"";position:absolute;left:2px;top:.8em;width:5px;height:5px;border-radius:50%;background:var(--teal)}
+ul.check{border:1px solid var(--line);border-radius:6px;padding:14px 16px;gap:10px}
+ul.check li{position:relative;padding-left:28px}
+ul.check li::before{content:"";position:absolute;left:0;top:.35em;width:16px;height:16px;border:1.5px solid var(--teal);border-radius:3px}
+hr.div{border:0;height:1px;background:var(--line);margin:8px 0;width:100%}
+.ph{margin:4px 0}
+.ph-box{aspect-ratio:16/9;max-width:100%;background:var(--ph);border:1.5px dashed var(--line);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted);font-size:14px;text-align:center;padding:12px}
+.ph.map .ph-box{aspect-ratio:21/9}
+.ph.sq .ph-box{max-width:360px;margin:0 auto}
+.ph-tag{font-size:11px;letter-spacing:.08em;color:var(--teal);font-weight:700}
+.prompt{margin-top:8px;border:1px solid var(--line);border-radius:6px;padding:10px 14px;background:var(--paper);font-size:13px}
+.prompt summary{cursor:pointer;color:var(--teal);font-weight:500}
+.prompt[open] summary{margin-bottom:10px}
+.pr-row{display:grid;grid-template-columns:72px 1fr;gap:8px;margin:6px 0}
+.pr-row small{display:block;color:var(--muted)}
+.pr-k{color:var(--muted);font-size:12px;font-weight:500}
+.pr-block{margin:10px 0;min-width:0}
+.pr-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.prompt pre,.st pre,.card pre{margin:0;white-space:pre-wrap;word-break:break-word;background:var(--ph);padding:10px 12px;border-radius:4px;font:12.5px/1.6 ui-monospace,Menlo,Consolas,monospace;color:var(--ink)}
+.btn.sm{padding:5px 9px;font-size:12px}
+.views{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;width:max-content;max-width:100%}
+.view{border:0;background:var(--paper);color:var(--muted);font:500 14px/1 var(--body);padding:10px 16px;cursor:pointer}
+.view[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+body.mode-paste .tools,body.mode-paste .post{display:none!important}
+body.mode-view .paste{display:none!important}
+.paste{display:flex;flex-direction:column;gap:14px;background:transparent;border:0;padding:0}
+[hidden]{display:none!important}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:18px clamp(14px,4vw,28px);display:flex;flex-direction:column;gap:12px;min-width:0}
+.card-h{display:flex;align-items:baseline;justify-content:space-between}
+.card-h h3{margin:0;font-family:var(--display);font-size:19px}
+.meta{font-size:13px;color:var(--muted)}
+.mini{display:grid;grid-template-columns:1fr;gap:4px}
+.opts{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted)}
+.opts label{display:flex;gap:5px;align-items:center;cursor:pointer}
+.whole .pre.big{max-height:340px}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.st{border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.st.img{background:var(--teal-soft);border-color:transparent}
+.st-h{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px}
+.sn{flex:0 0 26px;height:26px;border-radius:50%;background:var(--teal);color:var(--paper);display:grid;place-items:center;font-size:13px;font-variant-numeric:tabular-nums}
+.pre.big{max-height:220px;overflow:auto;font-family:var(--body);font-size:13.5px}
+.hint{margin:0;font-size:14px;color:var(--muted)}
+.status{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted)}
+.status b{color:var(--ink)}
+.status .bar{flex:0 1 160px;height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.status .bar span{display:block;height:100%;background:var(--teal)}
+.tab.done{color:var(--muted)}
+.tab.done .tn{color:var(--teal);font-weight:700}
+.tab .dl{font-size:11px;color:var(--teal);background:var(--teal-soft);padding:3px 6px;border-radius:999px}
+.tab[aria-selected="true"] .dl{background:var(--paper);color:var(--teal)}
+.tab.done[aria-selected="true"]{color:var(--paper)}
+.tab.done[aria-selected="true"] .tn{color:var(--paper)}
+.donebar{display:flex;align-items:center;gap:8px;background:var(--teal-soft);color:var(--teal);font-weight:700;font-size:14px;padding:10px 14px;border-radius:6px}
+.post .donebar{margin-bottom:20px}
+.donebar .ck{width:20px;height:20px;border-radius:50%;background:var(--teal);color:var(--paper);display:grid;place-items:center;font-size:12px}
+.memo{background:var(--memo);color:var(--memo-ink);font-size:13px;padding:8px 12px;border-radius:6px}
+.info{border:1px solid var(--line);border-radius:6px;padding:18px 18px 14px;margin-top:18px}
+.info-name{font-family:var(--display);font-weight:800;font-size:17px;margin-bottom:10px}
+.info dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:14px}
+.info dt{color:var(--muted)}
+.info dd{margin:0;min-width:0}
+.info dd.wide{grid-column:1/-1;color:var(--muted);font-size:12px;margin-top:6px}
+.fine{font-size:12px;color:var(--muted);line-height:1.7}
+.post-foot{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:13px;color:var(--teal);background:var(--teal-soft);padding:4px 10px;border-radius:999px}
+.alt summary{cursor:pointer;font-size:13px;color:var(--muted)}
+.alt ul{margin-top:8px;font-size:14px}
+.alt li::before{content:"· ";color:var(--teal)}
+body.center .post-body p.p, body.center .post-body h2{text-align:center}
+body.center .q{text-align:left}
+body.clean .note{display:none}
+@media (prefers-reduced-motion:no-preference){.tab,.btn{transition:background .15s,color .15s}}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <span class="eyebrow">네이버 블로그 원고 미리보기</span>
+    <h2>%%HEADER_TITLE%%</h2>
+    <p>원고마다 글은 '본문 전체 복사' 한 번, 이미지는 '프롬프트 전체 복사' 한 번으로 가져갈 수 있습니다. 본문에는 사진 넣을 자리가 [사진 1 넣는 곳]처럼 표시되며, 체크를 끄면 표시 없이 복사됩니다. '블로그 미리보기'는 완성 모습입니다.</p><p hidden> 점선 칸은 사진을 넣을 자리이고, 칸 아래 'AI 이미지 프롬프트'를 열면 그 사진을 만들 프롬프트가 있습니다. 노란 칸은 게시 전 확인할 메모입니다.</p>
+  </div>
+  %%STATUS%%
+  <div class="views" role="group" aria-label="보기 방식">
+    <button class="view" type="button" data-mode="paste" aria-pressed="true">복사하기</button>
+    <button class="view" type="button" data-mode="view" aria-pressed="false">블로그 미리보기</button>
+  </div>
+  <nav class="tabs" role="tablist" aria-label="원고 선택">%%TABS%%</nav>
+  <div class="tools">
+    <div class="btns">
+      <button class="btn" id="cp-title" type="button">제목 복사</button>
+      <button class="btn" id="cp-body" type="button">본문 복사</button>
+      <button class="btn" id="cp-tags" type="button">태그 복사</button>
+    </div>
+    <div class="toggles">
+      <label><input type="checkbox" id="opt-center"> 가운데 정렬</label>
+      <label><input type="checkbox" id="opt-clean"> 메모·사진 자리 숨기기</label>
+    </div>
+  </div>
+  <div class="toast" id="toast" aria-live="polite"></div>
+  %%POSTS%%
+  <textarea id="fallback" aria-label="복사용 텍스트" hidden style="width:100%;min-height:160px"></textarea>
+</div>
+
+<script>
+const DATA = %%DATA%%;
+let cur = 0;
+const tabs=[...document.querySelectorAll('.tab')], posts=[...document.querySelectorAll('.post')], pastes=[...document.querySelectorAll('.paste')];
+function show(i){cur=i;tabs.forEach((t,k)=>t.setAttribute('aria-selected',k===i));posts.forEach((p,k)=>p.hidden=k!==i);pastes.forEach((p,k)=>p.hidden=k!==i);
+  try{localStorage.setItem('cnp-tab',i)}catch(e){}}
+tabs.forEach(t=>t.addEventListener('click',()=>show(+t.dataset.i)));
+let start=0;try{start=+(localStorage.getItem('cnp-tab')||0)}catch(e){}
+show(start>=0&&start<posts.length?start:0);
+const views=[...document.querySelectorAll('.view')];
+function mode(m){document.body.classList.toggle('mode-paste',m==='paste');document.body.classList.toggle('mode-view',m==='view');
+  views.forEach(v=>v.setAttribute('aria-pressed',v.dataset.mode===m));try{localStorage.setItem('cnp-mode',m)}catch(e){}}
+views.forEach(v=>v.addEventListener('click',()=>mode(v.dataset.mode)));
+let m0='paste';try{m0=localStorage.getItem('cnp-mode')||'paste'}catch(e){}mode(m0==='view'?'view':'paste');
+const toast=document.getElementById('toast'), fb=document.getElementById('fallback');
+function copy(txt,label){
+  fb.hidden=true;
+  navigator.clipboard.writeText(txt).then(()=>{toast.textContent=label+' 복사됨. 네이버 에디터에 붙여넣으세요.'})
+  .catch(()=>{fb.hidden=false;fb.value=txt;fb.focus();fb.select();toast.textContent='자동 복사가 막혀 있습니다. 아래 칸이 선택되었으니 Ctrl+C(⌘+C)로 복사하세요.'});
+}
+document.getElementById('cp-title').onclick=()=>copy(DATA[cur].title,'제목');
+document.getElementById('cp-body').onclick=()=>copy(DATA[cur].copy,'본문');
+document.getElementById('cp-tags').onclick=()=>copy(DATA[cur].tags,'태그');
+document.addEventListener('click',ev=>{const b=ev.target.closest('[data-copy]');if(!b)return;const pre=b.closest('.pr-block').querySelector('pre:not([hidden])');navigator.clipboard.writeText(pre.textContent).then(()=>{b.textContent='복사됨';setTimeout(()=>b.textContent='복사',1500)}).catch(()=>{const r=document.createRange();r.selectNodeContents(pre);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='선택됨 · Ctrl+C';})});
+document.addEventListener('change',ev=>{if(!ev.target.classList.contains('opt-mark'))return;const blk=ev.target.closest('.pr-block');
+  blk.querySelector('.on').hidden=!ev.target.checked;blk.querySelector('.off').hidden=ev.target.checked;});
+document.getElementById('opt-center').onchange=e=>document.body.classList.toggle('center',e.target.checked);
+document.getElementById('opt-clean').onchange=e=>document.body.classList.toggle('clean',e.target.checked);
+</script>
