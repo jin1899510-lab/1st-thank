@@ -20,6 +20,7 @@ plan.json 형식 (예시는 이 플러그인 SKILL.md 참고):
   texts: [{text, start, end, size, y(화면 위에서부터 0~1), color, bold, border, intro, outro, track}]
 """
 import json
+import math
 import shutil
 import sys
 from pathlib import Path
@@ -28,6 +29,7 @@ import pycapcut as cc
 from pycapcut import ClipSettings, KeyframeProperty, TextBorder, TextStyle, TrackType, trange
 
 SEC = 1_000_000
+MAX_CARDS_PER_30S = 4
 
 
 def hex_rgb(h):
@@ -54,6 +56,13 @@ def main():
     out_root.mkdir(parents=True, exist_ok=True)
     name = plan["project"]
     W, H, FPS = plan.get("width", 1080), plan.get("height", 1920), plan.get("fps", 30)
+
+    # 모션그래픽 카드는 30초마다 최대 4개 (많으면 광고처럼 보이고 촬영 영상이 묻힌다)
+    total = sum(float(c["dur"]) for c in plan["clips"])
+    n_cards = sum(1 for c in plan["clips"] if "card" in c)
+    limit = MAX_CARDS_PER_30S * max(1, math.ceil(total / 30))
+    if n_cards > limit:
+        sys.exit(f"모션그래픽 카드가 {n_cards}개입니다. {total:.0f}초 영상은 최대 {limit}개까지예요 (30초마다 {MAX_CARDS_PER_30S}개).")
 
     folder = cc.DraftFolder(str(out_root))
     script = folder.create_draft(name, W, H, FPS, allow_replace=True)
