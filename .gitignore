@@ -1,2 +1,39 @@
+# 기존 항목
 output/
+
+# 영상·사진
+*.mp4
+*.MP4
+*.mov
+*.MOV
+*.jpg
+*.JPG
+*.jpeg
+*.JPEG
+*.png
+*.PNG
+*.heic
+*.HEIC
+
+# 비밀번호·API 키
+.env
+.env.*
+*.key
+*.pem
+secrets*
+*secret*.json
+*credentials*
+*password*
+*api_key*
+*apikey*
+token*.json
+
+# 고객설정
+고객설정/
+
+# 파이썬 캐시
 __pycache__/
+*.pyc
+
+# Node
+node_modules/
