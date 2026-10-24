@@ -1,7 +1,10 @@
 """Apify instagram-reel-scraper로 인스타 계정의 릴스를 최신순으로 가져온다.
 
 사용법:
-    APIFY_TOKEN=... python3 fetch_reels.py <계정아이디> [개수] [옵션]
+    APIFY_TOKEN=... python3 fetch_reels.py <계정아이디|릴스링크> [개수] [옵션]
+
+    릴스·게시물 링크(instagram.com/reel/..., /p/...)를 넣으면
+    그 글을 올린 계정을 먼저 찾아서 그 계정의 릴스를 가져온다.
 
 옵션:
     --shares       공유 수도 가져오기 (Apify 유료 요금제만)
@@ -20,6 +23,7 @@ import csv
 import json
 import os
 import sys
+import re
 import time
 from datetime import datetime
 from pathlib import Path
@@ -28,6 +32,8 @@ import requests
 
 API = "https://api.apify.com/v2"
 ACTOR = "apify~instagram-reel-scraper"
+POST_ACTOR = "apify~instagram-scraper"
+POST_URL = re.compile(r"instagram\.com/(?:[\w.]+/)?(?:reels?|p|tv)/([\w-]+)")
 POLL_SECS = 5
 MAX_WAIT_SECS = 30 * 60
 
@@ -68,13 +74,33 @@ def parse_args(argv):
         i += 1
     if not rest:
         sys.exit(__doc__)
-    username = rest[0].strip().lstrip("@").rstrip("/").split("/")[-1]
     limit = int(rest[1]) if len(rest) > 1 else 10
-    return username, limit, opts
+    return rest[0].strip(), limit, opts
 
 
-def run_actor(session, actor_input):
-    resp = session.post(f"{API}/acts/{ACTOR}/runs", json=actor_input, timeout=60)
+def username_from_profile(target):
+    # "@id", "id", "instagram.com/id/reels/?hl=ko" 모두 허용
+    path = target.split("?")[0].split("instagram.com/")[-1]
+    return path.strip("/").split("/")[0].lstrip("@")
+
+
+def find_owner(session, post_url):
+    """릴스·게시물 링크로 올린 계정 아이디를 찾는다."""
+    print("릴스 링크라서 올린 계정을 먼저 찾습니다.")
+    items = run_actor(session, {
+        "directUrls": [f"https://www.instagram.com/p/{post_url}/"],
+        "resultsType": "posts",
+        "resultsLimit": 1,
+    }, actor=POST_ACTOR)
+    owner = next((it.get("ownerUsername") for it in items if it.get("ownerUsername")), None)
+    if not owner:
+        sys.exit("링크에서 계정을 찾지 못했습니다. 링크가 맞는지, 공개 계정인지 확인하거나 계정 아이디를 직접 넣어주세요.")
+    print(f"→ @{owner}")
+    return owner
+
+
+def run_actor(session, actor_input, actor=ACTOR):
+    resp = session.post(f"{API}/acts/{actor}/runs", json=actor_input, timeout=60)
     if resp.status_code == 401:
         sys.exit("APIFY_TOKEN이 올바르지 않습니다. Apify 콘솔 → Settings → API & Integrations 에서 확인하세요.")
     resp.raise_for_status()
@@ -104,10 +130,15 @@ def run_actor(session, actor_input):
 
 
 def main():
-    username, limit, opts = parse_args(sys.argv[1:])
+    target, limit, opts = parse_args(sys.argv[1:])
     token = os.environ.get("APIFY_TOKEN")
     if not token:
         sys.exit("환경변수 APIFY_TOKEN이 없습니다.")
+
+    session = requests.Session()
+    session.headers["Authorization"] = f"Bearer {token}"
+    post = POST_URL.search(target)
+    username = find_owner(session, post.group(1)) if post else username_from_profile(target)
 
     actor_input = {
         "username": [username],
@@ -117,9 +148,6 @@ def main():
         "includeTranscript": opts["transcript"],
         "includeDownloadedVideo": opts["video"],
     }
-
-    session = requests.Session()
-    session.headers["Authorization"] = f"Bearer {token}"
     items = run_actor(session, actor_input)
 
     errors = [it for it in items if it.get("error")]
