@@ -1,0 +1,5 @@
+{
+  "name": "insta-analysis",
+  "version": "0.1.0",
+  "description": "인스타 계정의 릴스를 가져와 분석하고, 고른 스타일로 업체 원고를 만든다."
+}
