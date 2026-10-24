@@ -13,7 +13,8 @@ plan.json:
      칸보다 많이 짧으면 속도를 조금 내려 여유를 줄인다.
   3. 1.2배로도 넘치면 "원고 줄이기" 목록에 올린다 (파일은 만들되 끝이 잘릴 수 있음).
 결과: <출력폴더>/voice_<id>.mp3, 그리고 plan.json 의 각 줄에 file·duration·speed 를 적는다.
-키는 코드에 쓰지 않고 환경변수 ELEVENLABS_API_KEY 에서 읽는다.
+키는 코드에 쓰지 않는다. 환경변수 ELEVENLABS_API_KEY 가 있으면 쓰고, 없으면 클라우드 환경의
+네트워크 시크릿(프록시가 api.elevenlabs.io 요청에 키를 대신 붙여 줌)으로 동작한다.
 """
 import json
 import os
@@ -42,7 +43,7 @@ def speak(session, voice, text, speed, path):
         "voice_settings": {"stability": 0.5, "similarity_boost": 0.75, "speed": round(speed, 2)},
     }, timeout=120)
     if resp.status_code == 401:
-        sys.exit("ELEVENLABS_API_KEY 가 올바르지 않습니다.")
+        sys.exit("일레븐랩스 키가 없거나 올바르지 않습니다 (환경변수 ELEVENLABS_API_KEY 또는 네트워크 시크릿 확인).")
     resp.raise_for_status()
     path.write_bytes(resp.content)
     return duration(path)
@@ -59,13 +60,12 @@ def main():
         del args[i:i + 2]
     plan_path, out = Path(args[0]), Path(args[1])
     key = os.environ.get("ELEVENLABS_API_KEY")
-    if not key:
-        sys.exit("환경변수 ELEVENLABS_API_KEY 가 없습니다.")
     plan = json.loads(plan_path.read_text(encoding="utf-8"))
     voice = voice or plan.get("voice") or DEFAULT_VOICE
     out.mkdir(parents=True, exist_ok=True)
     session = requests.Session()
-    session.headers["xi-api-key"] = key
+    if key:
+        session.headers["xi-api-key"] = key
 
     too_long = []
     for line in plan.get("narration", []):
