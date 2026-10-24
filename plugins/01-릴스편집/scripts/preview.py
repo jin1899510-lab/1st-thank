@@ -63,6 +63,18 @@ def main():
              f"fontcolor={x.get('color', '#ffffff').replace('#', '0x')}:borderw=3:bordercolor=black:"
              f"x=(w-text_w)/2:y={int(x.get('y', .5) * 960)}-text_h/2:enable='between(t,{x['start']},{x['end']})'"
              for x in plan.get("texts", [])]
+    voiced = [n for n in plan.get("narration", []) if n.get("file") and Path(n["file"]).exists()]
+    if voiced:  # 나레이션을 제자리에 얹는다
+        args, mix = ["-i", str(cat)], []
+        for k, n in enumerate(voiced, 1):
+            args += ["-i", n["file"]]
+            ms = int(float(n["start"]) * 1000)
+            mix.append(f"[{k}:a]adelay={ms}|{ms},aresample=44100[n{k}]")
+        labels = "".join(f"[n{k}]" for k in range(1, len(voiced) + 1))
+        mixed = tmp / "mixed.mp4"
+        run(args + ["-filter_complex", ";".join(mix) + f";[0:a]{labels}amix=inputs={len(voiced) + 1}:duration=first:normalize=0[a]",
+                    "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", str(mixed)])
+        cat = mixed
     video = out / "미리보기.mp4"
     run(["-i", str(cat), "-vf", ",".join(draws) or "null", "-c:v", "libx264", "-preset", "veryfast", "-crf", "24", "-c:a", "copy", str(video)])
 
