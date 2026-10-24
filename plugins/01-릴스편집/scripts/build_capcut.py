@@ -12,6 +12,7 @@
 로 적어 두고, PC에서 install_capcut.py 가 실제 경로로 바꿔 캡컷 폴더에 넣는다.
 
 plan.json 형식 (예시는 이 플러그인 SKILL.md 참고):
+  store, episode, title: 업체 이름(= 캡컷 프로젝트), 편 번호, 타임라인 제목 → install_capcut.py 가 "01 제목" 타임라인으로 넣음
   media: {키: {local, rel, width, height, duration}}  local = 이 컴퓨터에서 읽을 사본
   cards: render_cards.py 와 같은 목록
   clips: 영상 트랙에 차례로 놓을 조각
