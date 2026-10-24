@@ -149,11 +149,13 @@ def unpack(paths, tmp):
 
 def main():
     ap = argparse.ArgumentParser(description="캡컷 프로젝트에 편(타임라인) 넣기")
-    ap.add_argument("drafts_in", nargs="+", metavar="초안")
+    ap.add_argument("drafts_in", nargs="*", metavar="초안")
     ap.add_argument("--source")
     ap.add_argument("--drafts", default=default_drafts())
     args = ap.parse_args()
 
+    if not args.drafts_in:  # 설치.bat 에서 인자 없이 부르면 옆의 "편" 폴더
+        args.drafts_in = [str(Path(__file__).resolve().parent / "편")]
     drafts = Path(args.drafts).resolve()
     if not drafts.exists():
         sys.exit(f"캡컷 초안 폴더가 없습니다: {drafts}\n캡컷 설정 > 초안 위치를 확인해 --drafts 로 알려주세요.")
@@ -172,9 +174,13 @@ def main():
         print("촬영 원본 영상이 있는 폴더를 찾고 있어요… (조금 걸릴 수 있어요)")
         source_root = guess_source(media_names) if media_names else None
         if source_root is None:
-            sys.exit("원본 영상 폴더를 찾지 못했어요. 영상이 이 컴퓨터에 있는지 확인해 주세요.\n"
-                     f"찾은 파일 이름: {', '.join(sorted(media_names)[:3])} …")
-        print(f"찾았어요 → {source_root}")
+            print("원본 영상 폴더를 찾지 못했어요. 찾는 파일 이름: " + ", ".join(sorted(media_names)[:3]) + " …")
+            typed = input("영상 폴더 주소를 붙여넣고 Enter (모르면 그냥 Enter): ").strip().strip('"')
+            if not typed:
+                sys.exit("영상이 이 컴퓨터에 있는지 확인해 주세요.")
+            source_root = Path(typed)
+        else:
+            print(f"찾았어요 → {source_root}")
     if not source_root.exists():
         sys.exit(f"원본 영상 폴더가 없습니다: {source_root}")
     episodes.sort(key=lambda e: (e["store"], e["ep"] if e["ep"] is not None else 9999))
