@@ -5,10 +5,12 @@
                                       └─ 타임라인「02 훠궈 양꼬치 무한리필」
 
 사용법 (윈도우):
-    python install_capcut.py <편 초안폴더 또는 .zip> [더 많은 편…] --source "원본 영상 폴더" [--drafts "캡컷 초안 폴더"]
+    python install_capcut.py <편 초안폴더 또는 .zip> [더 많은 편…] [--source "원본 영상 폴더"] [--drafts "캡컷 초안 폴더"]
 
     --source  촬영 원본이 있는 폴더. 초안에 적힌 "폴더 안 경로"로 찾고,
               없으면 같은 파일 이름을 하위 폴더까지 찾는다.
+              빼면 바탕 화면·다운로드·동영상·문서·OneDrive·다른 드라이브에서
+              원본 파일 이름으로 폴더를 알아서 찾는다.
     --drafts  캡컷 초안 폴더 (기본: C:\\Users\\<사용자>\\AppData\\Local\\CapCut Drafts)
 
 편 정보는 초안 안 reels_plan.json 에서 읽는다.
@@ -65,6 +67,38 @@ def find_source(source_root, rel, cache):
     return cache[name]
 
 
+SKIP_DIRS = {"appdata", "windows", "program files", "program files (x86)", "programdata", "$recycle.bin",
+             "system volume information", "node_modules", ".git", "capcut drafts"}
+
+
+def guess_source(names):
+    """원본 파일 이름들이 가장 많이 들어 있는 폴더를 찾는다. 못 찾으면 None."""
+    home = Path.home()
+    roots = [home / d for d in ("Desktop", "바탕 화면", "Downloads", "Videos", "Pictures", "Documents")]
+    roots += sorted(home.glob("OneDrive*")) + [home]
+    if sys.platform == "win32":
+        roots += [Path(f"{c}:\\") for c in "DEFGHIJ" if Path(f"{c}:\\").exists()]
+    names = {n.lower() for n in names}
+    best, best_n, seen = None, 0, set()
+    for root in roots:
+        if not root.exists():
+            continue
+        print(f"  찾는 중: {root}")
+        for dirpath, dirnames, filenames in os.walk(root):
+            key = os.path.normcase(dirpath)
+            if key in seen:
+                dirnames[:] = []
+                continue
+            seen.add(key)
+            dirnames[:] = [d for d in dirnames if d.lower() not in SKIP_DIRS and not d.startswith(".")]
+            n = sum(1 for f in filenames if f.lower() in names)
+            if n > best_n:
+                best, best_n = Path(dirpath), n
+                if n == len(names):
+                    return best
+    return best
+
+
 def new_id():
     # 캡컷과 같은 모양: 8자-4자-4자(소문자)-4자-12자
     a, b, c, d, e = str(uuid.uuid4()).upper().split("-")
@@ -116,23 +150,33 @@ def unpack(paths, tmp):
 def main():
     ap = argparse.ArgumentParser(description="캡컷 프로젝트에 편(타임라인) 넣기")
     ap.add_argument("drafts_in", nargs="+", metavar="초안")
-    ap.add_argument("--source", required=True)
+    ap.add_argument("--source")
     ap.add_argument("--drafts", default=default_drafts())
     args = ap.parse_args()
 
     drafts = Path(args.drafts).resolve()
-    source_root = Path(args.source).resolve()
     if not drafts.exists():
         sys.exit(f"캡컷 초안 폴더가 없습니다: {drafts}\n캡컷 설정 > 초안 위치를 확인해 --drafts 로 알려주세요.")
-    if not source_root.exists():
-        sys.exit(f"원본 영상 폴더가 없습니다: {source_root}")
 
     tmp = Path(tempfile.mkdtemp())
-    episodes = []
+    episodes, media_names = [], set()
     for d in unpack(args.drafts_in, tmp):
         plan = read_json(d / "reels_plan.json") if (d / "reels_plan.json").exists() else {}
         store, ep, title = episode_info(plan, d.name)
         episodes.append({"dir": d, "store": store, "ep": ep, "title": title})
+        media_names |= {Path(m["rel"]).name for m in plan.get("media", {}).values() if m.get("rel")}
+
+    if args.source:
+        source_root = Path(args.source).resolve()
+    else:
+        print("촬영 원본 영상이 있는 폴더를 찾고 있어요… (조금 걸릴 수 있어요)")
+        source_root = guess_source(media_names) if media_names else None
+        if source_root is None:
+            sys.exit("원본 영상 폴더를 찾지 못했어요. 영상이 이 컴퓨터에 있는지 확인해 주세요.\n"
+                     f"찾은 파일 이름: {', '.join(sorted(media_names)[:3])} …")
+        print(f"찾았어요 → {source_root}")
+    if not source_root.exists():
+        sys.exit(f"원본 영상 폴더가 없습니다: {source_root}")
     episodes.sort(key=lambda e: (e["store"], e["ep"] if e["ep"] is not None else 9999))
 
     if capcut_running():
