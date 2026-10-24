@@ -18,6 +18,7 @@ plan.json 형식 (예시는 이 플러그인 SKILL.md 참고):
          {src: 미디어키, start: 원본 기준 시작초, dur, volume, zoom: [시작배율, 끝배율],
           intro: 영상 시작 애니메이션, transition: {type, dur}}  또는  {card: 카드id, dur, transition}
   texts: [{text, start, end, size, y(화면 위에서부터 0~1), color, bold, border, intro, outro, track}]
+  narration: [{id, text, start, end, file?}]  file 이 있으면(tts_elevenlabs.py 결과) 나레이션 트랙에 넣는다
 """
 import json
 import math
@@ -71,6 +72,9 @@ def main():
     assets_dir.mkdir(exist_ok=True)
 
     script.add_track(TrackType.video, "main")
+    voiced = [n for n in plan.get("narration", []) if n.get("file")]
+    if voiced:
+        script.add_track(TrackType.audio, "voice")
     text_tracks = []
     for t in plan.get("texts", []):
         tr = t.get("track", "text")
@@ -114,12 +118,21 @@ def main():
         script.add_segment(seg, "main")
         t += dur
 
+    for n in voiced:
+        src = Path(n["file"])
+        dst = assets_dir / src.name
+        shutil.copyfile(src, dst)
+        mat = cc.AudioMaterial(str(dst), material_name=dst.name)
+        path_map[str(dst.resolve())] = "##DRAFT##/reels_assets/" + dst.name
+        length = min(mat.duration, us(float(n["end"]) - float(n["start"])))
+        script.add_segment(cc.AudioSegment(mat, trange(us(n["start"]), length), source_timerange=trange(0, length)), "voice")
+
     for x in plan.get("texts", []):
         style = TextStyle(size=x.get("size", 8.0), bold=x.get("bold", True), color=hex_rgb(x.get("color", "#ffffff")),
                           align=1, auto_wrapping=True, max_line_width=x.get("max_width", 0.86))
         seg = cc.TextSegment(x["text"], trange(us(x["start"]), us(x["end"] - x["start"])), style=style,
                              clip_settings=ClipSettings(transform_y=1 - 2 * x.get("y", 0.5)),
-                             border=TextBorder(width=x.get("border_width", 40.0)) if x.get("border", True) else None)
+                             border=TextBorder(width=x.get("border_width", 40.0), color=hex_rgb(x.get("border_color", "#000000"))) if x.get("border", True) else None)
         if x.get("intro"):
             seg.add_animation(enum_by_name(cc.TextIntro, x["intro"]))
         if x.get("outro"):
