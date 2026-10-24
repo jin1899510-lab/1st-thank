@@ -75,6 +75,24 @@ def main():
         run(args + ["-filter_complex", ";".join(mix) + f";[0:a]{labels}amix=inputs={len(voiced) + 1}:duration=first:normalize=0[a]",
                     "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", str(mixed)])
         cat = mixed
+    music = plan.get("music") or {}
+    if music.get("file") and Path(music["file"]).exists():  # 배경음악: 말소리 구간은 줄인다 (build_capcut 과 같은 규칙)
+        total = sum(float(c["dur"]) for c in plan["clips"])
+        wins, t = [(float(n["start"]), float(n["end"])) for n in voiced], 0.0
+        for c in plan["clips"]:
+            if "card" not in c and float(c.get("volume", 0)) >= 0.9:
+                wins.append((t, t + float(c["dur"])))
+            t += float(c["dur"])
+        vol, duck = float(music.get("volume", 0.5)), float(music.get("duck", 0.15))
+        cond = "+".join(f"between(t,{a},{b})" for a, b in wins) or "0"
+        fo = float(music.get("fade_out", 1.2))
+        mixed = tmp / "music.mp4"
+        run(["-i", str(cat), "-stream_loop", "-1", "-i", music["file"], "-filter_complex",
+             f"[1:a]atrim=0:{total},volume='if({cond},{duck},{vol})':eval=frame,"
+             f"afade=t=in:d={music.get('fade_in', 0.5)},afade=t=out:st={total - fo}:d={fo},aresample=44100[m];"
+             "[0:a][m]amix=inputs=2:duration=first:normalize=0[a]",
+             "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", str(mixed)])
+        cat = mixed
     video = out / "미리보기.mp4"
     run(["-i", str(cat), "-vf", ",".join(draws) or "null", "-c:v", "libx264", "-preset", "veryfast", "-crf", "24", "-c:a", "copy", str(video)])
 

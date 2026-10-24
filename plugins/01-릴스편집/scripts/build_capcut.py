@@ -20,6 +20,8 @@ plan.json 형식 (예시는 이 플러그인 SKILL.md 참고):
           intro: 영상 시작 애니메이션, transition: {type, dur}}  또는  {card: 카드id, dur, transition}
   texts: [{text, start, end, size, y(화면 위에서부터 0~1), color, bold, border, intro, outro, track}]
   narration: [{id, text, start, end, file?}]  file 이 있으면(tts_elevenlabs.py 결과) 나레이션 트랙에 넣는다
+  music: {file, volume=0.5, duck=0.15, fade_in=0.5, fade_out=1.2}  배경음악 (일레븐랩스로 만든 mp3 등)
+         영상 길이에 맞춰 자르고(짧으면 이어 붙임), 나레이션·현장 소리(volume 0.9 이상 조각) 동안은 duck 으로 줄인다
 """
 import json
 import math
@@ -50,6 +52,46 @@ def us(seconds):
     return int(round(seconds * SEC))
 
 
+def add_music(script, music, total, voiced, clips, assets_dir, path_map):
+    """배경음악을 영상 길이에 맞춰 깔고, 말소리가 나오는 동안은 소리를 줄인다."""
+    src = Path(music["file"])
+    dst = assets_dir / ("music" + src.suffix)
+    shutil.copyfile(src, dst)
+    mat = cc.AudioMaterial(str(dst), material_name=dst.name)
+    path_map[str(dst.resolve())] = "##DRAFT##/reels_assets/" + dst.name
+    vol, duck = float(music.get("volume", 0.5)), float(music.get("duck", 0.15))
+    windows = [(float(n["start"]), float(n["end"])) for n in voiced]
+    t = 0.0
+    for c in clips:
+        if "card" not in c and float(c.get("volume", 0)) >= 0.9:
+            windows.append((t, t + float(c["dur"])))
+        t += float(c["dur"])
+    windows.sort()
+    ramp = 0.15
+    pos, segs = 0, []
+    while pos < us(total):
+        length = min(mat.duration, us(total) - pos)
+        seg = cc.AudioSegment(mat, trange(pos, length), source_timerange=trange(0, length), volume=1.0)
+        a, b = pos / SEC, (pos + length) / SEC
+        seg.add_keyframe(0, vol)
+        for w0, w1 in windows:
+            if w1 <= a or w0 >= b:
+                continue
+            for at, v in ((w0 - ramp, vol), (w0, duck), (w1, duck), (w1 + ramp, vol)):
+                if a <= at <= b:
+                    seg.add_keyframe(us(at - a), v)
+        segs.append(seg)
+        pos += length
+    fade_in, fade_out = us(float(music.get("fade_in", 0.5))), us(float(music.get("fade_out", 1.2)))
+    if len(segs) == 1:
+        segs[0].add_fade(fade_in, fade_out)
+    else:
+        segs[0].add_fade(fade_in, 0)
+        segs[-1].add_fade(0, fade_out)
+    for seg in segs:  # 페이드는 넣기 전에 달아야 소재 목록에 함께 저장된다
+        script.add_segment(seg, "music")
+
+
 def main():
     if len(sys.argv) < 4:
         sys.exit(__doc__)
@@ -76,6 +118,9 @@ def main():
     voiced = [n for n in plan.get("narration", []) if n.get("file")]
     if voiced:
         script.add_track(TrackType.audio, "voice")
+    music = plan.get("music") if plan.get("music", {}).get("file") else None
+    if music:
+        script.add_track(TrackType.audio, "music")
     text_tracks = []
     for t in plan.get("texts", []):
         tr = t.get("track", "text")
@@ -127,6 +172,9 @@ def main():
         path_map[str(dst.resolve())] = "##DRAFT##/reels_assets/" + dst.name
         length = min(mat.duration, us(float(n["end"]) - float(n["start"])))
         script.add_segment(cc.AudioSegment(mat, trange(us(n["start"]), length), source_timerange=trange(0, length)), "voice")
+
+    if music:
+        add_music(script, music, t, voiced, plan["clips"], assets_dir, path_map)
 
     for x in plan.get("texts", []):
         style = TextStyle(size=x.get("size", 8.0), bold=x.get("bold", True), color=hex_rgb(x.get("color", "#ffffff")),
