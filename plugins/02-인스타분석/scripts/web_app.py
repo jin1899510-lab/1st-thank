@@ -31,6 +31,7 @@ from prepare_dissect import split_groups, views
 SCRIPTS = Path(__file__).resolve().parent
 PLUGIN = SCRIPTS.parent
 MODELS = ("tiny", "base", "small", "medium", "large-v3")
+GROUPS = (5, 10, 15)
 JOBS = {}
 JOBS_LOCK = threading.Lock()
 
@@ -79,9 +80,16 @@ def read_json(path):
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
 
 
+def group_size(folder):
+    # 수집할 때 고른 상위·하위 그룹 크기 (없으면 10)
+    saved = read_json(folder / "수집옵션.json") or {}
+    return saved.get("groups") if saved.get("groups") in GROUPS else 10
+
+
 def result_detail(folder):
     reels = read_json(folder / "reels_raw.json") or []
-    top, bottom = split_groups(reels, 10)
+    size = group_size(folder)
+    top, bottom = split_groups(reels, size)
     group = {r["shortCode"]: "상위" for r in top}
     group.update({r["shortCode"]: "하위" for r in bottom})
     ranked = sorted(reels, key=views, reverse=True)
@@ -101,13 +109,15 @@ def result_detail(folder):
     } for i, r in enumerate(ranked, 1)]
 
     compare_md = None
-    if (folder / "해부_결과.json").exists() and len(reels) > 10:
-        subprocess.run([sys.executable, str(SCRIPTS / "compare_groups.py"), str(folder), "10"],
+    if (folder / "해부_결과.json").exists() and len(reels) > size:
+        subprocess.run([sys.executable, str(SCRIPTS / "compare_groups.py"), str(folder), str(size)],
                        capture_output=True, cwd=SCRIPTS)
         path = folder / "상위하위_비교.md"
         compare_md = path.read_text(encoding="utf-8") if path.exists() else None
     return {
         "folder": str(folder),
+        "groups": size,
+        "frames": (folder / "frames").exists(),
         "reels": rows,
         "whisper": read_json(folder / "transcripts_whisper.json") or {},
         "dissect": read_json(folder / "해부_결과.json"),
@@ -115,8 +125,9 @@ def result_detail(folder):
     }
 
 
-def run_job(job_id, target, count, whisper, model):
+def run_job(job_id, target, count, opts):
     job = JOBS[job_id]
+    groups = opts["groups"]
 
     def log(line):
         with JOBS_LOCK:
@@ -136,21 +147,32 @@ def run_job(job_id, target, count, whisper, model):
         return proc.wait(), "".join(out)
 
     try:
-        code, out = step("1. 릴스 가져오기 (Apify)", ["fetch_reels.py", target, str(count), "--transcript"])
+        fetch = ["fetch_reels.py", target, str(count), "--transcript"] + (["--shares"] if opts["shares"] else [])
+        code, out = step("1. 릴스 가져오기 (Apify)", fetch)
         found = re.search(r"저장 → (.+)", out)
         if code != 0 or not found:
             raise RuntimeError("릴스를 가져오지 못했습니다. 위 메시지를 확인하세요.")
         folder = Path(found.group(1).strip())
+        (folder / "수집옵션.json").write_text(json.dumps(opts, ensure_ascii=False, indent=2), encoding="utf-8")
         job["result"] = {"account": folder.parent.name, "stamp": folder.name}
 
-        if whisper:
-            code, _ = step("2. 위스퍼 받아쓰기 (내 컴퓨터)", ["transcribe_whisper.py", str(folder), "--model", model])
+        if opts["whisper"]:
+            args = ["transcribe_whisper.py", str(folder), "--model", opts["model"], "--groups", str(groups)]
+            code, _ = step("2. 위스퍼 받아쓰기 (내 컴퓨터)", args + (["--prompt", opts["prompt"]] if opts["prompt"] else []))
             if code != 0:
                 log("  위스퍼 단계가 실패했습니다. 수집 결과는 그대로 볼 수 있습니다.")
         else:
             log("▶ 2. 위스퍼 받아쓰기 — 건너뜀")
 
-        step("3. 해부 자료 만들기", ["prepare_dissect.py", str(folder), "10"])
+        step("3. 해부 자료 만들기", ["prepare_dissect.py", str(folder), str(groups)])
+
+        if opts["frames"]:
+            args = ["extract_frames.py", str(folder), "--groups", str(groups)] + (["--top-only"] if opts["framesTopOnly"] else [])
+            code, _ = step("4. 영상 해부 자료 (초반 3초·장면 사진)", args)
+            if code != 0:
+                log("  영상 해부 자료를 만들지 못했습니다. 수집 결과는 그대로 볼 수 있습니다.")
+        else:
+            log("▶ 4. 영상 해부 자료 — 건너뜀")
         job["status"] = "done"
         log("✔ 끝났습니다.")
     except Exception as exc:  # 화면에 이유를 보여주고 끝낸다
@@ -195,8 +217,19 @@ class Handler(BaseHTTPRequestHandler):
         except ValueError:
             return self.send(400, {"error": "요청 형식이 올바르지 않습니다."})
         target = str(body.get("target") or "").strip()
-        count = int(body.get("count") or 30)
-        model = body.get("model") if body.get("model") in MODELS else "small"
+        try:
+            count = int(body.get("count") or 30)
+        except (TypeError, ValueError):
+            count = 30
+        opts = {
+            "groups": body.get("groups") if body.get("groups") in GROUPS else 10,
+            "whisper": bool(body.get("whisper")),
+            "model": body.get("model") if body.get("model") in MODELS else "small",
+            "prompt": str(body.get("prompt") or "").strip()[:200],
+            "frames": bool(body.get("frames")),
+            "framesTopOnly": bool(body.get("framesTopOnly")),
+            "shares": bool(body.get("shares")),
+        }
         if not target:
             return self.send(400, {"error": "계정 아이디나 릴스 링크를 넣어주세요."})
         if not os.environ.get("APIFY_TOKEN"):
@@ -205,8 +238,7 @@ class Handler(BaseHTTPRequestHandler):
             return self.send(409, {"error": "이미 수집 중입니다. 끝난 뒤 다시 눌러주세요."})
         job_id = uuid.uuid4().hex[:12]
         JOBS[job_id] = {"id": job_id, "status": "running", "log": [], "result": None}
-        threading.Thread(target=run_job, args=(job_id, target, max(1, min(count, 100)), bool(body.get("whisper")), model),
-                         daemon=True).start()
+        threading.Thread(target=run_job, args=(job_id, target, max(1, min(count, 100)), opts), daemon=True).start()
         return self.send(200, {"job": job_id})
 
 
@@ -227,7 +259,20 @@ h2 { font-size: 1.05rem; margin: 0; }
 .sub { color: var(--muted); margin: 4px 0 0; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 12px; min-width: 0; }
 form { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
-.opts { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; color: var(--muted); font-size: .9rem; grid-column: 1 / -1; }
+[hidden] { display: none !important; }
+.panel { grid-column: 1 / -1; display: grid; gap: 10px; }
+.optrow { display: grid; grid-template-columns: 11rem minmax(0, 1fr) auto; gap: 10px; align-items: center; }
+.optrow.sub { padding-left: 32px; grid-template-columns: 11rem minmax(0, 1fr); }
+.optrow.sub input[type=text] { grid-column: 1 / -1; }
+.lab { font-weight: 600; font-size: .9rem; display: grid; }
+.hint { color: var(--muted); font-weight: 400; font-size: .8rem; }
+.seg { display: flex; flex-wrap: wrap; gap: 4px; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 3px; }
+.seg button { flex: 1 1 4rem; background: transparent; color: var(--fg); font-weight: 500; padding: 6px 10px; }
+.seg button[aria-pressed=true] { background: var(--accent); color: var(--panel); font-weight: 600; }
+.tog { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; cursor: pointer; }
+.tog:has(input:checked) { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); background: var(--accent-soft); }
+.tog input { width: 20px; height: 20px; accent-color: var(--accent); margin: 2px 0 0; }
+.tog > span { display: grid; gap: 2px; }
 input[type=text], input[type=number], select { font: inherit; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--fg); min-width: 0; }
 input[type=number] { width: 5.5rem; }
 button { font: inherit; border: 0; border-radius: 8px; padding: 9px 18px; background: var(--accent); color: var(--panel); cursor: pointer; font-weight: 600; }
@@ -259,7 +304,7 @@ a { color: var(--accent); }
 .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
 .err { color: var(--bad); }
 .md table { margin-top: 4px; }
-@media (max-width: 560px) { form { grid-template-columns: 1fr; } .lines div { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { form, .optrow, .optrow.sub { grid-template-columns: 1fr; } .optrow.sub { padding-left: 0; } .lines div { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -273,10 +318,16 @@ a { color: var(--accent); }
     <form id="f">
       <input type="text" id="target" placeholder="예: tttt.yeon_  또는  https://www.instagram.com/reel/..." autocomplete="off" required>
       <button type="submit" id="go">수집하기</button>
-      <div class="opts">
-        <label>개수 <input type="number" id="count" value="30" min="1" max="100"></label>
-        <label><input type="checkbox" id="whisper" checked> 위스퍼 받아쓰기 (상위·하위 20개)</label>
-        <label>모델 <select id="model"><option>tiny</option><option>base</option><option selected>small</option><option>medium</option><option>large-v3</option></select></label>
+      <div class="panel" id="opts">
+        <div class="optrow"><span class="lab">개수<span class="hint">최신 릴스 몇 개를 모을지</span></span><div class="seg" id="count-seg"></div>
+          <input type="number" id="count" value="30" min="1" max="100" aria-label="개수 직접 입력"></div>
+        <div class="optrow"><span class="lab">상위·하위 그룹<span class="hint">조회수 위·아래 몇 개씩 비교할지</span></span><div class="seg" id="groups-seg"></div></div>
+        <label class="tog"><input type="checkbox" id="whisper" checked><span><b>위스퍼 받아쓰기</b><span class="hint">상위·하위 릴스가 몇 초에 무슨 말을 했는지 내 컴퓨터에서 받아씁니다 (무료)</span></span></label>
+        <div class="optrow sub" id="whisper-opts"><span class="lab">모델<span class="hint">왼쪽은 빠르고, 오른쪽은 정확</span></span><div class="seg" id="model-seg"></div>
+          <input type="text" id="prompt" placeholder="자주 틀리게 받아쓰는 이름 (예: 대대손떡, 기피인절미)" maxlength="200" aria-label="자주 틀리는 이름"></div>
+        <label class="tog"><input type="checkbox" id="frames"><span><b>영상 해부 자료 만들기</b><span class="hint">영상을 받아 초반 3초 사진과 장면 전환 사진을 만듭니다 (ffmpeg 필요, 시간이 더 걸림)</span></span></label>
+        <div class="optrow sub" id="frames-opts"><span class="lab">범위</span><div class="seg" id="frames-seg"></div></div>
+        <label class="tog"><input type="checkbox" id="shares"><span><b>공유 수 가져오기</b><span class="hint">Apify 유료 요금제에서만 됩니다</span></span></label>
       </div>
     </form>
     <p class="err" id="formerr" hidden></p>
@@ -399,7 +450,8 @@ $('#f').onsubmit = async e => {
   e.preventDefault();
   $('#formerr').hidden = true;
   const res = await fetch('/api/collect', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ target: $('#target').value, count: +$('#count').value, whisper: $('#whisper').checked, model: $('#model').value }) });
+    body: JSON.stringify({ target: $('#target').value, count: OPTS.count, groups: OPTS.groups, whisper: $('#whisper').checked, model: OPTS.model,
+      prompt: $('#prompt').value, frames: $('#frames').checked, framesTopOnly: OPTS.framesTopOnly, shares: $('#shares').checked }) });
   const data = await res.json();
   if (!res.ok) { $('#formerr').textContent = data.error; $('#formerr').hidden = false; return; }
   $('#go').disabled = true; $('#go').textContent = '수집 중…';
@@ -413,6 +465,45 @@ $('#f').onsubmit = async e => {
   };
   poll();
 };
+
+// 수집 옵션: 고른 값은 이 브라우저에 기억해 두고 다음에 그대로 보여준다
+const OPTS = { count: 30, groups: 10, model: 'small', framesTopOnly: true };
+const CHECKS = ['whisper', 'frames', 'shares'];
+const SEGS = { 'count-seg': 'count', 'groups-seg': 'groups', 'model-seg': 'model', 'frames-seg': 'framesTopOnly' };
+const MODEL_LABEL = { small: 'small 추천' };
+function seg(id, values, label) {
+  $('#' + id).replaceChildren(...values.map(v => {
+    const b = el('button', { type: 'button', text: label(v) });
+    b.dataset.v = String(v);
+    b.onclick = () => { OPTS[SEGS[id]] = v; paintOpts(); };
+    return b;
+  }));
+}
+function paintOpts() {
+  document.querySelectorAll('#opts .seg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === String(OPTS[SEGS[b.parentElement.id]]))));
+  if (document.activeElement !== $('#count')) $('#count').value = OPTS.count;
+  $('#whisper-opts').hidden = !$('#whisper').checked;
+  $('#frames-opts').hidden = !$('#frames').checked;
+  try {
+    const saved = { ...OPTS, prompt: $('#prompt').value };
+    CHECKS.forEach(id => { saved[id] = $('#' + id).checked; });
+    localStorage.setItem('reels-collect-opts', JSON.stringify(saved));
+  } catch {}
+}
+seg('count-seg', [10, 20, 30, 50, 100], v => v + '개');
+seg('groups-seg', [5, 10, 15], v => v + '개씩');
+seg('model-seg', ['tiny', 'base', 'small', 'medium', 'large-v3'], v => MODEL_LABEL[v] || v);
+seg('frames-seg', [true, false], v => v ? '상위만' : '상위·하위 모두');
+try {
+  const saved = JSON.parse(localStorage.getItem('reels-collect-opts') || '{}');
+  Object.keys(OPTS).forEach(k => { if (k in saved) OPTS[k] = saved[k]; });
+  CHECKS.forEach(id => { if (id in saved) $('#' + id).checked = !!saved[id]; });
+  if (typeof saved.prompt === 'string') $('#prompt').value = saved.prompt;
+} catch {}
+$('#count').oninput = () => { const n = Math.round(+$('#count').value); if (n >= 1 && n <= 100) OPTS.count = n; paintOpts(); };
+$('#prompt').oninput = paintOpts;
+CHECKS.forEach(id => { $('#' + id).onchange = paintOpts; });
+paintOpts();
 
 loadHistory();
 </script>
