@@ -1,2 +1,5 @@
 output/
 __pycache__/
+
+# 파이프라인 개인 설정 (PC 경로가 들어감)
+pipeline/config.json

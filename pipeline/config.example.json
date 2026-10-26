@@ -1,0 +1,65 @@
+{
+  "capcut_draft_dir": "C:/Users/<사용자이름>/AppData/Local/CapCut/User Data/Projects/com.lveditor.draft",
+  "work_root": "D:/영상작업",
+  "whisper": {
+    "model": "large-v3-turbo",
+    "device": "cpu",
+    "compute_type": "int8",
+    "language": "ko"
+  },
+  "canvas": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30
+  },
+  "style": {
+    "font": null,
+    "question": {
+      "size": 13,
+      "bold": true,
+      "border_color": "#FFFFFF",
+      "border_width": 60,
+      "position_y": 0.68
+    },
+    "answer": {
+      "size": 9,
+      "bold": true,
+      "color": "#4A3B36",
+      "border_color": "#FFFFFF",
+      "border_width": 50,
+      "shadow": true,
+      "position_y": -0.62
+    },
+    "hook": {
+      "size": 15,
+      "bold": true,
+      "color": "#FFFFFF",
+      "border_color": "#222222",
+      "border_width": 70,
+      "shadow": true,
+      "position_y": 0.15,
+      "max_line_width": 0.8
+    }
+  },
+  "topic_palette": [
+    "#FF5C8A",
+    "#2FA4E7",
+    "#FF9F1C",
+    "#3BB273",
+    "#8E6CEF",
+    "#FF6B4A"
+  ],
+  "effects": {
+    "punch_in_zoom": 1.12,
+    "slow_zoom": 1.04,
+    "hook_seconds": 2.5,
+    "video_intro": "动感放大",
+    "hook_intro": "Golden_Dust",
+    "hook_loop": null,
+    "question_intro": "Slanted_Expand",
+    "question_loop": null,
+    "answer_intro": "Bumper_Car",
+    "answer_loop": null
+  },
+  "reel_max_seconds": 59
+}
