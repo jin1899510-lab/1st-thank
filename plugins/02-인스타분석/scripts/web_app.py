@@ -17,10 +17,12 @@ fetch_reels.py → transcribe_whisper.py → prepare_dissect.py 를 차례로 �
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 import threading
 import uuid
+from datetime import datetime
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import unquote, urlparse
@@ -30,8 +32,12 @@ from prepare_dissect import split_groups, views
 
 SCRIPTS = Path(__file__).resolve().parent
 PLUGIN = SCRIPTS.parent
+EDIT_SCRIPTS = PLUGIN.parent / "01-릴스편집" / "scripts"
+MAKE_EXT = {".jpg", ".jpeg", ".png", ".webp", ".mp4", ".mov", ".m4v", ".webm"}
 MODELS = ("tiny", "base", "small", "medium", "large-v3")
 GROUPS = (5, 10, 15)
+LENGTHS = (15, 20, 25, 30, 45)
+VOICES = ("hyuk", "random", "none")
 JOBS = {}
 JOBS_LOCK = threading.Lock()
 
@@ -125,26 +131,98 @@ def result_detail(folder):
     }
 
 
+def job_log(job, line):
+    with JOBS_LOCK:
+        job["log"].append(line.rstrip())
+
+
+def run_step(job, title, args, cwd=SCRIPTS):
+    """파이썬 스크립트 하나를 돌리며 출력을 화면 기록에 붙인다."""
+    job_log(job, f"▶ {title}")
+    proc = subprocess.Popen([sys.executable, "-u", *args], cwd=cwd, stdout=subprocess.PIPE,
+                            stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace",
+                            env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+    out = []
+    for line in proc.stdout:
+        if "HF Hub" in line or not line.strip():
+            continue
+        out.append(line)
+        job_log(job, "  " + line)
+    return proc.wait(), "".join(out)
+
+
+# ── 릴스 만들기: 원고 + 사진·영상 → 제작 요청 (사진 분석·편집은 Claude가 이어서) ──
+
+def make_root():
+    # <고객설정>/릴스제작/<업체>/<날짜>
+    return results_root().parent / "릴스제작"
+
+
+def safe_name(text):
+    return re.sub(r'[\\/:*?"<>|]+', "_", text).strip(" .")[:60]
+
+
+def list_makes():
+    root, items = make_root(), []
+    if not root.exists():
+        return items
+    for script in root.glob("*/*/원고.txt"):
+        folder = script.parent
+        if folder.parent.name.startswith("_"):
+            continue
+        items.append({"store": folder.parent.name, "stamp": folder.name,
+                      "ready": (folder / "제작요청.md").exists(), "plan": (folder / "plan.json").exists()})
+    items.sort(key=lambda x: x["stamp"], reverse=True)
+    return items
+
+
+def make_folder(store, stamp):
+    for item in list_makes():  # 목록에 있는 폴더만 연다 (경로 조작 방지)
+        if item["store"] == store and item["stamp"] == stamp:
+            return make_root() / store / stamp
+    return None
+
+
+def make_detail(folder):
+    options = read_json(folder / "제작옵션.json") or {}
+    sources = read_json(folder / "소스목록.json") or {}
+    prompt = (f"{folder} 의 제작요청.md 대로 사진·영상(sheets)을 보고 원고에 맞춰 장면을 짜서 "
+              f"릴스를 만들고 캡컷 프로젝트「{options.get('store', '')}」에 넣어줘.")
+    return {
+        "folder": str(folder),
+        "options": options,
+        "script": (folder / "원고.txt").read_text(encoding="utf-8-sig") if (folder / "원고.txt").exists() else "",
+        "source": sources.get("source"),
+        "items": sources.get("items", []),
+        "ready": (folder / "제작요청.md").exists(),
+        "plan": (folder / "plan.json").exists(),
+        "prompt": prompt,
+    }
+
+
+def run_make(job_id, folder, source, photo_sec):
+    job = JOBS[job_id]
+    try:
+        code, _ = run_step(job, "사진·영상 정리 (사진 → 세로 영상, 확인용 사진)",
+                           ["prepare_sources.py", str(source), str(folder), "--photo-sec", str(photo_sec)], cwd=EDIT_SCRIPTS)
+        if code != 0:
+            raise RuntimeError("사진·영상을 정리하지 못했습니다. 위 메시지를 확인하세요.")
+        job["status"] = "done"
+        job_log(job, "✔ 준비 끝. 아래 [Claude에게 보낼 문구 복사]를 눌러 Claude에게 보내면 사진을 보고 릴스를 만들어 캡컷에 넣습니다.")
+    except Exception as exc:  # 화면에 이유를 보여주고 끝낸다
+        job_log(job, f"✖ {exc}")
+        job["status"] = "error"
+
+
 def run_job(job_id, target, count, opts):
     job = JOBS[job_id]
     groups = opts["groups"]
 
     def log(line):
-        with JOBS_LOCK:
-            job["log"].append(line.rstrip())
+        job_log(job, line)
 
     def step(title, args):
-        log(f"▶ {title}")
-        proc = subprocess.Popen([sys.executable, "-u", *args], cwd=SCRIPTS, stdout=subprocess.PIPE,
-                                stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace",
-                                env={**os.environ, "PYTHONIOENCODING": "utf-8"})
-        out = []
-        for line in proc.stdout:
-            if "HF Hub" in line or not line.strip():
-                continue
-            out.append(line)
-            log("  " + line)
-        return proc.wait(), "".join(out)
+        return run_step(job, title, args)
 
     try:
         fetch = ["fetch_reels.py", target, str(count), "--transcript"] + (["--shares"] if opts["shares"] else [])
@@ -207,10 +285,111 @@ class Handler(BaseHTTPRequestHandler):
         if m and m.group(1) in JOBS:
             with JOBS_LOCK:
                 return self.send(200, JOBS[m.group(1)])
+        if path == "/api/makes":
+            return self.send(200, list_makes())
+        m = re.fullmatch(r"/api/makes/([^/]+)/([^/]+)", path)
+        if m:
+            folder = make_folder(*m.groups())
+            return self.send(200, make_detail(folder)) if folder else self.send(404, {"error": "제작 요청을 찾지 못했습니다."})
+        m = re.fullmatch(r"/api/makes/([^/]+)/([^/]+)/sheets/([^/]+\.jpg)", path)
+        if m:
+            folder = make_folder(m.group(1), m.group(2))
+            sheet = folder / "sheets" / m.group(3) if folder else None
+            if sheet and sheet.is_file():
+                return self.send(200, sheet.read_bytes(), "image/jpeg")
         return self.send(404, {"error": "없는 주소입니다."})
 
+    def read_body_json(self):
+        try:
+            return json.loads(self.rfile.read(int(self.headers.get("Content-Length") or 0)) or b"{}")
+        except ValueError:
+            return None
+
+    def make_draft(self):
+        draft_id = uuid.uuid4().hex[:12]
+        (make_root() / "_올리는중" / draft_id / "소스").mkdir(parents=True, exist_ok=True)
+        return self.send(200, {"draft": draft_id})
+
+    def make_upload(self, draft_id):
+        name = Path(unquote(urlparse(self.path).query.partition("name=")[2])).name
+        folder = make_root() / "_올리는중" / draft_id / "소스"
+        length = int(self.headers.get("Content-Length") or 0)
+        if not folder.is_dir():
+            return self.send(404, {"error": "올리기 준비가 안 됐습니다. 화면을 새로 고쳐 주세요."})
+        if Path(name).suffix.lower() not in MAKE_EXT:
+            self.rfile.read(length)
+            return self.send(400, {"error": f"{name}: 사진(jpg·png·webp)이나 영상(mp4·mov)만 올릴 수 있어요. HEIC는 JPG로 바꿔 주세요."})
+        dest, n = folder / name, 1
+        while dest.exists():  # 같은 이름이면 뒤에 번호
+            dest, n = folder / f"{Path(name).stem}_{n}{Path(name).suffix}", n + 1
+        with dest.open("wb") as f:
+            left = length
+            while left > 0:
+                chunk = self.rfile.read(min(left, 1 << 20))
+                if not chunk:
+                    break
+                f.write(chunk)
+                left -= len(chunk)
+        return self.send(200, {"saved": dest.name})
+
+    def make_start(self):
+        body = self.read_body_json()
+        if body is None:
+            return self.send(400, {"error": "요청 형식이 올바르지 않습니다."})
+        store = safe_name(str(body.get("store") or ""))
+        script = str(body.get("script") or "").strip()
+        draft = str(body.get("draft") or "")
+        if not store:
+            return self.send(400, {"error": "업체 이름(캡컷 프로젝트 이름)을 넣어 주세요."})
+        if not script:
+            return self.send(400, {"error": "원고를 넣어 주세요."})
+        draft_dir = make_root() / "_올리는중" / draft / "소스" if re.fullmatch(r"[0-9a-f]{12}", draft) else None
+        if draft_dir and draft_dir.is_dir() and any(draft_dir.iterdir()):
+            source = None
+        else:
+            draft_dir = None
+            source = Path(str(body.get("folder") or "").strip().strip('"'))
+            if not str(body.get("folder") or "").strip() or not source.is_dir():
+                return self.send(400, {"error": "사진·영상 폴더 주소를 넣거나 파일을 끌어다 놓아 주세요."})
+        if any(j["status"] == "running" for j in JOBS.values()):
+            return self.send(409, {"error": "다른 작업이 돌고 있습니다. 끝난 뒤 다시 눌러주세요."})
+        try:
+            photo_sec = min(max(float(body.get("photoSec") or 3), 1.5), 6)
+        except (TypeError, ValueError):
+            photo_sec = 3.0
+        folder = make_root() / store / datetime.now().strftime("%Y%m%d_%H%M%S")
+        folder.mkdir(parents=True)
+        if draft_dir:
+            shutil.move(str(draft_dir), str(folder / "소스"))
+            shutil.rmtree(draft_dir.parent, ignore_errors=True)
+            source = folder / "소스"
+        options = {
+            "store": store,
+            "title": str(body.get("title") or "").strip()[:60],
+            "length": body.get("length") if body.get("length") in LENGTHS else 30,
+            "voice": body.get("voice") if body.get("voice") in VOICES else "hyuk",
+            "bgm": bool(body.get("bgm")),
+            "hook": bool(body.get("hook")),
+            "photoSec": photo_sec,
+            "source": str(source),
+        }
+        (folder / "원고.txt").write_text(script + "\n", encoding="utf-8")
+        (folder / "제작옵션.json").write_text(json.dumps(options, ensure_ascii=False, indent=2), encoding="utf-8")
+        job_id = uuid.uuid4().hex[:12]
+        JOBS[job_id] = {"id": job_id, "status": "running", "log": [], "result": {"store": store, "stamp": folder.name}}
+        threading.Thread(target=run_make, args=(job_id, folder, source, photo_sec), daemon=True).start()
+        return self.send(200, {"job": job_id})
+
     def do_POST(self):
-        if urlparse(self.path).path != "/api/collect":
+        path = urlparse(self.path).path
+        if path == "/api/make/draft":
+            return self.make_draft()
+        m = re.fullmatch(r"/api/make/([0-9a-f]{12})/file", path)
+        if m:
+            return self.make_upload(m.group(1))
+        if path == "/api/make/start":
+            return self.make_start()
+        if path != "/api/collect":
             return self.send(404, {"error": "없는 주소입니다."})
         try:
             body = json.loads(self.rfile.read(int(self.headers.get("Content-Length") or 0)) or b"{}")
@@ -273,6 +452,18 @@ form { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
 .tog:has(input:checked) { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); background: var(--accent-soft); }
 .tog input { width: 20px; height: 20px; accent-color: var(--accent); margin: 2px 0 0; }
 .tog > span { display: grid; gap: 2px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 12px; }
+.lab input, .lab textarea { margin-top: 4px; font-weight: 400; }
+textarea { font: inherit; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--fg); width: 100%; resize: vertical; }
+.drop { border: 2px dashed var(--line); border-radius: 10px; padding: 18px; text-align: center; display: grid; gap: 4px; cursor: pointer; }
+.drop.over, .drop:hover { border-color: var(--accent); background: var(--accent-soft); }
+.queue { display: grid; gap: 2px; font-size: .85rem; }
+.queue div { display: flex; justify-content: space-between; gap: 8px; }
+.sheets { display: grid; gap: 10px; }
+.sheets figure { margin: 0; display: grid; gap: 4px; }
+.sheets img { max-width: 100%; border-radius: 6px; background: var(--bg); }
+.sheets figcaption { font-size: .85rem; }
+pre.script { margin: 0; white-space: pre-wrap; background: var(--bg); border-radius: 8px; padding: 12px; font: inherit; font-size: .9rem; }
 input[type=text], input[type=number], select { font: inherit; padding: 9px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--fg); min-width: 0; }
 input[type=number] { width: 5.5rem; }
 button { font: inherit; border: 0; border-radius: 8px; padding: 9px 18px; background: var(--accent); color: var(--panel); cursor: pointer; font-weight: 600; }
@@ -340,6 +531,42 @@ a { color: var(--accent); }
   </section>
 
   <section id="result" hidden></section>
+
+  <section class="card" id="make">
+    <div>
+      <h2>릴스 만들기</h2>
+      <p class="sub">원고와 찍어 둔 사진·영상을 넣으면, 사진은 세로 영상(천천히 확대)으로 바꾸고 장면을 확인할 사진을 만듭니다.
+        그다음 Claude가 사진을 보고 원고에 맞춰 장면을 짜서 캡컷 프로젝트에 넣습니다.</p>
+    </div>
+    <div class="grid2">
+      <label class="lab">업체 이름<span class="hint">캡컷 프로젝트 이름 (업체 하나 = 프로젝트 하나)</span><input type="text" id="m-store" placeholder="예: 화남정 돼지국밥" maxlength="60"></label>
+      <label class="lab">편 제목<span class="hint">타임라인 이름 "03 제목" 처럼 들어갑니다</span><input type="text" id="m-title" placeholder="예: 부산 돼지국밥 대전 쇼케이스" maxlength="60"></label>
+    </div>
+    <label class="lab">원고<span class="hint">한 줄에 한 문장. 나레이션 없이 화면 글자로만 넣을 줄은 앞에 [자막] 을 붙여 주세요.</span>
+      <textarea id="m-script" rows="8" placeholder="부산 사람이면 이건 안 올 수가 없지예&#10;전국 최초 돼지국밥 야장이 단 3일 열립니다&#10;[자막] BIFC2 나우어라이빙 · 금~일"></textarea></label>
+    <div class="optrow"><span class="lab">사진·영상 폴더<span class="hint">내 PC 폴더 주소 (하위 폴더까지 봅니다)</span></span>
+      <input type="text" id="m-folder" placeholder="예: D:\화남정" autocomplete="off"></div>
+    <div class="drop" id="m-drop" tabindex="0" role="button" aria-label="사진·영상 올리기">
+      <b>또는 여기에 사진·영상(폴더째도 됨)을 끌어다 놓기</b><span class="hint">누르면 파일을 고를 수 있어요 · 올린 파일이 있으면 위 폴더 주소 대신 씁니다</span>
+      <input type="file" id="m-file" accept="image/jpeg,image/png,image/webp,video/*,.mov" multiple hidden>
+    </div>
+    <div class="queue" id="m-queue"></div>
+    <div class="optrow"><span class="lab">영상 길이</span><div class="seg" id="m-len-seg"></div></div>
+    <div class="optrow"><span class="lab">목소리<span class="hint">일레븐랩스</span></span><div class="seg" id="m-voice-seg"></div></div>
+    <div class="optrow"><span class="lab">사진 한 장 길이<span class="hint">사진 → 세로 영상</span></span><div class="seg" id="m-photo-seg"></div></div>
+    <label class="tog"><input type="checkbox" id="m-bgm" checked><span><b>배경음악 넣기</b><span class="hint">원고 분위기에 맞는 연주곡 (일레븐랩스, 가사 없음). 말소리 구간은 자동으로 작아짐</span></span></label>
+    <label class="tog"><input type="checkbox" id="m-hook" checked><span><b>후킹 제목 + 커버 만들기</b><span class="hint">원고와 맞는 제목을 0초에 띄우고 같은 제목으로 썸네일 커버도</span></span></label>
+    <div class="row"><span class="muted" id="m-hint">원고와 사진·영상을 넣고 눌러 주세요.</span><button type="button" id="m-go">사진 분석 준비하기</button></div>
+    <p class="err" id="m-err" hidden></p>
+    <pre class="log" id="m-log" hidden></pre>
+  </section>
+
+  <section class="card">
+    <h2>지난 제작 요청</h2>
+    <div class="history" id="m-history"><span class="muted">불러오는 중…</span></div>
+  </section>
+
+  <section id="m-result" hidden></section>
 </div>
 
 <script>
@@ -505,7 +732,125 @@ $('#prompt').oninput = paintOpts;
 CHECKS.forEach(id => { $('#' + id).onchange = paintOpts; });
 paintOpts();
 
+// ── 릴스 만들기 ──
+const MOPTS = { length: 30, voice: 'hyuk', photoSec: 3 };
+const MSEGS = { 'm-len-seg': 'length', 'm-voice-seg': 'voice', 'm-photo-seg': 'photoSec' };
+let draft = null, uploading = 0;
+function mseg(id, values, label) {
+  $('#' + id).replaceChildren(...values.map(v => {
+    const b = el('button', { type: 'button', text: label(v) });
+    b.dataset.v = String(v);
+    b.onclick = () => { MOPTS[MSEGS[id]] = v; paintMake(); };
+    return b;
+  }));
+}
+function paintMake() {
+  document.querySelectorAll('#make .seg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === String(MOPTS[MSEGS[b.parentElement.id]]))));
+}
+mseg('m-len-seg', [15, 20, 25, 30, 45], v => v + '초');
+mseg('m-voice-seg', ['hyuk', 'random', 'none'], v => ({ hyuk: '혁 (기본)', random: '한국 음성 랜덤', none: '없음 (자막만)' })[v]);
+mseg('m-photo-seg', [2, 3, 4], v => v + '초');
+paintMake();
+
+async function uploadFiles(files) {
+  const queue = $('#m-queue');
+  if (!draft) draft = (await (await fetch('/api/make/draft', { method: 'POST' })).json()).draft;
+  for (const f of files) {
+    const row = el('div', {}, el('span', { text: f.name }), el('span', { class: 'muted', text: '올리는 중…' }));
+    queue.append(row);
+    uploading++; $('#m-go').disabled = true;
+    try {
+      const res = await fetch(`/api/make/${draft}/file?name=${encodeURIComponent(f.name)}`, { method: 'POST', body: f });
+      const d = await res.json();
+      row.lastChild.textContent = res.ok ? '올림' : d.error;
+      if (!res.ok) row.lastChild.className = 'err';
+    } catch { row.lastChild.textContent = '올리지 못했어요'; row.lastChild.className = 'err'; }
+    uploading--; $('#m-go').disabled = uploading > 0;
+  }
+}
+async function readEntry(entry) {
+  if (entry.isFile) return new Promise(res => entry.file(f => res([f]), () => res([])));
+  if (!entry.isDirectory) return [];
+  const reader = entry.createReader(), out = [];
+  for (;;) {
+    const batch = await new Promise(res => reader.readEntries(res, () => res([])));
+    if (!batch.length) break;
+    for (const e of batch) out.push(...await readEntry(e));
+  }
+  return out;
+}
+const drop = $('#m-drop');
+drop.onclick = () => $('#m-file').click();
+drop.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); $('#m-file').click(); } };
+$('#m-file').onchange = () => { const f = [...$('#m-file').files]; $('#m-file').value = ''; uploadFiles(f); };
+['dragenter', 'dragover'].forEach(n => drop.addEventListener(n, e => { e.preventDefault(); drop.classList.add('over'); }));
+['dragleave', 'drop'].forEach(n => drop.addEventListener(n, e => { e.preventDefault(); drop.classList.remove('over'); }));
+drop.addEventListener('drop', async e => {
+  const entries = [...(e.dataTransfer?.items || [])].map(i => i.webkitGetAsEntry && i.webkitGetAsEntry()).filter(Boolean);
+  const files = entries.length ? (await Promise.all(entries.map(readEntry))).flat() : [...(e.dataTransfer?.files || [])];
+  uploadFiles(files.filter(f => !f.name.startsWith('.')));
+});
+
+async function loadMakes(select) {
+  const items = await (await fetch('/api/makes')).json();
+  const box = $('#m-history'); box.replaceChildren();
+  if (!items.length) { box.append(el('span', { class: 'muted', text: '아직 제작 요청이 없습니다.' })); return; }
+  items.forEach(it => {
+    const when = it.stamp.replace(/^(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})\d*$/, '$2/$3 $4:$5');
+    const b = el('button', { class: 'ghost', type: 'button', text: `${it.store} · ${when}` + (it.plan ? ' · 편집 계획 있음' : it.ready ? ' · Claude 대기' : ' · 준비 안 됨') });
+    b.onclick = () => openMake(it.store, it.stamp);
+    box.append(b);
+  });
+  if (select) openMake(select.store, select.stamp);
+}
+async function openMake(store, stamp) {
+  const d = await (await fetch(`/api/makes/${encodeURIComponent(store)}/${encodeURIComponent(stamp)}`)).json();
+  const box = $('#m-result'); box.hidden = false; box.replaceChildren();
+  const o = d.options || {};
+  const copy = el('button', { type: 'button', text: 'Claude에게 보낼 문구 복사' });
+  copy.onclick = async () => { try { await navigator.clipboard.writeText(d.prompt); copy.textContent = '복사됨 — Claude에게 붙여넣으세요'; } catch { window.prompt('아래 문구를 복사하세요', d.prompt); } };
+  const voice = { hyuk: '혁', random: '한국 음성 랜덤', none: '없음 (자막만)' }[o.voice] || o.voice;
+  const card = el('div', { class: 'card' },
+    el('div', { class: 'row' },
+      el('div', {}, el('h2', { text: `${o.store}${o.title ? ' · ' + o.title : ''}` }),
+        el('p', { class: 'sub', text: `${o.length}초 · 목소리 ${voice} · 배경음악 ${o.bgm ? '넣음' : '안 넣음'} · 후킹 제목 ${o.hook ? '넣음' : '안 넣음'} · 사진 ${o.photoSec}초` })),
+      d.ready ? copy : null),
+    el('p', { class: 'muted', text: d.ready ? `사진·영상 ${d.items.length}개를 정리했습니다. 위 버튼으로 문구를 복사해 Claude에게 보내면 사진을 보고 원고에 맞춰 릴스를 만들어 캡컷에 넣습니다. 저장 위치 ${d.folder}` : '아직 정리가 끝나지 않았습니다.' }),
+    el('pre', { class: 'script', text: d.script }));
+  if (d.items.length) {
+    const grid = el('div', { class: 'sheets' });
+    d.items.forEach(it => {
+      const name = it.sheet ? it.sheet.split('/').pop() : null;
+      grid.append(el('figure', {},
+        name ? el('img', { src: `/api/makes/${encodeURIComponent(store)}/${encodeURIComponent(stamp)}/sheets/${encodeURIComponent(name)}`, alt: it.rel, loading: 'lazy' }) : null,
+        el('figcaption', { text: `${it.key} · ${it.kind === 'video' ? '영상 ' + (it.duration ? it.duration.toFixed(1) + '초' : '') : '사진' + (it.clip ? ' → 세로 영상' : '')} · ${it.rel}` })));
+    });
+    card.append(grid);
+  }
+  box.append(card);
+}
+$('#m-go').onclick = async () => {
+  $('#m-err').hidden = true;
+  const body = { store: $('#m-store').value, title: $('#m-title').value, script: $('#m-script').value, folder: $('#m-folder').value,
+    draft, ...MOPTS, bgm: $('#m-bgm').checked, hook: $('#m-hook').checked };
+  const res = await fetch('/api/make/start', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  const data = await res.json();
+  if (!res.ok) { $('#m-err').textContent = data.error; $('#m-err').hidden = false; return; }
+  draft = null; $('#m-queue').replaceChildren();
+  $('#m-go').disabled = true; $('#m-go').textContent = '정리 중…';
+  const log = $('#m-log'); log.hidden = false; log.textContent = '';
+  const poll = async () => {
+    const j = await (await fetch('/api/jobs/' + data.job)).json();
+    log.textContent = j.log.join('\n'); log.scrollTop = log.scrollHeight;
+    if (j.status === 'running') return setTimeout(poll, 1500);
+    $('#m-go').disabled = false; $('#m-go').textContent = '사진 분석 준비하기';
+    loadMakes(j.result);
+  };
+  poll();
+};
+
 loadHistory();
+loadMakes();
 </script>
 </body>
 </html>
