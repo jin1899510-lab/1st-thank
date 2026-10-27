@@ -233,6 +233,8 @@ def main() -> None:
     ap.add_argument("--episode", required=True)
     ap.add_argument("--only", help="이것만 만들기: 전체 또는 릴스01 같은 이름")
     ap.add_argument("--replace", action="store_true", help="같은 이름의 캡컷 프로젝트가 있으면 덮어쓰기")
+    ap.add_argument("--no-full", action="store_true", help="전체본은 만들지 않기")
+    ap.add_argument("--no-reels", action="store_true", help="릴스는 만들지 않기")
     ap.add_argument("--media-path", help="캡컷을 여는 PC 의 영상 경로 (다른 컴퓨터에서 프로젝트를 만들 때만)")
     args = ap.parse_args()
 
@@ -248,9 +250,9 @@ def main() -> None:
     max_len = cfg.get("reel_max_seconds", 59)
 
     jobs = []
-    if plan.get("make_full", True):
+    if plan.get("make_full", True) and not args.no_full:
         jobs.append(("전체", dict(ranges=[(0.0, job["duration"])])))
-    for r in plan.get("reels", []):
+    for r in ([] if args.no_reels else plan.get("reels", [])):
         jobs.append((f"릴스{r['id']}", dict(ranges=[tuple(x) for x in r["ranges"]], title=r.get("title"),
                                            hook=r.get("hook"), topic_id=r.get("topic"))))
     if args.only:
