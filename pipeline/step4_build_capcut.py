@@ -124,7 +124,7 @@ def offset_x(scale, center_x, landscape):
 
 # ---------------------------------------------------------------- 타임라인 생성
 
-def build(folder, name, cfg, job, plan, ranges, *, title=None, hook=None, topic_id=None, replace=False):
+def build(folder, name, cfg, job, plan, ranges, *, title=None, hook=None, topic_id=None, replace=False, media_path=None):
     canvas = cfg["canvas"]
     fx = cfg.get("effects", {})
     palette = cfg["topic_palette"]
@@ -154,11 +154,14 @@ def build(folder, name, cfg, job, plan, ranges, *, title=None, hook=None, topic_
     punch = fx.get("punch_in_zoom", 1.12)
     drift = fx.get("slow_zoom", 1.04)
     intro = enum_member(cc.IntroType, fx.get("video_intro"))
+    material = cc.VideoMaterial(job["edit_video"])
+    if media_path:  # 다른 PC 에서 만들 때: 캡컷이 열 PC 의 영상 경로를 기록
+        material.path = media_path
     for i, (ps, pe, t) in enumerate(tm.pieces):
         dur = pe - ps
         scale = scale0 * (punch if i % 2 else 1.0)
         seg = cc.VideoSegment(
-            job["edit_video"], cc.trange_seconds(t, duration=dur),
+            material, cc.trange_seconds(t, duration=dur),
             source_timerange=cc.trange_seconds(ps, duration=dur),
             clip_settings=cc.ClipSettings(scale_x=scale, scale_y=scale,
                                           transform_x=offset_x(scale, crop.get("center_x", 0.5), landscape)),
@@ -215,6 +218,7 @@ def main() -> None:
     ap.add_argument("--episode", required=True)
     ap.add_argument("--only", help="이것만 만들기: 전체 또는 릴스01 같은 이름")
     ap.add_argument("--replace", action="store_true", help="같은 이름의 캡컷 프로젝트가 있으면 덮어쓰기")
+    ap.add_argument("--media-path", help="캡컷을 여는 PC 의 영상 경로 (다른 컴퓨터에서 프로젝트를 만들 때만)")
     args = ap.parse_args()
 
     cfg = load_config()
@@ -241,7 +245,7 @@ def main() -> None:
 
     print(f"캡컷 프로젝트 생성: {len(jobs)}개")
     for label, kw in jobs:
-        total = build(folder, f"{base}_{label}", cfg, job, plan, replace=args.replace, **kw)
+        total = build(folder, f"{base}_{label}", cfg, job, plan, replace=args.replace, media_path=args.media_path, **kw)
         if total and label != "전체" and total > max_len:
             print(f"  [주의] {label} 길이 {total:.1f}초 → {max_len}초를 넘습니다. 계획에서 구간을 줄여 주세요.")
 

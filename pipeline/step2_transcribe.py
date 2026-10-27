@@ -10,6 +10,9 @@
 
 import argparse
 import time
+import wave
+
+import numpy as np
 
 from common import fmt_time, job_dir, load_config, write_json
 
@@ -36,8 +39,13 @@ def main() -> None:
     model = WhisperModel(model_name, device=wcfg["device"], compute_type=wcfg["compute_type"])
 
     started = time.time()
+    # 16kHz 모노 wav 를 직접 읽어서 넘김 (PyAV 버전 차이로 인한 오류 방지)
+    with wave.open(str(audio), "rb") as w:
+        pcm = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16)
+    samples = pcm.astype(np.float32) / 32768.0
+
     segments, info = model.transcribe(
-        str(audio),
+        samples,
         language=wcfg.get("language", "ko"),
         word_timestamps=True,
         vad_filter=True,  # 말 없는 구간 건너뛰기

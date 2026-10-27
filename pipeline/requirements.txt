@@ -1,2 +1,3 @@
 faster-whisper>=1.1
 pycapcut>=0.0.4
+numpy
