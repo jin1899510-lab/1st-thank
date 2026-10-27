@@ -15,7 +15,7 @@
 | 위스퍼(Whisper) | 음성을 단어 단위 시간이 붙은 텍스트로 바꿉니다 (`step2`) |
 | 에프에프엠펙(FFmpeg) | 음성 추출, 장면 사진 추출, (선택) 기본 얼굴 보정 (`step1`) |
 | 파이썬(Python) | 전체 실행과 캡컷 프로젝트 생성 (`step4`, `step5`) |
-| 클로드 코드(Claude Code) | 대본을 읽고 반복 구간, 질문/답변, 릴스 구간, 훅, 강조 단어를 정해 `edit_plan.json` 작성 |
+| 클로드 코드(Claude Code) | 대본을 읽고 반복 구간, 질문/답변, 릴스 구간, 훅, 강조 단어, 오타를 정해 `outline.json` 작성 (`step3`가 자막으로 변환) |
 | 캡컷(CapCut) PC | 완성된 타임라인이 저장되는 곳. 열어서 확인하고, 다듬고, 내보내기 |
 
 리모션(Remotion)은 이번 버전에서 쓰지 않습니다. Remotion으로 만든 그래픽은 영상에 박혀서 캡컷에서 글자를 고칠 수 없기 때문입니다. 그래서 효과는 모두 **캡컷 안에서 수정 가능한 방식**(텍스트 애니메이션, 키프레임 줌)으로 넣었습니다.
@@ -88,7 +88,8 @@
 ```
 python step1_prepare.py    --client 한방장어 --episode 01편 --video "D:/원본/20260923_141411.mp4"
 python step2_transcribe.py --client 한방장어 --episode 01편
-#  → Claude Code가 transcript.txt 를 읽고 edit_plan.json 작성
+#  → Claude Code가 transcript.txt 를 읽고 outline.json 작성
+python step3_make_plan.py   --client 한방장어 --episode 01편   # 자막 자동 분할 + 침묵 자르기
 python step4_build_capcut.py --client 한방장어 --episode 01편          # 캡컷을 끈 상태에서
 python step5_timeline.py     --client 한방장어 --episode 01편
 ```
@@ -98,6 +99,7 @@ python step5_timeline.py     --client 한방장어 --episode 01편
 | `step1 --beauty` | FFmpeg 기본 보정본(피부결, 밝기, 채도)을 만들어 편집에 사용합니다. 화면 전체에 적용되고 오래 걸립니다 |
 | `step4 --only 릴스01` | 하나만 만듭니다. 처음 스타일을 확인할 때 쓰세요 |
 | `step4 --replace` | 같은 이름의 캡컷 프로젝트를 덮어씁니다 |
+| `step4 --media-path` | 다른 컴퓨터에서 만든 프로젝트를 이 PC에서 열 때, 이 PC의 영상 경로를 지정합니다 |
 
 ### 스타일과 효과 바꾸기 (`config.json`)
 - `style.question` / `style.answer` / `style.hook`: 글자 크기, 색, 테두리, 위치. `position_y` 값은 위가 +, 아래가 −입니다.
