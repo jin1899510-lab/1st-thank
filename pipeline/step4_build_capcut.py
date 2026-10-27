@@ -34,10 +34,11 @@ from timemap import TimeMap, no_overlap, subtract
 class HighlightTextSegment(cc.TextSegment):
     """일부 단어만 다른 색으로 칠하는 텍스트 (pycapcut 은 한 가지 색만 지원해서 확장)."""
 
-    def __init__(self, *args, highlights=None, highlight_color=(1.0, 0.36, 0.54), **kwargs):
+    def __init__(self, *args, highlights=None, highlight_color=(1.0, 0.36, 0.54), font_path=None, **kwargs):
         super().__init__(*args, **kwargs)
         self.highlights = [h for h in (highlights or []) if h]
         self.highlight_color = list(highlight_color)
+        self.font_path = font_path
 
     def _ranges(self):
         marks = [False] * len(self.text)
@@ -58,12 +59,13 @@ class HighlightTextSegment(cc.TextSegment):
 
     def export_material(self):
         ret = super().export_material()
-        if not self.highlights:
-            return ret
         content = json.loads(ret["content"])
         base = content["styles"][0]
+        if self.font_path:  # PC 에 설치된 글꼴 파일 (예: G마켓 산스)
+            base["font"] = {"id": "", "path": self.font_path}
+            ret["font_path"] = self.font_path
         styles = []
-        for start, end, hit in self._ranges():
+        for start, end, hit in (self._ranges() if self.highlights else [(0, len(self.text), False)]):
             st = json.loads(json.dumps(base))
             st["range"] = [start, end]
             if hit:
@@ -90,11 +92,18 @@ def make_text(cfg, kind, text, start, end, color_hex, highlights=None, highlight
     style = cc.TextStyle(size=s["size"], bold=s.get("bold", False), color=hex_to_rgb(color_hex),
                          align=1, auto_wrapping=True, max_line_width=s.get("max_line_width", 0.86))
     border = cc.TextBorder(color=hex_to_rgb(s["border_color"]), width=s["border_width"])
-    shadow = cc.TextShadow(alpha=0.6, diffuse=10, distance=4) if s.get("shadow") else None
+    shadow = cc.TextShadow(alpha=0.75, diffuse=12, distance=5) if s.get("shadow") else None
+    bg = s.get("background")
+    background = None
+    if bg:  # 글씨 뒤 둥근 상자: 밝은 배경에서도 잘 보이게. color 가 "topic" 이면 주제 색
+        background = cc.TextBackground(color=(highlight_hex or color_hex) if bg["color"] == "topic" else bg["color"],
+                                       alpha=bg.get("alpha", 1.0), round_radius=bg.get("round_radius", 0.4),
+                                       height=bg.get("height", 0.14), width=bg.get("width", 0.14))
     seg = HighlightTextSegment(
         text, cc.trange_seconds(start, end=end), font=font, style=style, border=border, shadow=shadow,
-        clip_settings=cc.ClipSettings(transform_y=s["position_y"]),
+        background=background, clip_settings=cc.ClipSettings(transform_y=s["position_y"]),
         highlights=highlights, highlight_color=hex_to_rgb(highlight_hex or color_hex),
+        font_path=s.get("font_path"),
     )
     fx = cfg.get("effects", {})
     intro = enum_member(cc.TextIntro, fx.get(f"{kind}_intro"))
@@ -132,6 +141,10 @@ def build(folder, name, cfg, job, plan, ranges, *, title=None, hook=None, topic_
 
     def color_of(tid):
         return topics.get(tid, {}).get("color", palette[0])
+
+    def q_color(tid):
+        """소제목 글자색: 설정에 color 가 있으면 그 색(배경 상자가 주제 색), 없으면 주제 색"""
+        return cfg["style"]["question"].get("color") or color_of(tid)
 
     pieces = subtract(ranges, [(c["start"], c["end"]) for c in plan.get("cuts", [])])
     tm = TimeMap(pieces)
@@ -183,7 +196,8 @@ def build(folder, name, cfg, job, plan, ranges, *, title=None, hook=None, topic_
 
     # 소제목
     if title:  # 릴스: 제목 하나를 끝까지
-        script.add_segment(make_text(cfg, "question", title, text_start, tm.total, color_of(topic_id)), "소제목")
+        script.add_segment(make_text(cfg, "question", title, text_start, tm.total, q_color(topic_id),
+                                     highlight_hex=color_of(topic_id)), "소제목")
     else:  # 전체본: 질문마다, 다음 질문 전까지 유지
         qs = []
         for q in plan["items"]:
@@ -194,7 +208,8 @@ def build(folder, name, cfg, job, plan, ranges, *, title=None, hook=None, topic_
         qs.sort(key=lambda x: x[0])
         spans = [(s, qs[k + 1][0] if k + 1 < len(qs) else tm.total, q) for k, (s, q) in enumerate(qs)]
         for s, e, q in no_overlap(spans):
-            script.add_segment(make_text(cfg, "question", q["text"], s, e, color_of(q.get("topic"))), "소제목")
+            script.add_segment(make_text(cfg, "question", q["text"], s, e, q_color(q.get("topic")),
+                                         highlight_hex=color_of(q.get("topic"))), "소제목")
 
     # 답변 자막
     spans = []
