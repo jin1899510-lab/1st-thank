@@ -1,0 +1,63 @@
+### 네코노무라
+## Google Maps Place Details: 네코노무라
+
+1. **NoriNori Sushi Bar HTX** (4.7★)
+   9938 Bellaire Blvd Ste G, Houston, TX 77036
+   (281) 888-5302 | http://www.norinorihtx.com/
+   Types: 일본 음식점, 아시아 레스토랑, 술집, 칵테일바, 라운지 바, 굴요리 전문식당, 스시/초밥집
+   place_id: ChIJ9feRpwbDQIYRNrQziWDfteQ
+### 세실로 30 해운대 일식
+## Google Maps: "세실로 30 해운대 일식" (15 results)
+
+
+1. **Sachimun** (4.8★)
+   1층, 15 Daecheon-ro 106beon-gil, Haeundae-gu, Busan, South Korea
+   +82 51-704-4771 | https://m.search.naver.com/search.naver?query=%EC%82%AC%EC%B9%98%EB%AC%B8&where=m&sm=mob_hty.idx&ackey=o32opb88&qdt=1
+   Hours: tuesday: 12 AM–12 PM, 6 PM–12 AM | wednesday: 12 AM–12 PM, 6 PM–12 AM | thursday: 12 AM–12 PM, 6 PM–12 AM | friday: 12 AM–12 PM, 6 PM–12 AM | saturday: 12 AM–12 PM, 6 PM–12 AM | sunday: 12 AM–12 PM | monday: 6 PM–12 AM
+   Types: 일식당 및 일정식집, 술집, 모던 이자카야 레스토랑
+   place_id: ChIJs7rjpbyNaDURXXboWc2FPeg
+
+2. **하데나** (4.3★)
+   23 Jwadongsunhwan-ro 468beon-gil, Haeundae-gu, Busan, South Korea
+   Types: 일본 음식점
+   place_id: ChIJYZpo7RiNaDURtPSpSj3L_8s
+
+3. **스시 타이요** (4.8★)
+   South Korea, KR 부산광역시 해운대구 세실로 48 삼정코아 주상복합 상가, 스시 타이요, 1층
+   +82 51-804-1218
+   Hours: wednesday: 11:30 AM–2:30 PM, 5–9 PM | thursday: 11:30 AM–2:30 PM, 5–9 PM | friday: 11:30 AM–2:30 PM, 5–9 PM | saturday: 11:30 AM–2:30 PM, 5–9 PM | sunday: 11:30 AM–2:30 PM, 5–9 PM | monday: Closed | tuesday: 11:30 AM–2:30 PM, 5–9 PM
+   Types: 음식점
+   place_id: ChIJX2v6olSNaDURi1XchxcGfA4
+
+4. **스시미르네 본점** (4.1★)
+   1 층 100 호, 75 Sesil-ro, Haeundae-gu, Busan, South Korea
+   Hours: wednesday: 11:30 AM–2:30 PM, 5–9:30 PM | thursday: 11:30 AM–2:30 PM, 5–9:30 PM | friday: 11:30 AM–2:30 PM, 5–9:30 PM | saturday: 11:30 AM–3 PM, 5–9:30 PM | sunday: 11:30 AM–3 PM, 5–9:30 PM | monday: 11:30 AM–2:30 PM, 5–9:30 PM | tuesday: 11:30 AM–2:30 PM, 5–9:30 PM
+   Types: 스시/초밥집
+   place_id: ChIJoUqoAQuNaDURmNUeMcBVgOw
+
+5. **천상일식** (4.9★)
+   South Korea, Busan, Haeundae-gu, Centum 3-ro, 센텀스퀘어, 201호
+   +82 50-71339-8650
+   Hours: wednesday: 11:30 AM–10 PM | thursday: 11:30 AM–10 PM | friday: 11:30 AM–10 PM | saturday: 11:30 AM–10 PM | sunday: 11:30 AM–10 PM | monday:
+### 장산역 초밥
+## Google Maps: "장산역 초밥" (2 results)
+
+
+1. **용이초밥 장산점 회전초밥전문점 (Yong-i Sushi Jangsan Branch - Conveyor Belt Sushi Restauran)** (4.4★)
+   South Korea, Busan, Haeundae-gu, Haeun-daero, 814
+   Hours: wednesday: 11 AM–10 PM | thursday: 11 AM–10 PM | friday: 11 AM–10 PM | saturday: 11 AM–10 PM | sunday: 11 AM–10 PM | monday: 11 AM–10 PM | tuesday: 11 AM–10 PM
+   Types: 일본 음식점
+   place_id: ChIJZ-SR1oyNaDURvvuRPW25JRs
+
+2. **마마초밥 장산역점** (5★)
+   South Korea, KR 부산광역시 해운대구 세실로 86 대천빌딩, 마마초밥 장산역점, 103호
+   +82 51-703-8333
+   Types: 음식점
+   place_id: ChIJrRBBnniNaDURoET4KaMwK9g
+### 장산역 연어덮밥
+## Google Maps Place Details: 장산역 연어덮밥
+
+1. **양산도해운대장산점** (4.7★)
+   Busan, South Korea
+   Types: 음식점
+   place_id: ChIJLTTlhm2NaDURVjnqSYXjH8g

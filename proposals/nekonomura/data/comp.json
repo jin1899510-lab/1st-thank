@@ -1,0 +1,2249 @@
+[
+ {
+  "id": "1348840744",
+  "name": "고투스시 해운대본점",
+  "conv": [
+   "단체 이용 가능",
+   "포장",
+   "배달",
+   "무선 인터넷",
+   "남/녀 화장실 구분",
+   "유아의자",
+   "대기공간",
+   "예약"
+  ],
+  "micro": [
+   "넓고 깔끔한 분위기에서 즐기는 스시"
+  ],
+  "reviews": 3499,
+  "imgReviews": 2832,
+  "coupon": 1,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "장산역 스시 맛집! 부산 해운대 좌동, 장산역 3분 거리(도보)에 위치한\n\n 60가지 모든 스시가 1피스 1450원 균일가인 가성비와 퀄리티가 좋은 스시 전문점 고투스시입니다.\n\n 자연산 및 고급어종 포함 60여 가",
+  "images": 103,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    3215
+   ],
+   [
+    "재료가 신선해요",
+    2430
+   ],
+   [
+    "가성비가 좋아요",
+    2109
+   ],
+   [
+    "매장이 넓어요",
+    1105
+   ],
+   [
+    "특별한 메뉴가 있어요",
+    1040
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "430m"
+ },
+ {
+  "id": "33078218",
+  "name": "스시미르네 본점",
+  "conv": [
+   "단체 이용 가능",
+   "포장",
+   "남/녀 화장실 구분",
+   "무선 인터넷",
+   "배달",
+   "유아의자",
+   "대기공간",
+   "예약",
+   "간편결제",
+   "주차"
+  ],
+  "micro": [
+   "장어덮밥으로 느끼는 고급스러운 한 끼"
+  ],
+  "reviews": 3784,
+  "imgReviews": 685,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "매년 [ 2020~2026 KCIA 딜리버리 푸드 (7년 연속)2023~2026 KCIA 외식업 (4년 연속)\n부산 해운대구 초밥 부문 우수업체 선정 ]\n한국소비자평가 에서 우수한 평가를 받고 있는 스시미르네입니다.",
+  "images": 19,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    1957
+   ],
+   [
+    "재료가 신선해요",
+    970
+   ],
+   [
+    "친절해요",
+    543
+   ],
+   [
+    "매장이 넓어요",
+    514
+   ],
+   [
+    "매장이 청결해요",
+    392
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "460m"
+ },
+ {
+  "id": "12079016",
+  "name": "동일참치본점",
+  "conv": [
+   "주차"
+  ],
+  "micro": null,
+  "reviews": 138,
+  "imgReviews": 38,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": false
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "부산 해운대 신도시점이 본점입니다.\r\n\r\nMBC  공감특별한 세상  에 출현하신 실장님 겸 사장님이신 김동일 실장님의 존암을따 동일참치가 탄생되었습니다.\r\n김동일 실장님은 해운대 신도시 본점에서 만나보실수 있습니다.",
+  "images": 3,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    52
+   ],
+   [
+    "재료가 신선해요",
+    32
+   ],
+   [
+    "친절해요",
+    30
+   ],
+   [
+    "특별한 메뉴가 있어요",
+    18
+   ],
+   [
+    "매장이 넓어요",
+    16
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "610m"
+ },
+ {
+  "id": "1878736207",
+  "name": "세츠나",
+  "conv": [
+   "포장",
+   "배달",
+   "남/녀 화장실 구분",
+   "예약"
+  ],
+  "micro": [
+   "세츠나마끼로 맛보는 정통 이자카야"
+  ],
+  "reviews": 3218,
+  "imgReviews": 2386,
+  "coupon": 1,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "맛으로 기억되는 스시, 장산 맛집 세츠나\n'장산에 이런 연어집이 있었나?'\n\n이런 반응이 나올 때마다 생각해요\n스시 한 점에도 분명 기준이 있죠\n비싸지 않아도, 분위기가 없어도\n\n'다시 찾고 싶은 맛이면 충분해요'\n",
+  "images": 20,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    3013
+   ],
+   [
+    "재료가 신선해요",
+    1613
+   ],
+   [
+    "인테리어가 멋져요",
+    1320
+   ],
+   [
+    "친절해요",
+    1044
+   ],
+   [
+    "특별한 메뉴가 있어요",
+    890
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "430m"
+ },
+ {
+  "id": "1899250877",
+  "name": "용이초밥 해운대장산중동점",
+  "conv": [
+   "단체 이용 가능",
+   "배달",
+   "남/녀 화장실 구분",
+   "주차"
+  ],
+  "micro": null,
+  "reviews": 7276,
+  "imgReviews": 5146,
+  "coupon": 1,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": true,
+  "desc": "장산역 5번출구에서 1분거리!\n\n@ 부산광역시 초밥 부문 1위 용이초밥\n@ 전 지점 직영 운영으로 언제 어디서나 동일한 맛과 서비스\n\n※ 지점별 모두 언제나 가성비 값 초밥 (다양한 초밥 종류!)\n※ 매일 신선한 재",
+  "images": 52,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    6467
+   ],
+   [
+    "재료가 신선해요",
+    4611
+   ],
+   [
+    "친절해요",
+    3773
+   ],
+   [
+    "가성비가 좋아요",
+    3427
+   ],
+   [
+    "매장이 청결해요",
+    2100
+   ]
+  ],
+  "menus": [
+   [
+    "용이세트14p(14P)",
+    "16000"
+   ],
+   [
+    "연어세트 13p(13P)",
+    "17000"
+   ],
+   [
+    "소고기세트   8p(8P)",
+    "14000"
+   ],
+   [
+    "물고기세트 14p(14P)",
+    "20000"
+   ],
+   [
+    "제유세트 12p(12P)",
+    "11500"
+   ],
+   [
+    "새우모둠세트 14p(14p)",
+    "19000"
+   ]
+  ],
+  "aiBriefing": true,
+  "dist": "240m"
+ },
+ {
+  "id": "1570853621",
+  "name": "스시타이요",
+  "conv": [
+   "포장",
+   "무선 인터넷",
+   "단체 이용 가능",
+   "남/녀 화장실 구분",
+   "배달",
+   "예약",
+   "유아의자",
+   "주차"
+  ],
+  "micro": [
+   "숙성 연어의 풍미가 살아있는 스시"
+  ],
+  "reviews": 1031,
+  "imgReviews": 731,
+  "coupon": 2,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": false
+  },
+  "booking": true,
+  "order": {
+   "isPickup": false,
+   "isDelivery": false
+  },
+  "baemin": false,
+  "desc": "안녕하세요 해운대 맛집 스시타이요 입니다.\n\n저희 스시타이요는 고퀄리티 합리적인 가격에 가성비 좋은 음식을 제공하는 해운대 스시를 목표로 하고있습니다.\n\n디지털 온누리 상품권, 상생페이백 사용 가능합다.\n\n<찾아오시",
+  "images": 40,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    938
+   ],
+   [
+    "재료가 신선해요",
+    673
+   ],
+   [
+    "매장이 넓어요",
+    433
+   ],
+   [
+    "친절해요",
+    430
+   ],
+   [
+    "인테리어가 멋져요",
+    379
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "260m"
+ },
+ {
+  "id": "2092772490",
+  "name": "코마치",
+  "conv": null,
+  "micro": [
+   "다양한 술과 어울리는 안주의 조화"
+  ],
+  "reviews": 170,
+  "imgReviews": 148,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": false,
+   "isDelivery": false
+  },
+  "baemin": false,
+  "desc": "해운대 장산 이자카야 코마치\n\n해운대 장산에 위치한 트렌디한 일식요리 이자카야 코마치입니다.\n장산에서 나고 자라며 '언젠가 이 동네에 분위기 좋은 이자카야를 열고 싶다'는 꿈에서 코마치는 시작되었습니다.\n\n수년간 일",
+  "images": 5,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    165
+   ],
+   [
+    "특별한 메뉴가 있어요",
+    87
+   ],
+   [
+    "인테리어가 멋져요",
+    82
+   ],
+   [
+    "친절해요",
+    76
+   ],
+   [
+    "술이 다양해요",
+    72
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "670m"
+ },
+ {
+  "id": "1618286126",
+  "name": "쿠우쿠우 해운대점",
+  "conv": [
+   "남/녀 화장실 구분",
+   "단체 이용 가능",
+   "예약",
+   "무선 인터넷",
+   "대기공간",
+   "유아의자",
+   "간편결제",
+   "주차"
+  ],
+  "micro": null,
+  "reviews": 1806,
+  "imgReviews": 1184,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": false,
+   "isDelivery": false
+  },
+  "baemin": false,
+  "desc": "※포켓몬 이벤트 - 싸리용 3종 아크릴 수저받침 판매매장!\n\n*200가지가 넘는 다양한 메뉴로 골라 먹는 재미가 가득한 쿠우쿠우 해운대점에서 행복한 시간을 보내시기 바랍니다.\n\n*단체 버스 주차가능 합니다.\n 단체손",
+  "images": 90,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    1560
+   ],
+   [
+    "메뉴 구성이 알차요",
+    988
+   ],
+   [
+    "재료가 신선해요",
+    927
+   ],
+   [
+    "매장이 넓어요",
+    907
+   ],
+   [
+    "친절해요",
+    425
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "300m"
+ },
+ {
+  "id": "2000640808",
+  "name": "고래상회",
+  "conv": [
+   "단체 이용 가능",
+   "포장",
+   "배달",
+   "예약",
+   "무선 인터넷",
+   "남/녀 화장실 구분",
+   "유아의자",
+   "반려동물 동반",
+   "주차"
+  ],
+  "micro": [
+   "고급모듬회로 맛보는 해산물의 진수"
+  ],
+  "reviews": 367,
+  "imgReviews": 311,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": false
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "신선한 횟감을 산지 직송으로 저렴하게 드실 수 있는 곳입니다.",
+  "images": 3,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    352
+   ],
+   [
+    "재료가 신선해요",
+    278
+   ],
+   [
+    "친절해요",
+    157
+   ],
+   [
+    "양이 많아요",
+    145
+   ],
+   [
+    "가성비가 좋아요",
+    123
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "660m"
+ },
+ {
+  "id": "1221800255",
+  "name": "육회바른연어 부산장산점",
+  "conv": null,
+  "micro": null,
+  "reviews": 1564,
+  "imgReviews": 1088,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": false
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": true,
+  "desc": "육회&연어 최고의 맛집 육회바른연어 부산장산점 입니다.\n육회바른연어 만의 시그니처 메뉴들을 만나보세요.",
+  "images": 5,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    1512
+   ],
+   [
+    "가성비가 좋아요",
+    649
+   ],
+   [
+    "친절해요",
+    500
+   ],
+   [
+    "매장이 청결해요",
+    451
+   ],
+   [
+    "인테리어가 멋져요",
+    390
+   ]
+  ],
+  "menus": [
+   [
+    "육회덮밥",
+    "8900"
+   ],
+   [
+    "연어덮밥",
+    "9900"
+   ],
+   [
+    "들기름육회막국수",
+    "10900"
+   ],
+   [
+    "육회쫄면",
+    "10900"
+   ],
+   [
+    "불닭마요연어깍두기",
+    "16900"
+   ],
+   [
+    "숯불닭고기덮밥",
+    "10400"
+   ]
+  ],
+  "aiBriefing": true,
+  "dist": "170m"
+ },
+ {
+  "id": "37746905",
+  "name": "백식당 본점",
+  "conv": [
+   "포장",
+   "무선 인터넷",
+   "남/녀 화장실 구분",
+   "유아의자",
+   "배달",
+   "주차"
+  ],
+  "micro": [
+   "부드러운 스테이크덮밥의 만족감"
+  ],
+  "reviews": 945,
+  "imgReviews": 202,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "@주차안내@\n\n삼정코아상가주차장(지하)에 주차 하시면 1시간 주차권 제공됩니다.\n주말에는 주차 무료입니다.\n\n@매장안내@\n공지사항에 이벤트진행 확인하고 오시면\n더욱더 저렴하게 식사하실 수 있습니다.",
+  "images": 11,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    523
+   ],
+   [
+    "친절해요",
+    190
+   ],
+   [
+    "재료가 신선해요",
+    150
+   ],
+   [
+    "혼밥하기 좋아요",
+    133
+   ],
+   [
+    "특별한 메뉴가 있어요",
+    132
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "190m"
+ },
+ {
+  "id": "1034097539",
+  "name": "호식당",
+  "conv": [
+   "무선 인터넷",
+   "남/녀 화장실 구분",
+   "포장",
+   "배달",
+   "주차"
+  ],
+  "micro": [
+   "신선함이 담긴 연어덮밥의 풍미"
+  ],
+  "reviews": 394,
+  "imgReviews": 110,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": false
+  },
+  "booking": true,
+  "order": {
+   "isPickup": true,
+   "isDelivery": false
+  },
+  "baemin": false,
+  "desc": "경동지플러스 상가 지하주차장 2시간 가능합니다.\n밥,카레 리필가능합니다~^^\n전메뉴 포장가능합니다~^^",
+  "images": 15,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    294
+   ],
+   [
+    "친절해요",
+    173
+   ],
+   [
+    "매장이 청결해요",
+    120
+   ],
+   [
+    "혼밥하기 좋아요",
+    76
+   ],
+   [
+    "특별한 메뉴가 있어요",
+    75
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": null,
+  "dist": "20m"
+ },
+ {
+  "id": "1573719918",
+  "name": "네코노무라",
+  "conv": [
+   "포장",
+   "배달",
+   "예약",
+   "무선 인터넷",
+   "단체 이용 가능",
+   "남/녀 화장실 구분",
+   "주차"
+  ],
+  "micro": [
+   "탱탱한 우동면과 깊은 국물의 조화"
+  ],
+  "reviews": 18,
+  "imgReviews": 15,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": false
+  },
+  "booking": true,
+  "order": {
+   "isPickup": false,
+   "isDelivery": false
+  },
+  "baemin": false,
+  "desc": "연어도 간장새우도, 덮밥도 국수도 한 상에.\n부산 해운대 장산의 네코노무라입니다.\n\n매장에서 즐기는 14,000원 한상차림으로 취향에 맞는 한 끼를 골라보세요.\n간장새우&연어덮밥, 연어덮밥, 간장새우덮밥, 제육덮밥에",
+  "images": 16,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    16
+   ],
+   [
+    "재료가 신선해요",
+    12
+   ],
+   [
+    "혼밥하기 좋아요",
+    8
+   ],
+   [
+    "인테리어가 멋져요",
+    7
+   ],
+   [
+    "친절해요",
+    7
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": null,
+  "dist": "10m"
+ },
+ {
+  "id": "1956805313",
+  "name": "명희씨쿡",
+  "conv": [
+   "포장",
+   "배달",
+   "남/녀 화장실 구분",
+   "주차"
+  ],
+  "micro": null,
+  "reviews": 1,
+  "imgReviews": 1,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": true,
+  "desc": "[명희씨쿡]\n안녕하세요.\n항상 음식을 사랑하고 메뉴마다 진심인 명희씨는 최선을 다해 고객님께 최고의 맛으로 보답하겠습니다. 믿고 먹는 명희씨쿡과 함께해요:)\n\n-\n- 모리모리 덮밥도시락 본점\n- 참치포차 본점",
+  "images": 8,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    1
+   ],
+   [
+    "재료가 신선해요",
+    1
+   ],
+   [
+    "친절해요",
+    1
+   ],
+   [
+    "양이 많아요",
+    1
+   ],
+   [
+    "특별한 메뉴가 있어요",
+    1
+   ]
+  ],
+  "menus": [
+   [
+    "모리1등공신~)))생연어덮밥(생연어)",
+    "19900"
+   ],
+   [
+    "모리1등공신~)))생연어덮밥(생연어더많이)",
+    "23900"
+   ],
+   [
+    "[품절대란]연연덮밥(기본)",
+    "19900"
+   ],
+   [
+    "[품절대란]연연덮밥(생연어더많이)",
+    "23900"
+   ],
+   [
+    "[품절대란]연연덮밥(연어장더많이)",
+    "23900"
+   ],
+   [
+    "수제치즈함박덮밥(기본)",
+    "14000"
+   ]
+  ],
+  "aiBriefing": null,
+  "dist": "370m"
+ },
+ {
+  "id": "1529321926",
+  "name": "양산도 해운대장산점",
+  "conv": [
+   "단체 이용 가능",
+   "예약",
+   "무선 인터넷",
+   "포장",
+   "배달",
+   "남/녀 화장실 구분",
+   "유아의자",
+   "주차"
+  ],
+  "micro": null,
+  "reviews": 2317,
+  "imgReviews": 1650,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": true,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": false,
+   "isDelivery": false
+  },
+  "baemin": false,
+  "desc": "나고야식 민물장어덮밥 히츠마부시 전문점 '양산도' 입니다.\n\n부산을 대표하는 장어덮밥 맛집!\n양산도는 1956년부터 오직 민물장어 만을 연구하고 유통부터 프랜차이즈 외식업까지 모든 라인을 관리하고 있습니다!\n\n67년",
+  "images": 15,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    2113
+   ],
+   [
+    "친절해요",
+    1272
+   ],
+   [
+    "재료가 신선해요",
+    1135
+   ],
+   [
+    "매장이 청결해요",
+    698
+   ],
+   [
+    "인테리어가 멋져요",
+    544
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "680m"
+ },
+ {
+  "id": "1238543225",
+  "name": "서민불백",
+  "conv": null,
+  "micro": [
+   "풍성한 메뉴로 즐기는 한식의 정석"
+  ],
+  "reviews": 1021,
+  "imgReviews": 104,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": false
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "해운대 맛집 서민불백 불백 돈까스 돌솥비빔밥 전문",
+  "images": 3,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    387
+   ],
+   [
+    "가성비가 좋아요",
+    365
+   ],
+   [
+    "혼밥하기 좋아요",
+    263
+   ],
+   [
+    "양이 많아요",
+    132
+   ],
+   [
+    "친절해요",
+    70
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "260m"
+ },
+ {
+  "id": "1701742994",
+  "name": "벳남구쁘 본점",
+  "conv": [
+   "포장",
+   "무선 인터넷",
+   "유아의자",
+   "배달",
+   "간편결제"
+  ],
+  "micro": [
+   "깔끔한 맛으로 전하는 정성"
+  ],
+  "reviews": 2386,
+  "imgReviews": 2113,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "양산부산대택지에서 직접오픈운영후 연화리로 본점을 옮긴후 양산점은 기술전수후 새로이 오픈하였습니다. 그뒤 연화리에서 해운대장산으로 본점이전후 운영하고있습니다. 10년째 베트남음식에 미쳐 개발.연구 노력하고 있는 벳남구",
+  "images": 17,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    2254
+   ],
+   [
+    "재료가 신선해요",
+    1340
+   ],
+   [
+    "인테리어가 멋져요",
+    1304
+   ],
+   [
+    "양이 많아요",
+    1063
+   ],
+   [
+    "현지 맛에 가까워요",
+    971
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "250m"
+ },
+ {
+  "id": "2051003949",
+  "name": "돈부리호야",
+  "conv": [
+   "무선 인터넷",
+   "남/녀 화장실 구분"
+  ],
+  "micro": [
+   "불향 가득 우삼겹덮밥의 유혹"
+  ],
+  "reviews": 45,
+  "imgReviews": 41,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": false
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "안녕하세요 일본 가정식 전문점 돈부리 호야 입니다.\n정형화 된 음식이 아닌 전문 쉐프가 직접 조리하는 일본 가정요리 전문점 입니다.\n남녀 노소 누구나 좋아할수 있고, 편한 분위기에서 식사가 가능하며. 간단하고 든든한",
+  "images": 17,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    45
+   ],
+   [
+    "재료가 신선해요",
+    31
+   ],
+   [
+    "특별한 메뉴가 있어요",
+    26
+   ],
+   [
+    "양이 많아요",
+    22
+   ],
+   [
+    "혼밥하기 좋아요",
+    21
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "120m"
+ },
+ {
+  "id": "1181660050",
+  "name": "송씨반점 해운대본점",
+  "conv": [
+   "단체 이용 가능",
+   "포장",
+   "배달",
+   "예약",
+   "무선 인터넷",
+   "남/녀 화장실 구분",
+   "간편결제",
+   "주차"
+  ],
+  "micro": [
+   "바삭한 탕수육과 함께하는 중식 여행"
+  ],
+  "reviews": 984,
+  "imgReviews": 803,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": false
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "중식 맛의 기준이 되겠습니다.",
+  "images": 29,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    947
+   ],
+   [
+    "재료가 신선해요",
+    597
+   ],
+   [
+    "친절해요",
+    400
+   ],
+   [
+    "양이 많아요",
+    400
+   ],
+   [
+    "매장이 청결해요",
+    245
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "530m"
+ },
+ {
+  "id": "2099104730",
+  "name": "히포히포 해운대",
+  "conv": [
+   "포장",
+   "단체 이용 가능",
+   "배달",
+   "무선 인터넷",
+   "유아의자",
+   "예약",
+   "주차"
+  ],
+  "micro": [
+   "베트남 현지 맛 그대로의 감동 재현"
+  ],
+  "reviews": 1042,
+  "imgReviews": 803,
+  "coupon": 2,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": false,
+   "isDelivery": false
+  },
+  "baemin": false,
+  "desc": "[해운대에서 만나는 아시안 비스트로 베트남음식 전문점]\n\n해운대의 아름다운 바다와 다채로운 즐길 거리가 가득한 중심에서 만나는 감각적인 아시안 비스트로 히포히포 해운대점에 오신 것을 환영합니다. 저희 매장은 해운대 ",
+  "images": 8,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    988
+   ],
+   [
+    "재료가 신선해요",
+    568
+   ],
+   [
+    "양이 많아요",
+    554
+   ],
+   [
+    "인테리어가 멋져요",
+    512
+   ],
+   [
+    "매장이 넓어요",
+    376
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "650m"
+ },
+ {
+  "id": "1092573253",
+  "name": "역 장산점",
+  "conv": [
+   "단체 이용 가능",
+   "포장",
+   "배달",
+   "예약",
+   "무선 인터넷",
+   "남/녀 화장실 구분"
+  ],
+  "micro": [
+   "닭발과 주먹밥의 매콤달콤 조합"
+  ],
+  "reviews": 347,
+  "imgReviews": 216,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": false
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "이번 역은 끝없이 달려온 당신에게 낭만을 실어줄 네번째 '역', '역'(장산점)입니다.\n\n'역'의 4호차 '역' 장산점과 함께하시는, 함께하실 승차객분들의 시간, 쌓여갈 추억들이 무한이 소중하고, 낭만으로 남을 수 ",
+  "images": 8,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    314
+   ],
+   [
+    "인테리어가 멋져요",
+    173
+   ],
+   [
+    "재료가 신선해요",
+    139
+   ],
+   [
+    "양이 많아요",
+    120
+   ],
+   [
+    "친절해요",
+    111
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "510m"
+ },
+ {
+  "id": "2055548603",
+  "name": "시먼당 장산역점",
+  "conv": [
+   "포장",
+   "단체 이용 가능",
+   "유아의자",
+   "남/녀 화장실 구분",
+   "대기공간",
+   "간편결제",
+   "주차"
+  ],
+  "micro": [
+   "시그니처 곱창국수로 속풀이 한 끼"
+  ],
+  "reviews": 222,
+  "imgReviews": 205,
+  "coupon": 1,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": false,
+   "isDelivery": false
+  },
+  "baemin": false,
+  "desc": "시먼당 해운대장산점 - 대만의 정취를 담은 한 그릇\n\n안녕하세요. 시먼당 해운대장산점입니다.\n저희는 대만 대표 거리 시먼딩(西門町)의 감성을 그대로 담아낸 정통 대만 가정식 전문점으로,\n현지 셰프의 레시피로 만든 진",
+  "images": 25,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    191
+   ],
+   [
+    "인테리어가 멋져요",
+    122
+   ],
+   [
+    "재료가 신선해요",
+    94
+   ],
+   [
+    "친절해요",
+    71
+   ],
+   [
+    "혼밥하기 좋아요",
+    55
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "550m"
+ },
+ {
+  "id": "1282831179",
+  "name": "키코우",
+  "conv": [
+   "예약",
+   "무선 인터넷",
+   "남/녀 화장실 구분"
+  ],
+  "micro": [
+   "조용히 즐기는 일본식 선술집의 정취"
+  ],
+  "reviews": 30,
+  "imgReviews": 26,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": false
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "가정식 이자카야 '키코우'\n기쁨과 행복을 선사하는 공간\n\n기쁠 '희'(喜) 행복 '행'(幸) 이것을 일본말로는 '키코우'(きこう)라 부릅니다.\n- 바람이 분다 당신이 좋다 (이병률 여행 산문집) 中\n\n화려한 요리보다",
+  "images": 1,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    27
+   ],
+   [
+    "친절해요",
+    15
+   ],
+   [
+    "가성비가 좋아요",
+    13
+   ],
+   [
+    "재료가 신선해요",
+    12
+   ],
+   [
+    "인테리어가 멋져요",
+    12
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "440m"
+ },
+ {
+  "id": "1989086684",
+  "name": "샤브20 부산해운대점",
+  "conv": [
+   "단체 이용 가능",
+   "주차",
+   "예약",
+   "무선 인터넷",
+   "남/녀 화장실 구분"
+  ],
+  "micro": null,
+  "reviews": 1513,
+  "imgReviews": 462,
+  "coupon": 1,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "샤브20 부산해운대점은 맛있고 건강하기 위해 노력합니다.\n샤브20은 진정으로 건강한 한끼를 위해 그저 좋은 음식이 아닌 환경과 자연의 힘이 깃든 음식만을 고집하겠습니다.\n샤브20의 최고급 소고기는 주문과 동시에 즉석",
+  "images": 36,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    1012
+   ],
+   [
+    "재료가 신선해요",
+    798
+   ],
+   [
+    "매장이 넓어요",
+    532
+   ],
+   [
+    "양이 많아요",
+    480
+   ],
+   [
+    "가성비가 좋아요",
+    412
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "440m"
+ },
+ {
+  "id": "1084253661",
+  "name": "백소정 해운대장산역점",
+  "conv": [
+   "포장",
+   "무선 인터넷",
+   "유아의자",
+   "남/녀 화장실 구분",
+   "배달",
+   "주차"
+  ],
+  "micro": null,
+  "reviews": 7586,
+  "imgReviews": 5728,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "백 번을 먹어도 정성스럽고\n푸짐한 음식에 항상 즐겁게\n머물다 갈 수 있는 장산역맛집,\n백소정 해운대장산역점입니다!\n\n장산역맛집, 해운대장산역점은 부산 해운대구 해운대로 802 1층 157호(좌동, 웅신시네아트)에 위",
+  "images": 38,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    6602
+   ],
+   [
+    "재료가 신선해요",
+    3228
+   ],
+   [
+    "매장이 청결해요",
+    3127
+   ],
+   [
+    "친절해요",
+    2993
+   ],
+   [
+    "양이 많아요",
+    2363
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "280m"
+ },
+ {
+  "id": "1719622535",
+  "name": "에바돈가츠 해운대장산점",
+  "conv": [
+   "주차",
+   "포장",
+   "배달"
+  ],
+  "micro": null,
+  "reviews": 382,
+  "imgReviews": 178,
+  "coupon": 1,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": false,
+   "isDelivery": false
+  },
+  "baemin": false,
+  "desc": "프리미엄 돈카츠를 합리적인 가격에, 에바돈가츠 해운대장산점]\n\n해운대 장산역 인근에서 맛있는 돈가스를 찾고 있다면? 바삭한 튀김옷, 부드러운 국내산 생등심, 다양하고 푸짐한 구성을 자랑하는 에바돈가츠 해운대장산점을 ",
+  "images": 20,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    309
+   ],
+   [
+    "친절해요",
+    152
+   ],
+   [
+    "재료가 신선해요",
+    126
+   ],
+   [
+    "양이 많아요",
+    107
+   ],
+   [
+    "매장이 청결해요",
+    102
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "200m"
+ },
+ {
+  "id": "1445559660",
+  "name": "멘야산다이메 해운대점",
+  "conv": [
+   "남/녀 화장실 구분",
+   "주차",
+   "포장",
+   "배달"
+  ],
+  "micro": null,
+  "reviews": 387,
+  "imgReviews": 67,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": true,
+   "isDelivery": false
+  },
+  "baemin": true,
+  "desc": "일본라멘 부산해운대점 맛집입니다~~~",
+  "images": 2,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    157
+   ],
+   [
+    "혼밥하기 좋아요",
+    100
+   ],
+   [
+    "친절해요",
+    43
+   ],
+   [
+    "재료가 신선해요",
+    32
+   ],
+   [
+    "특별한 메뉴가 있어요",
+    28
+   ]
+  ],
+  "menus": [
+   [
+    "돈코츠라멘 Ramen",
+    "11000"
+   ],
+   [
+    "카라구치라멘 Karakuchi Ramen",
+    "11500"
+   ],
+   [
+    "쿠로라멘 Black Ramen",
+    "11500"
+   ],
+   [
+    "츠케맨 Tsukemen",
+    "12500"
+   ],
+   [
+    "마제소바 Mazesoba",
+    "12500"
+   ],
+   [
+    "교자 Gyoza",
+    "5500"
+   ]
+  ],
+  "aiBriefing": null,
+  "dist": "300m"
+ },
+ {
+  "id": "31095323",
+  "name": "장산수제왕돈까스",
+  "conv": [
+   "단체 이용 가능",
+   "포장",
+   "주차"
+  ],
+  "micro": [
+   "추억을 되살리는 옛날 돈가스의 맛"
+  ],
+  "reviews": 1943,
+  "imgReviews": 268,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": false
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "",
+  "images": 0,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    846
+   ],
+   [
+    "가성비가 좋아요",
+    470
+   ],
+   [
+    "양이 많아요",
+    334
+   ],
+   [
+    "혼밥하기 좋아요",
+    303
+   ],
+   [
+    "친절해요",
+    240
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "280m"
+ },
+ {
+  "id": "31558284",
+  "name": "수제돈까스토마토",
+  "conv": [
+   "포장",
+   "남/녀 화장실 구분",
+   "주차"
+  ],
+  "micro": [
+   "단골이 증명하는 진짜 맛집"
+  ],
+  "reviews": 1240,
+  "imgReviews": 248,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": false
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "장산에서 오랜 시간 같은 자리에서 꾸준히 사랑받아온 수제돈까스토마토입니다.\n\n긴 시간 쌓아온 정성과 변함없는 맛으로\n돈까스와 함께하는 오므라이스, 스파게티등\n남녀노소 누구나 편하게 즐길 수 있는 다양한 메뉴를 준비하",
+  "images": 5,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    648
+   ],
+   [
+    "가성비가 좋아요",
+    328
+   ],
+   [
+    "혼밥하기 좋아요",
+    224
+   ],
+   [
+    "양이 많아요",
+    207
+   ],
+   [
+    "친절해요",
+    153
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "270m"
+ },
+ {
+  "id": "1993030021",
+  "name": "긴자카츠",
+  "conv": [
+   "단체 이용 가능",
+   "포장",
+   "남/녀 화장실 구분"
+  ],
+  "micro": [
+   "혼자도 좋은 카츠나베 한상차림"
+  ],
+  "reviews": 374,
+  "imgReviews": 124,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "장산역 맛집 돈가스 드시러 긴자카츠로 오세요",
+  "images": 1,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    282
+   ],
+   [
+    "혼밥하기 좋아요",
+    138
+   ],
+   [
+    "친절해요",
+    100
+   ],
+   [
+    "재료가 신선해요",
+    99
+   ],
+   [
+    "가성비가 좋아요",
+    79
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "180m"
+ },
+ {
+  "id": "2086352908",
+  "name": "뜨돈 부산장산역점",
+  "conv": [
+   "단체 이용 가능",
+   "포장",
+   "배달",
+   "예약",
+   "남/녀 화장실 구분",
+   "주차"
+  ],
+  "micro": null,
+  "reviews": 831,
+  "imgReviews": 799,
+  "coupon": 1,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": false,
+   "isDelivery": false
+  },
+  "baemin": false,
+  "desc": "운대 좌동 장산역 최고의 수제 돈가스 맛집, 뜨돈 부산장산역점!\n\n안녕하세요! 대구에서 줄 서서 먹는 진짜 수제 돈가스 명소, 드디어 부산 해운대 좌동에도 뜨돈 부산장산역점이 상륙했습니다! 지하철 장산역과 바로 인근",
+  "images": 14,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    768
+   ],
+   [
+    "매장이 넓어요",
+    419
+   ],
+   [
+    "재료가 신선해요",
+    391
+   ],
+   [
+    "양이 많아요",
+    375
+   ],
+   [
+    "친절해요",
+    344
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "200m"
+ },
+ {
+  "id": "2080356261",
+  "name": "경성경양식",
+  "conv": [
+   "단체 이용 가능",
+   "포장",
+   "예약",
+   "무선 인터넷",
+   "남/녀 화장실 구분",
+   "간편결제",
+   "주차"
+  ],
+  "micro": [
+   "매콤함이 더해진 오므라이스의 매력"
+  ],
+  "reviews": 117,
+  "imgReviews": 107,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "경양식 돈가스 전문점입니다. 한돈 생고기만 쓰며 숙성, 8가지 재료로 천연 염지하는 프리미엄 돈가스에 경양식 소스를 제공합니다. 군인, 소방관 10%할인 및 리뷰 이벤트 새우튀김 또는 음료수를 제공합니다. 수익의 일",
+  "images": 7,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    106
+   ],
+   [
+    "재료가 신선해요",
+    65
+   ],
+   [
+    "혼밥하기 좋아요",
+    58
+   ],
+   [
+    "친절해요",
+    58
+   ],
+   [
+    "양이 많아요",
+    49
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "270m"
+ },
+ {
+  "id": "1832266005",
+  "name": "23번지남산돈까스 NC백화점 해운대점",
+  "conv": null,
+  "micro": null,
+  "reviews": 675,
+  "imgReviews": 592,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "23번지 남산돈까스는 원조 남산 돈까스 전문점으로써 1992년 처음\n개업하여 현재 중구 소파로23번지에 남산 본점을 운영하고 있습니다.\n\n23번지 남산돈까스가 이번 리브랜딩을 통해 NC백화점 해운대점을 오픈하여 운영",
+  "images": 2,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    632
+   ],
+   [
+    "친절해요",
+    303
+   ],
+   [
+    "양이 많아요",
+    301
+   ],
+   [
+    "재료가 신선해요",
+    287
+   ],
+   [
+    "가성비가 좋아요",
+    194
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "360m"
+ },
+ {
+  "id": "1327575933",
+  "name": "김가네 해운대장산점",
+  "conv": [
+   "포장",
+   "배달"
+  ],
+  "micro": null,
+  "reviews": 236,
+  "imgReviews": 169,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": false
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": true,
+  "desc": "",
+  "images": 1,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    167
+   ],
+   [
+    "혼밥하기 좋아요",
+    157
+   ],
+   [
+    "재료가 신선해요",
+    35
+   ],
+   [
+    "친절해요",
+    27
+   ],
+   [
+    "매장이 청결해요",
+    22
+   ]
+  ],
+  "menus": [
+   [
+    "쫄면",
+    "9000"
+   ],
+   [
+    "김치말이국수(냉국수)",
+    "8500"
+   ],
+   [
+    "치킨마요덮밥",
+    "8500"
+   ],
+   [
+    "스팸김치볶음밥",
+    "9000"
+   ],
+   [
+    "라볶이",
+    "8000"
+   ],
+   [
+    "김가네김밥",
+    "4200"
+   ]
+  ],
+  "aiBriefing": null,
+  "dist": "290m"
+ },
+ {
+  "id": "1352918602",
+  "name": "사치문 해운대점",
+  "conv": [
+   "남/녀 화장실 구분",
+   "예약"
+  ],
+  "micro": [
+   "퀄리티로 승부하는 완벽한 맛의 조합"
+  ],
+  "reviews": 491,
+  "imgReviews": 366,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": false,
+   "isDelivery": false
+  },
+  "baemin": false,
+  "desc": "사치[sachi]부유한 호사의 느낌 이외에도 자연의 신선한재료를 기본으로 하는 요리\n문[moon]\n5성급호텔출신쉐프님들이 열정과 정성을다해 담아내기에 수준이 다른 요리를 만나보실수 있습니다\n\n사치는 하루종일 바쁜일상",
+  "images": 28,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    467
+   ],
+   [
+    "재료가 신선해요",
+    304
+   ],
+   [
+    "친절해요",
+    281
+   ],
+   [
+    "특별한 메뉴가 있어요",
+    161
+   ],
+   [
+    "메뉴 구성이 알차요",
+    148
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "840m"
+ },
+ {
+  "id": "1920403975",
+  "name": "쵸로쵸로",
+  "conv": [
+   "노키즈존"
+  ],
+  "micro": [
+   "가성비 최고의 일본식 술집"
+  ],
+  "reviews": 118,
+  "imgReviews": 104,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "저희 매장은 한식 일식 기반의 소요리와 가볍게 마실 수 있는 술들을 판매하는 매장입니다.",
+  "images": 5,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    110
+   ],
+   [
+    "술이 다양해요",
+    69
+   ],
+   [
+    "특별한 메뉴가 있어요",
+    49
+   ],
+   [
+    "가성비가 좋아요",
+    46
+   ],
+   [
+    "기본 안주가 좋아요",
+    44
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "700m"
+ },
+ {
+  "id": "1778313485",
+  "name": "오하코",
+  "conv": [
+   "예약",
+   "무선 인터넷",
+   "포장",
+   "배달"
+  ],
+  "micro": [
+   "신선한 모리아와세의 풍성한 맛"
+  ],
+  "reviews": 417,
+  "imgReviews": 337,
+  "coupon": 2,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": false,
+   "isDelivery": false
+  },
+  "baemin": false,
+  "desc": "'해운대 술집' 오하코 입니다.\n'해운대 좌동' '장산역'근처에 위치한 이자카야 입니다\n오하코 만의 다양한 메뉴와 '사케' '하이볼' 등도 맛보실수 있습니다 .\n음식을 만드는 과정도 '오픈주방' 이라 직접 신선도를 ",
+  "images": 3,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    388
+   ],
+   [
+    "친절해요",
+    185
+   ],
+   [
+    "특별한 메뉴가 있어요",
+    155
+   ],
+   [
+    "대화하기 좋아요",
+    155
+   ],
+   [
+    "인테리어가 멋져요",
+    137
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "680m"
+ },
+ {
+  "id": "1512414380",
+  "name": "국보집",
+  "conv": [
+   "포장",
+   "배달",
+   "무선 인터넷",
+   "남/녀 화장실 구분",
+   "주차"
+  ],
+  "micro": [
+   "비빔국수와 보쌈의 환상 조합"
+  ],
+  "reviews": 468,
+  "imgReviews": 92,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": false
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": false,
+  "desc": "안녕하세요. 2014년부터 현재까지 운영되고 있는 국보집입니다.\n 고객님들께 맛으로 즐거움과 행복을 드리고자 늘 노력하고 있으며, 앞으로도 변함없는 최선의 노력을 다하겠습니다.\n 저희 업체 또한 고객님들께서 맛있다 ",
+  "images": 9,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    220
+   ],
+   [
+    "혼밥하기 좋아요",
+    178
+   ],
+   [
+    "가성비가 좋아요",
+    105
+   ],
+   [
+    "친절해요",
+    96
+   ],
+   [
+    "재료가 신선해요",
+    82
+   ]
+  ],
+  "menus": [],
+  "aiBriefing": true,
+  "dist": "230m"
+ },
+ {
+  "id": "1197594224",
+  "name": "오봉집 해운대좌동점",
+  "conv": [
+   "단체 이용 가능",
+   "남/녀 화장실 구분",
+   "유아의자",
+   "포장",
+   "대기공간"
+  ],
+  "micro": null,
+  "reviews": 505,
+  "imgReviews": 353,
+  "coupon": 0,
+  "feed": {
+   "__typename": "HasFeed",
+   "blogExist": false,
+   "feedExist": true
+  },
+  "booking": true,
+  "order": {
+   "isPickup": null,
+   "isDelivery": null
+  },
+  "baemin": true,
+  "desc": "38년 전통 어머니의 손맛 직화낙지볶음, 가브리살 보쌈 맛집 오봉집 해운대좌동점\n\n- 낙지볶음: 큼직한 낙지와 불맛 가득한 직화 볶음, 매콤+감칠맛 양념이 중독적인 낙지볶음!\n- 보쌈: 돼지 1마리에 450g밖에 안",
+  "images": 12,
+  "vk": [
+   [
+    "음식이 맛있어요",
+    472
+   ],
+   [
+    "양이 많아요",
+    274
+   ],
+   [
+    "재료가 신선해요",
+    264
+   ],
+   [
+    "친절해요",
+    165
+   ],
+   [
+    "가성비가 좋아요",
+    158
+   ]
+  ],
+  "menus": [
+   [
+    "오봉집스페셜(직화낙지+보쌈+막국수)",
+    "62000"
+   ],
+   [
+    "직화낙지볶음(2인)",
+    "28000"
+   ],
+   [
+    "직화낙지볶음(3인)",
+    "42000"
+   ],
+   [
+    "직화낙지볶음(4인)",
+    "56000"
+   ],
+   [
+    "오봉집보쌈+막국수(소)",
+    "35000"
+   ],
+   [
+    "오봉집보쌈+막국수(중)",
+    "40000"
+   ]
+  ],
+  "aiBriefing": true,
+  "dist": "250m"
+ }
+]
