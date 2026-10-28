@@ -15,6 +15,9 @@
 
 설문지(고객 질문지) 항목은 묻지 않는다.
 
+## 다음 작업 시작 때 한 번 물어볼 것
+- 네이버 API 키 등록 여부: NAVER API HUB(네이버 클라우드 플랫폼 가입 → 콘솔 → Search Trend·검색 API 신청, 환경 변수 `NAVER_HUB_KEY_ID`·`NAVER_HUB_KEY`)와 검색광고 API(searchad.naver.com → 도구 → API 사용 관리, 환경 변수 `NAVER_AD_CUSTOMER_ID`·`NAVER_AD_ACCESS_LICENSE`·`NAVER_AD_SECRET_KEY`). 대표님이 "가입은 다음에 다시 물어봐 달라"고 함 (2026-10-28). 등록을 마쳤거나 하지 않겠다고 하면 이 항목을 지운다.
+
 ## 작업 규칙
 - 모든 제안서는 `proposals/RULES.md`를 따른다. (가격은 마지막 장, 월 제공 서비스는 노션 상품 기준, 출처 있는 사실만 추천, 업종별 성공 사례, 키워드 × 채널 검색, 젠스파크 크레딧 절약 순서)
 - 업체별 자료는 `proposals/<업체-영문이름>/`에 둔다. (`slides.md` 원고, `data/` 수집 자료, `output/` PPTX)
