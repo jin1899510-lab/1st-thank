@@ -23,3 +23,4 @@
 - 모든 제안서는 `proposals/RULES.md`를 따른다. (가격은 마지막 장, 월 제공 서비스는 노션 상품 기준, 출처 있는 사실만 추천, 업종별 성공 사례, 키워드 × 채널 검색, 구글·네이버 검색 트렌드, 젠스파크 크레딧 절약 순서)
 - 업체별 자료는 `proposals/<업체-영문이름>/`에 둔다. (`slides.md` 원고, `data/` 수집 자료, `output/` PPTX)
 - 예시: `proposals/dongi-jokbal-haeundae/`
+- 작업 순서는 `.claude/skills/proposal/SKILL.md`, 수집·점검 도구는 `tools/` (`collect.py`로 수집, `check_pptx.py`로 완성 PPTX 점검). 임시 폴더에 도구를 새로 만들지 말고 `tools/`를 고쳐 쓴다.
