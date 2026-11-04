@@ -1,10 +1,10 @@
 {
- "clinic_name": "천안시청 CNP차앤박피부과",
+ "clinic_name": "CNP차앤박피부과의원 천안시청점",
  "map_query": "CNP차앤박피부과 천안시청점",
  "page_title": "차앤박 천안시청 블로그 미리보기",
- "header_title": "천안시청 CNP차앤박피부과 · 10월 원고 5편",
- "byline": "천안시청 CNP차앤박피부과",
- "byline_sub": "2026. 10. 19. · 피부과 전문의 칼럼",
+ "header_title": "CNP차앤박피부과의원 천안시청점 · 원고 9편 (11월 원고 6~9번)",
+ "byline": "CNP차앤박피부과의원 천안시청점",
+ "byline_sub": "피부과 전문의 진료 · 피부 건강 정보",
  "avatar": "C",
  "posts": [
   {
@@ -26,6 +26,22 @@
   {
    "category": "리프팅",
    "short": "리프팅 선택"
+  },
+  {
+   "category": "레이저 · 색소",
+   "short": "겨울 레이저"
+  },
+  {
+   "category": "레이저 제모",
+   "short": "겨울 제모"
+  },
+  {
+   "category": "스킨부스터",
+   "short": "겨울 속건조"
+  },
+  {
+   "category": "여드름",
+   "short": "수능 후 여드름"
   }
  ],
  "done": [

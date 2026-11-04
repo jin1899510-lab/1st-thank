@@ -370,6 +370,294 @@
    "en": "A Korean woman in her 40s smiling softly while looking out a window with a cup of tea, natural signs of age, warm afternoon light, peaceful and confident mood",
    "ko": "찻잔을 들고 창밖을 보며 은은하게 웃는 40대 한국 여성, 자연스러운 나이, 따뜻한 오후빛, 편안하고 자신 있는 분위기",
    "text": null
+  },
+  "대표 썸네일 (겨울 레이저)": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "대표 썸네일",
+   "en": "A Korean woman in her 30s by a frosted winter window, soft cool daylight on her cheek, calm expression, wearing a cream knit sweater, large empty space in the upper third for a title, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "서리 낀 겨울 창가의 30대 한국 여성, 볼에 부드러운 겨울빛, 크림색 니트, 위쪽 3분의 1 제목 여백, 4:5 세로 실사 사진",
+   "text": "겨울이 레이저 시즌? / 시작 전 확인할 5가지"
+  },
+  "겨울 창가에서 거울 보는 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "도입 공감 장면",
+   "en": "A Korean woman in her 30s holding a small hand mirror near a winter window in the morning, looking at her cheekbone thoughtfully, face partly turned away, warm indoor light mixed with cool window light, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "겨울 아침 창가에서 손거울로 광대를 살피는 30대 한국 여성, 얼굴 일부만 보이게, 실내 따뜻한 빛과 창가 차가운 빛, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "새로 칠한 벽과 햇살 비유 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'갓 칠한 벽' 비유",
+   "en": "A freshly painted smooth white wall with a paint roller and tray resting on the floor, a strong beam of sunlight falling across part of the wall, minimal interior, no people, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "갓 칠한 매끈한 흰 벽과 바닥의 페인트 롤러·트레이, 벽 일부에 강한 햇살이 비침, 사람 없음, 4:5 세로 실사 사진",
+   "text": "갓 칠한 벽은 햇볕에 얼룩지기 쉽습니다"
+  },
+  "시술 전 체크 메모 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "시작 전 셀프 체크",
+   "en": "A hand with a pen ticking boxes on a small checklist notepad on a light wooden desk, a cup of tea and a hand mirror beside it, handwriting blurred and unreadable, soft daylight, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "밝은 원목 책상 위 작은 체크리스트 메모지에 펜으로 체크하는 손, 옆에 찻잔과 손거울, 글씨는 흐리게, 4:5 세로 실사 사진",
+   "text": "시작 전 셀프 체크"
+  },
+  "레이저 후 피할 물건 탑뷰 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'이것만은 하지 마십시오'",
+   "en": "Top-down flat lay on a grey surface: a rolled sauna towel, a jar of exfoliating scrub, a pack of peeling pads and a pair of tweezers, neatly arranged with space between, unbranded, soft even light, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "회색 바탕 탑뷰: 말아 둔 사우나 수건, 스크럽 통, 필링 패드, 족집게를 간격 두고 배치, 상표 없음, 4:5 세로 실사 사진",
+   "text": "레이저 후 피하기: 사우나 · 스크럽 · 딱지 떼기"
+  },
+  "난방된 방에서 보습하는 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'보습은 넉넉하게'",
+   "en": "A Korean woman in her 30s in a cozy heated living room at night applying moisturizer to her cheeks with her palms, a radiator and a mug in the soft background, warm lamp light, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "난방이 켜진 아늑한 거실에서 손바닥으로 볼에 보습제를 바르는 30대 한국 여성, 뒤로 라디에이터와 머그컵, 따뜻한 조명, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "모자와 목도리로 겨울 외출하는 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'모자·목도리로 가리기'",
+   "en": "A Korean woman walking on a bright winter street wearing a wool hat and a thick scarf pulled up to her chin, crisp sunlight, light snow on the ground, face partly covered by the scarf, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "밝은 겨울 거리에서 털모자와 턱까지 올린 두꺼운 목도리를 하고 걷는 한국 여성, 맑은 햇빛, 바닥에 옅은 눈, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "색소 상담 책상 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'피부과에서는' 상담 장면",
+   "en": "Over-the-shoulder view across a clean consultation desk, a doctor in a white coat visible only from the chest down holding a pen over a notepad, a patient's hands resting on the desk, no faces, no medical equipment, soft daylight, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "깔끔한 상담 책상 너머 어깨 뒤 구도, 흰 가운 의사는 가슴 아래만 보이고 메모장에 펜, 환자 손이 책상 위에, 얼굴·의료장비 없음, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "연말 일정 달력 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "Q&A 연말 일정",
+   "en": "A December desk calendar with a few dates circled in soft teal pen, a small wrapped gift and a sprig of pine beside it, warm light, dates and handwriting blurred and unreadable, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "청록 펜으로 날짜 몇 개에 동그라미를 친 12월 탁상 달력, 옆에 작은 선물상자와 솔가지, 글씨는 흐리게, 4:5 세로 실사 사진",
+   "text": "연말 일정, 상담 때 먼저 말씀해 주세요"
+  },
+  "대표 썸네일 (겨울 제모)": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "대표 썸네일",
+   "en": "A Korean woman in her 20s sitting on a bed in a cozy knit set, gently touching her smooth forearm, winter morning light, calm relaxed mood, large empty space in the upper third for a title, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "아늑한 니트 차림으로 침대에 앉아 매끈한 팔을 가볍게 만지는 20대 한국 여성, 겨울 아침빛, 위쪽 3분의 1 제목 여백, 4:5 세로 실사 사진",
+   "text": "털 관리, 왜 겨울에 시작할까"
+  },
+  "아침 욕실에서 면도하는 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "도입 공감 장면",
+   "en": "A Korean man in his 20s shaving his jaw with a razor in front of a bathroom mirror in the morning, white foam on his chin, face partly out of frame, soft morning light, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "아침 욕실 거울 앞에서 면도기로 턱을 면도하는 20대 한국 남성, 턱에 흰 거품, 얼굴 일부만, 부드러운 아침빛, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "자라는 단계가 다른 새싹 화분 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'털은 한꺼번에 자라지 않는다' 비유",
+   "en": "A long rectangular planter on a windowsill with seedlings at different growth stages, some tall sprouts, some just breaking the soil, some not yet visible, soft daylight, no people, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "창턱의 긴 화분에 키가 다른 새싹들, 일부는 길게 자라고 일부는 막 흙을 뚫고 일부는 아직 안 보임, 사람 없음, 4:5 세로 실사 사진",
+   "text": "털도 자라는 시기가 제각각입니다"
+  },
+  "햇볕 아래 검은 천과 흰 천 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'검은 색소가 열을 흡수' 비유",
+   "en": "A black cotton cloth and a white cotton cloth laid side by side on a sunny wooden deck, bright sunlight, simple composition, no people, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "햇볕 드는 나무 데크 위에 나란히 놓인 검은 면천과 흰 면천, 밝은 햇빛, 단순한 구도, 사람 없음, 4:5 세로 실사 사진",
+   "text": "검은 색은 빛을 더 많이 흡수합니다"
+  },
+  "제모 전 체크 메모 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "시작 전 셀프 체크",
+   "en": "A hand holding a pen over a small checklist card on a bedside table, a glass of water and a folded towel nearby, handwriting blurred and unreadable, soft lamp light, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "침대 옆 탁자 위 체크리스트 카드에 펜을 든 손, 옆에 물컵과 접힌 수건, 글씨는 흐리게, 부드러운 조명, 4:5 세로 실사 사진",
+   "text": "시작 전 셀프 체크"
+  },
+  "제모 기간 피할 물건 탑뷰 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'이것만은 하지 마십시오'",
+   "en": "Top-down flat lay on a light surface: wax strips, a pair of tweezers, a bottle of self-tanning lotion and a rolled sauna towel, neatly spaced, unbranded, soft even light, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "밝은 바탕 탑뷰: 왁스 스트립, 족집게, 태닝 로션병, 말아 둔 사우나 수건을 간격 두고 배치, 상표 없음, 4:5 세로 실사 사진",
+   "text": "제모 기간 피하기: 왁싱 · 족집게 · 태닝"
+  },
+  "다리에 보습제 바르는 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'시술 부위 보습'",
+   "en": "A Korean woman sitting on the edge of a bathtub applying body lotion to her lower leg with both hands, soft towel nearby, warm bathroom light, face out of frame, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "욕조 가장자리에 앉아 두 손으로 종아리에 바디로션을 바르는 한국 여성, 옆에 수건, 따뜻한 욕실 조명, 얼굴은 화면 밖, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "제모 일정 달력 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'시술 간격 지키기'",
+   "en": "A wall calendar showing several months with a few dates spaced evenly and marked with small teal dots, a pen hanging on a string, minimal room, writing blurred and unreadable, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "여러 달이 보이는 벽 달력에 일정 간격으로 찍힌 작은 청록 점, 끈에 매달린 펜, 글씨는 흐리게, 4:5 세로 실사 사진",
+   "text": "간격을 지켜 일정 관리"
+  },
+  "제모 상담 책상 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'피부과에서는' 상담 장면",
+   "en": "Over-the-shoulder view across a consultation desk, a doctor in a white coat visible only from the chest down pointing a pen at a simple body outline sketch on paper, the patient's hands on the desk, no faces, no medical equipment, soft daylight, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "상담 책상 너머 어깨 뒤 구도, 가슴 아래만 보이는 흰 가운 의사가 종이 위 단순한 인체 윤곽 스케치를 펜으로 가리킴, 환자 손, 얼굴·의료장비 없음, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "대표 썸네일 (겨울 속건조)": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "대표 썸네일",
+   "en": "A Korean woman in her 30s at an office desk by a window touching her cheek with her fingertips, slightly concerned expression, winter afternoon light, a laptop softly blurred, large empty space in the upper third for a title, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "겨울 오후 창가 사무실 책상에서 손끝으로 볼을 만지는 30대 한국 여성, 살짝 고민하는 표정, 흐린 노트북, 위쪽 3분의 1 제목 여백, 4:5 세로 실사 사진",
+   "text": "크림을 발라도 당긴다면?"
+  },
+  "오후 사무실에서 볼을 만지는 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "도입 공감 장면",
+   "en": "Close side view of a Korean woman in her 30s at her office desk in the afternoon lightly pressing her cheek with the back of her hand, a small tube of hand cream and a coffee cup on the desk, face partly cropped, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "오후 사무실 책상에서 손등으로 볼을 가볍게 누르는 30대 한국 여성 옆모습, 책상 위 핸드크림과 커피, 얼굴 일부 크롭, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "겉만 젖은 화분 흙 비유 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'겉건조와 속건조' 비유",
+   "en": "A finger digging into the soil of a potted plant, the top layer of soil dark and damp while the soil underneath is pale and dry, close-up, soft daylight, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "화분 흙을 손가락으로 파 보니 겉흙은 짙게 젖고 그 아래 흙은 밝고 말라 있는 클로즈업, 부드러운 자연광, 4:5 세로 실사 사진",
+   "text": "겉은 젖어도 속은 마를 수 있습니다"
+  },
+  "세 가지 유리병 성분 비유 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'성분에 따라 다르다' 비유",
+   "en": "Three small clear glass apothecary bottles in a row on a light stone surface, one with clear water, one with a pale translucent gel, one with a light milky liquid, no labels, soft side light, minimal, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "밝은 돌 위에 나란히 놓인 투명 유리병 세 개, 맑은 물·투명한 젤·옅은 우윳빛 액체, 라벨 없음, 미니멀, 4:5 세로 실사 사진",
+   "text": "수분 · 회복 · 탄력, 목적이 다릅니다"
+  },
+  "거울 앞에서 피부 살피는 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "셀프 체크",
+   "en": "A Korean woman in her 30s leaning toward a bathroom mirror examining her cheek under soft light, one hand lightly touching the skin, face partly turned away, calm, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "욕실 거울에 다가가 부드러운 조명 아래 볼을 살피는 30대 한국 여성, 한 손으로 피부를 가볍게 만짐, 얼굴 일부만, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "시술 후 피할 물건 탑뷰 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'이것만은 하지 마십시오'",
+   "en": "Top-down flat lay on a grey surface: a facial massage roller, a glass of red wine, a rolled sauna towel and a bottle of strong exfoliating toner, neatly spaced, unbranded, soft even light, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "회색 바탕 탑뷰: 얼굴 마사지 롤러, 레드와인 잔, 말아 둔 사우나 수건, 강한 각질 토너병을 간격 두고 배치, 상표 없음, 4:5 세로 실사 사진",
+   "text": "시술 직후 피하기: 마사지 · 음주 · 사우나"
+  },
+  "가습기 켠 겨울 방 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'실내 습도 맞추기'",
+   "en": "A white humidifier releasing soft mist on a bedside table in a warm winter bedroom, a glass of water and a jar of cream beside it, evening lamp light, no people, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "따뜻한 겨울 침실 협탁 위 은은한 수증기를 내는 흰 가습기, 옆에 물컵과 크림 통, 저녁 조명, 사람 없음, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "스킨부스터 상담 책상 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'피부과에서는' 상담 장면",
+   "en": "Over-the-shoulder view across a consultation desk, a doctor in a white coat visible only from the chest down writing on a notepad, the patient's hands holding a small mirror on the desk, no faces, no medical equipment, no syringes, soft daylight, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "상담 책상 너머 어깨 뒤 구도, 가슴 아래만 보이는 흰 가운 의사가 메모, 환자 손에 작은 거울, 얼굴·의료장비·주사기 없음, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "시술 일정 메모 달력 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "Q&A 일정",
+   "en": "A small desk calendar and a planner opened side by side on a light desk, a few dates marked with sticky notes, a pen on top, warm daylight, writing blurred and unreadable, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "밝은 책상 위 탁상 달력과 플래너를 나란히 펼침, 날짜 몇 곳에 포스트잇, 위에 펜, 글씨는 흐리게, 4:5 세로 실사 사진",
+   "text": "중요한 일정은 미리 말씀해 주세요"
+  },
+  "대표 썸네일 (수능 후 여드름)": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "대표 썸네일",
+   "en": "A Korean high school senior girl in a hoodie sitting at a tidy desk with closed textbooks stacked to the side, looking relieved and smiling slightly, late autumn afternoon light, large empty space in the upper third for a title, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "후드티를 입은 한국 고3 여학생이 교재를 덮어 쌓아 둔 정돈된 책상에 앉아 홀가분하게 살짝 웃음, 늦가을 오후빛, 위쪽 3분의 1 제목 여백, 4:5 세로 실사 사진",
+   "text": "수능이 끝났다면, 여드름 관리는 순서부터"
+  },
+  "시험 끝난 책상 정리하는 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "도입 공감 장면",
+   "en": "Hands stacking thick exam workbooks and loose test papers into a box on a student's desk, a pencil case and sticky notes scattered, warm evening lamp light, face out of frame, writing blurred and unreadable, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "학생 책상에서 두꺼운 문제집과 시험지를 상자에 정리하는 손, 필통과 포스트잇, 따뜻한 저녁 조명, 얼굴 없음, 글씨는 흐리게, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "모래사장 얕은 발자국과 깊은 발자국 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'얕은 자국과 깊은 자국' 비유",
+   "en": "Footprints on a sandy beach at the waterline, some shallow prints already softened by waves and one deep footprint clearly pressed into wet sand, low angle, soft daylight, no people, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "물가 모래사장의 발자국, 얕은 발자국은 파도에 흐려지고 깊게 찍힌 발자국 하나는 선명함, 낮은 앵글, 사람 없음, 4:5 세로 실사 사진",
+   "text": "얕은 자국은 옅어지고, 깊은 자국은 남습니다"
+  },
+  "거울 앞에서 턱선 살피는 학생 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "셀프 체크",
+   "en": "A Korean teenage boy in a school hoodie looking into a bathroom mirror and lightly touching his jawline, face partly turned away, clear skin, soft bathroom light, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "학교 후드티를 입은 한국 10대 남학생이 욕실 거울을 보며 턱선을 가볍게 만짐, 얼굴 일부만, 깨끗한 피부, 부드러운 조명, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "여드름 자가처치 금지 물건 탑뷰 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'이것만은 하지 마십시오'",
+   "en": "Top-down flat lay on a light surface: an unbranded metal skin extractor tool, a pack of strong peeling pads, an unlabeled pill blister pack and a smartphone showing a blurred social media feed, neatly spaced, soft even light, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "밝은 바탕 탑뷰: 상표 없는 금속 압출기, 강한 필링 패드, 라벨 없는 알약 포장, 흐린 SNS 화면의 스마트폰을 간격 두고 배치, 4:5 세로 실사 사진",
+   "text": "짜기 · 따라 하기 · 남의 약 금지"
+  },
+  "정돈된 침대와 새 베개 커버 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'수면 리듬 되찾기'",
+   "en": "A neatly made single bed with a fresh light grey pillowcase and a folded blanket, an alarm clock on the bedside table, calm night lamp light, a student's room, no people, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "새 연회색 베개 커버와 개어 둔 이불이 놓인 정돈된 싱글 침대, 협탁의 알람시계, 차분한 밤 조명, 학생 방, 사람 없음, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "거품 세안하는 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'세안은 거품으로 가볍게'",
+   "en": "A Korean teenager washing their face gently with soft white foam over a bathroom sink, eyes closed, fingertips gliding without pressing, face partly covered by foam and hands, soft light, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "욕실 세면대에서 부드러운 흰 거품으로 가볍게 세안하는 한국 10대, 눈 감음, 손끝으로 누르지 않고 굴림, 얼굴 일부는 거품과 손에 가려짐, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "보호자와 함께하는 상담 책상 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "'피부과에서는' 상담 장면",
+   "en": "Over-the-shoulder view across a consultation desk, a doctor in a white coat visible only from the chest down with a pen and notepad, a parent's hand resting on a teenager's shoulder on the other side, no faces, no medical equipment, soft daylight, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "상담 책상 너머 어깨 뒤 구도, 가슴 아래만 보이는 흰 가운 의사와 메모장, 맞은편에 학생 어깨에 손을 얹은 보호자, 얼굴·의료장비 없음, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "입학 전 일정 달력 사진": {
+   "kind": "photo",
+   "ratio": "4:5",
+   "use": "Q&A 입학 전 계획",
+   "en": "A wall calendar from December to March with a few dates marked by small teal stickers, a university brochure blurred on the desk below, warm daylight, writing blurred and unreadable, photorealistic photograph, clear natural skin with no visible acne or wounds",
+   "ko": "12월부터 3월까지 보이는 벽 달력에 작은 청록 스티커 몇 개, 아래 책상에 흐린 대학 안내 책자, 글씨는 흐리게, 4:5 세로 실사 사진",
+   "text": "입학 전까지, 순서를 정해 계획하기"
   }
  }
 }
