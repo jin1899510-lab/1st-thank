@@ -13,7 +13,9 @@ CFG = json.load(open(os.path.join(ROOT, 'config.json'), encoding='utf-8'))
 PJ = json.load(open(os.path.join(ROOT, 'prompts.json'), encoding='utf-8'))
 P = PJ['images']; NEG = PJ['negative']
 def full_en(p):
-    return f'{p["en"]}, {PJ["style_photo"] if p["kind"] == "photo" else PJ["style_illu"]}'
+    r = p['ratio'].split()[0]
+    shape = 'vertical' if r in ('4:5', '3:4', '2:3', '9:16') else 'square' if r == '1:1' else 'horizontal'
+    return f'{p["en"]}, {PJ["style_photo"] if p["kind"] == "photo" else PJ["style_illu"]}, {shape} {r} aspect ratio'
 out = os.path.join(ROOT, 'preview.html')
 files = sorted(glob.glob(os.path.join(ROOT, 'naver', '*.txt')))
 CATS = [p['category'] for p in CFG['posts']]
@@ -68,8 +70,9 @@ def render(text):
         m = re.match(r'^\[(.+?)\s*-\s*(.+)\]$', s)
         if s.startswith('[이미지'):
             flush(); cap = m.group(2) if m else s; pr = P.get(cap)
-            ar = (pr['ratio'].replace(':', '/') if pr else '16/9'); sq = ' sq' if pr and pr['ratio'] == '1:1' else ''
-            fig = f'<figure class="ph note{sq}"><div class="ph-box" style="aspect-ratio:{ar}"><span class="ph-tag">{"대표 썸네일" if sq else "이미지 자리"}</span><span>{e(cap)}</span></div>'
+            r = pr['ratio'].split()[0] if pr else '16:9'; ar = r.replace(':', '/')
+            thumb = cap.startswith('대표 썸네일'); sq = ' sq' if thumb or r != '16:9' else ''
+            fig = f'<figure class="ph note{sq}"><div class="ph-box" style="aspect-ratio:{ar}"><span class="ph-tag">{"대표 썸네일" if thumb else "이미지 자리"}</span><span>{e(cap)}</span></div>'
             if pr:
                 IMGS.append((cap, pr))
                 kind = '실사 사진' if pr['kind'] == 'photo' else '일러스트'
@@ -218,7 +221,7 @@ lines = [f"{CFG['clinic_name']} 블로그 · AI 이미지 프롬프트", "",
  "[사용법]",
  "· 영문 프롬프트가 미드저니, 챗GPT(DALL·E), 제미나이 등 대부분의 도구에서 결과가 안정적입니다. 한글만 되는 도구는 한글 프롬프트를 쓰세요.",
  "· '제외할 요소'는 네거티브 프롬프트 칸에 넣습니다. 칸이 없는 도구는 영문 프롬프트 끝에 'Avoid: ...' 형태로 붙이세요.",
- "· 미드저니는 끝에 --ar 16:9 --style raw 를 붙이면 블로그 사진 칸 비율과 맞고 덜 인위적으로 나옵니다.",
+ "· 미드저니는 끝에 --ar (각 이미지의 비율, 예: 4:5) --style raw 를 붙이면 블로그 사진 칸 비율과 맞고 덜 인위적으로 나옵니다.",
  "· 한글 글자는 AI가 자주 틀립니다. 글자는 비워 두고 캔바·미리캔버스에서 올리세요.",
  "· 같은 원고의 이미지는 같은 날 같은 도구로 만들면 색감이 통일됩니다.",
  "", "[어색하지 않게 만드는 점검]",

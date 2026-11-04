@@ -1,0 +1,256 @@
+{
+ "style_photo": "editorial lifestyle photograph, photorealistic, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 50mm lens, f/2.8, subtle film grain, vertical portrait framing",
+ "style_illu": "photorealistic photograph",
+ "negative": "illustration, cartoon, 3d render, CGI, plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, medical equipment, needles, syringes, blood, visible acne or lesions, burn wounds, blisters, warts, close-up of skin disease",
+ "images": {
+  "대표 썸네일 (환절기 몸 가려움)": {
+   "kind": "photo", "ratio": "4:5", "use": "대표 썸네일",
+   "en": "A Korean woman in her 30s sitting on the edge of a bed in a soft oatmeal knit cardigan, gently resting her palm on her forearm over the sleeve, face cropped from the nose down, a mug of warm tea on the side table, autumn morning light, large empty space in the upper third for a title",
+   "ko": "침대 끝에 앉아 니트 소매 위로 팔에 손바닥을 가볍게 얹은 30대 한국인 여성, 얼굴은 코 아래로 크롭, 협탁에 따뜻한 차, 가을 아침빛, 위쪽 3분의 1은 제목 넣을 빈 공간, 4:5 세로 실사 사진",
+   "text": "가을만 되면 몸이 가렵다면 / 샤워 습관부터 점검"
+  },
+  "팔을 긁는 출근길 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "도입부 공감 장면",
+   "en": "A Korean office worker in her late 20s standing on a subway platform in a beige trench coat, absent-mindedly scratching the back of her wrist under the sleeve, face turned away from the camera, soft morning light, shallow depth of field",
+   "ko": "지하철 승강장에서 베이지 트렌치코트를 입은 20대 후반 한국인 직장인이 소매 아래 손목을 무심코 긁는 장면, 얼굴은 카메라 반대쪽, 아침빛, 얕은 심도, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "피부 장벽 비유 벽돌담 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "피부 장벽 = 벽돌과 시멘트 비유",
+   "en": "Close-up of an old pale brick wall, the upper part with neat intact mortar between bricks, the lower part with mortar worn away leaving small gaps, a single water droplet running down into a gap, soft side light, textured and tactile",
+   "ko": "오래된 연한 벽돌담 클로즈업, 위쪽은 벽돌 사이 시멘트가 반듯하게 차 있고 아래쪽은 시멘트가 닳아 틈이 생김, 틈으로 물방울 하나가 흘러내림, 옆에서 비치는 부드러운 빛, 4:5 세로 실사 사진",
+   "text": "벽돌 = 각질세포 / 시멘트 = 지질"
+  },
+  "뜨거운 물 샤워 김 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "뜨거운 물과 긴 샤워 설명",
+   "en": "A modern Korean bathroom thick with steam, a chrome shower head running hot water, fogged glass partition, warm backlight glowing through the steam, no person visible",
+   "ko": "김이 가득 찬 깔끔한 욕실, 뜨거운 물이 나오는 샤워기, 뿌옇게 흐려진 유리 파티션, 김 사이로 들어오는 따뜻한 역광, 사람 없음, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "샤워 습관 셀프 체크 카드": {
+   "kind": "photo", "ratio": "4:5", "use": "셀프 체크리스트 카드 배경",
+   "en": "Top-down flat lay on light grey linen, one blank white paper card in the center, a rolled white bath towel and an unbranded pump bottle of body lotion at the edges, large empty space in the middle, soft diffused shadow, minimal",
+   "ko": "연회색 린넨 위 탑뷰, 가운데 빈 흰 카드 한 장, 가장자리에 말아 둔 흰 수건과 상표 없는 바디로션 펌프병, 가운데는 비어 있음, 은은한 그림자, 4:5 세로 실사 사진",
+   "text": "샤워 습관 셀프 체크 / 3개 이상이면 습관부터"
+  },
+  "미지근한 물 샤워기 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "1번 물 온도 항목",
+   "en": "Close-up of a Korean woman's inner wrist held under a gentle stream from a shower head to check the temperature, clear water without steam, white tiles behind, bright calm bathroom light",
+   "ko": "샤워기 물줄기에 손목 안쪽을 대 물 온도를 확인하는 한국인 여성의 손 클로즈업, 김 없는 맑은 물, 뒤에 흰 타일, 밝고 차분한 조명, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "손바닥 거품으로 씻는 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "4번 샤워 타월 대신 손으로",
+   "en": "Close-up of a Korean adult's palm holding a soft mound of white foam from an unbranded body wash, gliding gently over the opposite forearm, water droplets, warm bathroom light, no shower towel in frame",
+   "ko": "상표 없는 바디워시 거품을 손바닥에 올려 반대쪽 팔을 쓸어 주듯 씻는 한국인 성인 손 클로즈업, 물방울, 따뜻한 욕실 조명, 샤워 타월 없음, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "샤워 후 보습제 바르는 팔 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "5번 물기가 마르기 전 보습",
+   "en": "A Korean woman in her 30s in a light grey bathrobe pressing white unbranded lotion onto her slightly damp forearm with her palm, gentle pressing with no rubbing, face out of frame, softly blurred mirror behind",
+   "ko": "연회색 샤워 가운의 30대 한국인 여성이 살짝 촉촉한 팔에 상표 없는 흰 로션을 손바닥으로 눌러 바르는 장면, 문지르지 않음, 얼굴은 화면 밖, 뒤 거울은 흐릿하게, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "침실 가습기와 면 잠옷 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "잠자는 환경 점 목록",
+   "en": "Cozy minimal Korean bedroom at dusk, a small white unbranded humidifier releasing soft mist on the nightstand, neatly folded light cotton pajamas on a white duvet, warm lamp light",
+   "ko": "해 질 녘 아늑한 침실, 협탁 위 상표 없는 작은 흰 가습기에서 은은한 수증기, 흰 이불 위에 개어 둔 면 잠옷, 따뜻한 스탠드 조명, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "몸 가려움 상담 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "이럴 땐 진료 문단 (피부과 전문의 진찰)",
+   "en": "Over-the-shoulder view across a plain light wood desk, a doctor in a white coat seen only from the shoulder down holding a pen over a blank notepad, a Korean adult patient's hands resting on the desk with one sleeve slightly rolled up, plain neutral room, no medical equipment, faces out of frame",
+   "ko": "밝은 나무 책상 너머 어깨 뒤에서 본 구도, 흰 가운의 의사는 어깨 아래만 보이고 빈 메모장 위에 펜을 든 손, 책상 위에 소매를 살짝 걷은 한국인 환자의 손, 단순한 방, 의료 장비 없음, 얼굴은 화면 밖, 4:5 세로 실사 사진",
+   "text": null
+  },
+
+  "대표 썸네일 (크고 아픈 여드름)": {
+   "kind": "photo", "ratio": "4:5", "use": "대표 썸네일",
+   "en": "A Korean woman in her late 20s in three-quarter profile, face cropped from nose to jaw, her fingertip hovering just above the jawline without touching, clear natural skin with no visible acne, soft teal wall behind, large empty space in the upper third for a title",
+   "ko": "20대 후반 한국인 여성의 옆모습, 얼굴은 코부터 턱까지 크롭, 손끝이 턱선 바로 위에서 닿지 않고 멈춤, 트러블이 보이지 않는 자연스러운 피부, 연한 청록 벽, 위쪽 3분의 1은 제목 공간, 4:5 세로 실사 사진",
+   "text": "크고 딱딱한 여드름 / 짜도 안 나오는 이유"
+  },
+  "거울 앞 턱 근처에서 멈춘 손 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "도입부 공감 장면",
+   "en": "A young Korean professional dressed for work standing at a bathroom mirror in the morning, seen from behind and slightly to the side, one hand stopped near the jaw, the reflection softly out of focus so no skin detail is visible, a phone on the sink edge",
+   "ko": "출근 준비를 마친 젊은 한국인 직장인이 아침 욕실 거울 앞에서 턱 근처에 손을 멈춘 모습, 뒤에서 비스듬히 촬영, 거울 속 얼굴은 흐릿해 피부가 보이지 않음, 세면대 위 휴대폰, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "새싹과 뿌리 비유 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "새싹과 뿌리 비유, 깊이 설명",
+   "en": "A clear glass container filled with layered garden soil seen from the side, a tiny green sprout at the surface on the left and a long thick root reaching deep into the bottom layer on the right, soft daylight on a light wooden table, clean educational still life",
+   "ko": "옆에서 본 투명한 유리 용기 속 층층이 쌓인 흙, 왼쪽은 표면의 작은 새싹, 오른쪽은 바닥 깊이까지 뻗은 굵은 뿌리, 밝은 나무 테이블, 부드러운 낮빛, 4:5 세로 실사 사진",
+   "text": "얕은 여드름 = 새싹 / 깊은 여드름 = 뿌리"
+  },
+  "목도리와 휴대폰 마찰 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "턱 여드름 생활 자극 목록",
+   "en": "A Korean woman in her late 20s on a phone call with the phone pressed against her jaw, a chunky wool scarf wrapped high around her chin, face cropped from the nose down, cafe window light, clear natural skin without visible acne",
+   "ko": "휴대폰을 턱에 대고 통화하는 20대 후반 한국인 여성, 울 목도리를 턱까지 감음, 얼굴은 코 아래로 크롭, 카페 창가 빛, 트러블이 보이지 않는 피부, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "여드름 깊이 비유 흙 단면 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "3가지 구별법 섹션",
+   "en": "Three small clear glass cups of soil lined up on a light linen surface, seen from the side, each with one smooth round pebble at a different depth: just under the surface, in the middle, and at the very bottom, soft daylight, minimal still life",
+   "ko": "연한 린넨 위에 나란히 놓인 흙이 담긴 작은 유리컵 3개를 옆에서 촬영, 각 컵에 매끈한 조약돌 하나가 표면 바로 아래, 중간, 맨 아래에 있음, 부드러운 낮빛, 미니멀 정물, 4:5 세로 실사 사진",
+   "text": "① 얕음 ② 진행 중 ③ 깊음"
+  },
+  "여드름 자가처치 금지 물건 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "이것만은 하지 마십시오 (여드름)",
+   "en": "Top-down flat lay on light grey linen of a small sewing needle, an unbranded white toothpaste tube, a small plain bottle of rubbing alcohol with no label text, and a folded steaming hot towel, arranged in a neat grid with generous space, soft diffused light",
+   "ko": "연회색 린넨 위 탑뷰 정물, 작은 바늘, 상표 없는 흰 치약, 글자 없는 소독용 알코올 병, 김이 나는 접힌 뜨거운 수건을 여백 있게 배치, 부드러운 빛, 4:5 세로 실사 사진",
+   "text": "바늘 · 치약 · 알코올 · 뜨거운 찜질 금지"
+  },
+  "차가운 손수건 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "1번 차가운 손수건 항목",
+   "en": "Close-up of hands wringing out a small clean white cotton handkerchief over a ceramic bowl of cool water, a few drops falling, bright neutral kitchen counter",
+   "ko": "시원한 물이 담긴 도자기 그릇 위에서 깨끗한 흰 면 손수건을 짜는 손 클로즈업, 물방울 몇 개 떨어짐, 밝은 주방 상판, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "얼굴 대신 머그잔 쥔 손 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "2번 손이 가는 습관 끊기",
+   "en": "A Korean office worker in his 30s at a tidy desk during a video call, both hands wrapped around a warm ceramic mug instead of resting on his chin, laptop softly blurred, face cropped from the mouth down, calm daylight",
+   "ko": "깔끔한 책상에서 화상회의 중인 30대 한국인 직장인이 턱을 괴는 대신 두 손으로 머그잔을 쥔 모습, 노트북은 흐릿하게, 얼굴은 입 아래로 크롭, 차분한 낮빛, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "정리된 침대와 베개 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "5번 잠 챙기기",
+   "en": "A neatly made bed with fresh light-grey pillowcases and a white duvet, bedside lamp switched off, a phone face-down on the nightstand, early night blue light from the window, quiet restful mood",
+   "ko": "연회색 베개 커버와 흰 이불로 정돈된 침대, 꺼진 스탠드, 협탁 위에 엎어 둔 휴대폰, 창으로 들어오는 이른 밤의 푸른 빛, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "여드름 상담 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "피부과에서는 어떻게 판단하는가 (피부과 전문의 3인 진료)",
+   "en": "Over-the-shoulder view across a plain light wood desk, a doctor in a white coat seen only from the chest down sketching a simple layered circle diagram on a blank notepad with a pen, a young Korean adult patient's hands folded on the desk, plain neutral room, no medical equipment, no syringes, faces out of frame",
+   "ko": "밝은 나무 책상 너머 어깨 뒤 구도, 흰 가운의 의사는 가슴 아래만 보이고 빈 메모장에 펜으로 단순한 층 그림을 그리는 손, 책상 위에 손을 모은 젊은 한국인 환자, 단순한 방, 의료 장비·주사기 없음, 얼굴은 화면 밖, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "중요한 일정 표시한 탁상 달력 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "진료가 필요한 때",
+   "en": "A small desk calendar on an office desk with one date circled in teal ink, a sticky note beside it with handwriting blurred and unreadable, a pen and a cup of coffee, soft daylight, shallow depth of field",
+   "ko": "사무실 책상 위 탁상 달력에 청록 펜으로 날짜 하나에 동그라미, 옆에 글씨가 흐려 읽히지 않는 메모지, 펜과 커피잔, 부드러운 낮빛, 얕은 심도, 4:5 세로 실사 사진",
+   "text": null
+  },
+
+  "대표 썸네일 (저온화상)": {
+   "kind": "photo", "ratio": "4:5", "use": "대표 썸네일",
+   "en": "Top-down view of a soft beige knit blanket on a bed with an unbranded white hand warmer pouch and the corner of an electric heating pad controller cord resting on it, cozy winter mood, large empty space in the upper third for a title",
+   "ko": "침대 위 베이지 니트 담요를 위에서 본 장면, 상표 없는 흰 손난로 핫팩과 전기장판 조절기 선 한쪽, 아늑한 겨울 분위기, 위쪽 3분의 1은 제목 공간, 4:5 세로 실사 사진",
+   "text": "뜨겁지 않아서 더 늦게 안다 / 겨울 저온화상"
+  },
+  "핫팩 쥔 손 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "도입부 계절 분위기",
+   "en": "Close-up of a Korean commuter's bare hands holding a plain unbranded hand warmer pouch in front of a wool coat, winter morning street softly blurred behind, faint visible breath",
+   "ko": "울 코트 앞에서 상표 없는 손난로 핫팩을 감싸 쥔 출근길 한국인의 맨손 클로즈업, 뒤로 흐릿한 겨울 아침 거리, 희미한 입김, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "약불에 끓는 냄비 비유 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "약한 불에 오래 끓인 국 비유",
+   "en": "A small enamel pot of clear soup simmering gently on a very low blue gas flame in a clean Korean kitchen, faint wisps of steam, a wooden ladle resting on the lid edge, a simple kitchen timer nearby, warm evening light",
+   "ko": "깔끔한 주방에서 아주 약한 파란 가스불 위에 맑은 국이 담긴 작은 법랑 냄비가 은근히 끓는 장면, 옅은 김, 뚜껑 가장자리에 나무 국자, 옆에 주방 타이머, 따뜻한 저녁빛, 4:5 세로 실사 사진",
+   "text": "약한 불도 오래 닿으면 속까지"
+  },
+  "전기장판 위 이불 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "주의가 필요한 분들 목록",
+   "en": "A cozy Korean bedroom at night, an electric heating pad under a thin cotton sheet on a mattress with a white duvet folded back, the small controller with a soft glowing light on the floor beside the bed, nobody in the bed, warm dim light",
+   "ko": "밤의 아늑한 침실, 매트리스 위 얇은 면 시트 아래 전기장판, 흰 이불은 접혀 있음, 침대 옆 바닥에 은은하게 불 켜진 조절기, 사람 없음, 따뜻하고 어두운 조명, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "온열기 곁 담요 덮은 다리 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "셀프 체크 마지막 항목 (같은 자리 반복 열)",
+   "en": "A Korean woman sitting on a living room floor cushion with her legs covered by a thick knit blanket, a small unbranded electric heater placed close to her shins, only the blanket and her socks visible, no bare skin shown, warm cozy evening light",
+   "ko": "거실 방석에 앉아 두꺼운 니트 담요로 다리를 덮은 한국인 여성, 정강이 가까이 놓인 상표 없는 작은 전기 온열기, 담요와 양말만 보이고 맨살은 보이지 않음, 따뜻한 저녁빛, 4:5 세로 실사 사진",
+   "text": "같은 자리에 반복되는 열, 거리를 두세요"
+  },
+  "흐르는 물에 손등 식히는 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "STEP 2 흐르는 시원한 물로 식히기",
+   "en": "Close-up of the back of a Korean adult's hand held under a gentle stream of cool tap water at a white kitchen sink, skin looks normal with no visible wound, clear water, bright clean daylight",
+   "ko": "흰 주방 개수대에서 한국인 성인의 손등에 시원한 수돗물을 부드럽게 흘리는 클로즈업, 상처는 보이지 않음, 맑은 물, 밝은 자연광, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "거즈로 덮은 팔 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "STEP 5 거즈로 가볍게 덮기",
+   "en": "A Korean woman's forearm resting on a white table, loosely covered with a clean square of white sterile gauze held by paper tape, nothing visible under the gauze, a roll of gauze nearby, calm neutral light",
+   "ko": "흰 테이블 위 한국인 여성의 팔, 깨끗한 흰 거즈를 종이 테이프로 느슨하게 고정, 거즈 아래는 보이지 않음, 옆에 거즈 롤, 차분한 조명, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "화상 민간요법 금지 물건 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "이것만은 하지 마십시오 (화상)",
+   "en": "Top-down flat lay on light grey linen of a small bowl of Korean soybean paste, a halved raw potato, an unbranded white toothpaste tube, and a small clear glass bottle with no label, arranged in a neat grid with generous space, soft diffused light",
+   "ko": "연회색 린넨 위 탑뷰 정물, 된장이 담긴 작은 그릇, 반으로 자른 생감자, 상표 없는 흰 치약, 라벨 없는 작은 투명 병을 여백 있게 배치, 부드러운 빛, 4:5 세로 실사 사진",
+   "text": "된장 · 감자 · 치약 · 소주 바르기 금지"
+  },
+  "옷 위에 붙인 핫팩 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "예방 1번 옷 위에 붙이기",
+   "en": "A Korean woman in her 30s placing a plain white adhesive warmer pad on the inside of an open padded jacket, over a thick knit sweater, not on bare skin, face out of frame, entryway by the front door, soft morning light",
+   "ko": "30대 한국인 여성이 열어 둔 패딩 안쪽, 두꺼운 니트 위에 상표 없는 흰 붙이는 핫팩을 붙이는 장면, 맨살에 붙이지 않음, 얼굴은 화면 밖, 현관 앞, 아침빛, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "전기장판 타이머 조절기 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "예방 3번 타이머 활용",
+   "en": "Close-up of a finger pressing a button on a plain unbranded electric blanket controller with a small glowing display, digits blurred and unreadable, resting on a light grey bedsheet, warm bedside lamp light",
+   "ko": "연회색 시트 위 상표 없는 전기장판 조절기 버튼을 누르는 손가락 클로즈업, 화면 숫자는 흐려 읽히지 않음, 따뜻한 스탠드 조명, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "화상 상담 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "바로 진료가 필요한 경우 (피부과 전문의 진찰)",
+   "en": "Over-the-shoulder view across a plain light wood desk, a doctor in a white coat seen only from the chest down listening with hands folded, an older Korean adult's forearm wrapped in clean white gauze resting on the desk with an adult daughter's hand on their shoulder, plain neutral room, no medical equipment, faces out of frame",
+   "ko": "밝은 나무 책상 너머 어깨 뒤 구도, 흰 가운의 의사는 가슴 아래만 보이고 손을 모아 듣는 모습, 책상 위 흰 거즈를 감은 어르신의 팔과 어깨에 얹은 성인 딸의 손, 단순한 방, 의료 장비 없음, 얼굴은 화면 밖, 4:5 세로 실사 사진",
+   "text": null
+  },
+
+  "대표 썸네일 (사마귀 티눈 구별)": {
+   "kind": "photo", "ratio": "4:5", "use": "대표 썸네일",
+   "en": "Top-down view of a pair of bare feet resting on a light grey wool rug, soles not visible, clean white socks and simple unbranded sneakers beside them, soft teal and warm white tones, large empty space in the upper third for a title",
+   "ko": "연회색 러그 위 맨발을 위에서 본 장면, 발바닥은 보이지 않음, 옆에 흰 양말과 상표 없는 운동화, 청록과 따뜻한 흰색 톤, 위쪽 3분의 1은 제목 공간, 4:5 세로 실사 사진",
+   "text": "사마귀 · 티눈 · 굳은살 / 뜯기 전에 구별법"
+  },
+  "소파에서 발바닥 살피는 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "도입부 공감 장면",
+   "en": "A Korean office worker in his 30s in home clothes sitting on a sofa in the evening, one foot pulled up onto his knee, looking down at it with a puzzled expression, face partly turned away, the sole not shown in detail, warm lamp light",
+   "ko": "저녁에 편한 옷차림으로 소파에 앉아 한쪽 발을 무릎에 올리고 내려다보는 30대 한국인 직장인, 얼굴은 일부 돌아감, 발바닥은 자세히 보이지 않음, 따뜻한 스탠드 조명, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "압력과 공용 물건 비교 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "셋은 왜 비슷해 보이는가 (압력 vs 바이러스)",
+   "en": "Top-down flat lay on light linen split into two halves: on the upper half a narrow pointed heel and a well-worn shoe insole with one darker pressure spot, on the lower half a pair of shared bathroom slippers and a single towel, soft diffused light, neat composition",
+   "ko": "연한 린넨 위 탑뷰를 위아래로 나눈 구성, 위쪽은 앞코 좁은 구두와 한 곳이 짙게 눌린 닳은 깔창(압력), 아래쪽은 함께 쓰는 욕실 슬리퍼와 수건 한 장(공용 물건), 부드러운 빛, 4:5 세로 실사 사진",
+   "text": "굳은살·티눈 = 압력 / 사마귀 = 바이러스"
+  },
+  "돋보기로 발 살펴보는 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "30초 구별법 섹션",
+   "en": "A Korean woman sitting on a bed with one foot resting on a folded white towel, holding a round magnifying glass above her foot, shot from the side so the sole is not shown in detail, bright daylight, calm and curious mood",
+   "ko": "침대에 앉아 접은 흰 수건 위에 한쪽 발을 올리고 둥근 돋보기를 발 위에 든 한국인 여성, 옆에서 촬영해 발바닥은 자세히 보이지 않음, 밝은 낮빛, 4:5 세로 실사 사진",
+   "text": "① 피부결 ② 가운데 ③ 누르는 방향 ④ 개수"
+  },
+  "발 각질 자가처치 금지 물건 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "이것만은 하지 마십시오 (발)",
+   "en": "Top-down flat lay on light grey linen of a nail clipper, a small razor blade wrapped safely in paper, a plain round adhesive pad with no text, and two bath towels folded together, arranged in a neat grid with generous space, soft diffused light",
+   "ko": "연회색 린넨 위 탑뷰 정물, 손톱깎이, 종이에 싼 작은 면도날, 글자 없는 둥근 패드, 겹쳐 접은 수건 두 장을 여백 있게 배치, 부드러운 빛, 4:5 세로 실사 사진",
+   "text": "뜯기 · 깎기 · 임의 패드 · 수건 같이 쓰기 금지"
+  },
+  "신발장 앞 신발 고르는 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "1번 신발 점검",
+   "en": "A Korean woman in her 30s at an entryway shoe rack picking up a pair of roomy cushioned unbranded walking shoes, a pair of narrow pointed heels left on the rack, face out of frame, soft morning light, tidy minimal entryway",
+   "ko": "현관 신발장 앞에서 넉넉한 쿠션 운동화(상표 없음)를 집어 드는 30대 한국인 여성, 앞코 좁은 구두는 신발장에 남겨 둠, 얼굴은 화면 밖, 아침빛, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "발에 보습제 바르는 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "3번 발 보습",
+   "en": "Close-up of a Korean adult sitting on the edge of a bathtub after a shower, gently applying white unbranded cream to the heel with both hands, the heel smooth and normal, light grey towel nearby, soft bathroom light",
+   "ko": "샤워 후 욕조 가장자리에 앉아 두 손으로 발뒤꿈치에 상표 없는 흰 크림을 바르는 한국인 성인 클로즈업, 뒤꿈치는 매끈하고 평범하게, 옆에 연회색 수건, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "개인 슬리퍼와 수건 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "전염을 줄이는 습관",
+   "en": "A neatly packed gym bag on a bench with a personal pair of simple unbranded shower slippers and a folded small towel beside it, locker room softly blurred behind, clean and bright",
+   "ko": "벤치 위 운동 가방 옆에 상표 없는 개인 샤워 슬리퍼와 접힌 작은 수건, 뒤로 흐릿한 탈의실, 깨끗하고 밝은 분위기, 4:5 세로 실사 사진",
+   "text": null
+  },
+  "발 상담 사진": {
+   "kind": "photo", "ratio": "4:5", "use": "피부과에서는 어떻게 하는가 (피부과 전문의 3인 진료)",
+   "en": "Over-the-shoulder view across a plain light wood desk, a doctor in a white coat seen only from the chest down drawing a simple foot outline on a blank notepad with a pen, a Korean adult patient's hands on the desk, plain neutral room, no medical equipment, no cryotherapy device, faces out of frame",
+   "ko": "밝은 나무 책상 너머 어깨 뒤 구도, 흰 가운의 의사는 가슴 아래만 보이고 빈 메모장에 펜으로 발 윤곽을 그리는 손, 책상 위 한국인 환자의 손, 단순한 방, 의료 장비·냉동치료 기구 없음, 얼굴은 화면 밖, 4:5 세로 실사 사진",
+   "text": null
+  }
+ }
+}
