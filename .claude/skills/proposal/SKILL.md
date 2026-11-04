@@ -10,7 +10,7 @@ description: 감사한 마케팅 제안서 작업 순서. 대표님이 "시작�
 ## 0. 시작 질문
 - `CLAUDE.md`의 시작 질문 1–8을 묻는다 (8번: 상권분석시스템 자료 첨부 요청).
 - `CLAUDE.md`의 '다음 작업 시작 때 한 번 물어볼 것'이 남아 있으면 같이 묻는다.
-- 같은 상가·같은 상권에 이미 진행한 고객이 있는지 `proposals/*/slides.md`를 훑어보고, 있으면 대표님께 알린다 (업종별 지역 한정 약속).
+- `proposals/clients.md`에서 같은 상가·같은 상권·같은 업종 고객이 있는지 보고, 있으면 대표님께 알린다 (업종별 지역 한정 약속).
 
 ## 1. 기본 수집 (스크립트)
 ```bash
@@ -51,6 +51,7 @@ python3 tools/collect.py --slug <영문이름> --place-id <플레이스 ID> \
 - `proposals/<slug>/slides.md` — 기존 제안서(`proposals/nekonomura/slides.md`)의 장 구성을 틀로 쓴다.
 - 상품은 대표님이 말한 것 → 없으면 노션 상품 기준. 가격은 마지막 장만.
 - 쓰고 나서 금지 문구 확인: `grep -nE "브랜드 블로그|1건당|매일 바|미노출|부가세|설문|구글폼" proposals/<slug>/slides.md`
+- **검토 에이전트**: `proposal-reviewer` 에이전트(`.claude/agents/proposal-reviewer.md`)에 원고와 `data/`를 넘겨 검토받는다. 쓴 쪽과 분리된 검토라 숫자 불일치·근거 없는 단정·다른 고객 정보 섞임을 잡는다. [치명]·[숫자]는 모두 고치고, [근거 없음]은 근거를 찾거나 문장을 약하게 고치거나 `[확인 필요]`로 바꾼다.
 - 대표님께 `[확인 필요]` 목록과 함께 보내고 확정을 받는다. 확정 전에는 젠스파크를 부르지 않는다.
 
 ## 7. 젠스파크 생성 (업체당 1회)
@@ -72,3 +73,4 @@ python3 tools/check_pptx.py proposals/<slug>/output/<slug>-proposal.pptx
 ## 9. 전달·저장
 - PPTX를 대표님께 보내고, 반영한 것 / 파일에서만 고친 것 / `[확인 필요]` 남은 것을 나눠 보고한다.
 - `slides.md`와 `data/`는 커밋·push한다 (`output/`은 git 제외).
+- `proposals/clients.md`에 업체 줄을 추가하거나 상태를 고친다. 계약 고객의 월간 성과는 `proposals/cases.md`에 쌓는다.
