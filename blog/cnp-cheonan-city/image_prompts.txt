@@ -1153,3 +1153,260 @@ plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncann
 
 [글자 넣기 - 캔바·미리캔버스에서]
 입학 전까지, 순서를 정해 계획하기
+
+━━━━━━━━━━━━━━━━━━━━━━
+천안피부과 | 리쥬란, 받기 전에 알아 두면 좋은 다섯 가지
+━━━━━━━━━━━━━━━━━━━━━━
+
+■ 이미지 1. 대표 썸네일 (리쥬란)
+용도 : 대표 썸네일  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+A Korean woman in her 30s in soft window light gently touching her cheek with her fingertips, calm natural expression, cream knit top, minimal light grey background, large empty space in the upper third for a title, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+부드러운 창가 빛 속에서 손끝으로 볼을 가볍게 만지는 30대 한국 여성, 크림색 니트, 연회색 배경, 위쪽 3분의 1 제목 여백, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+리쥬란, 받기 전에 알아 둘 5가지
+
+■ 이미지 2. 화장대에서 크림 통을 든 사진
+용도 : 도입 공감 장면 ('크림과 시술은 같은가')  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+A Korean woman in her 30s at a vanity table holding an unbranded cream jar and looking at it thoughtfully, a mirror and a few skincare bottles softly blurred, warm evening light, face partly turned away, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+화장대에서 상표 없는 크림 통을 들고 생각에 잠긴 30대 한국 여성, 흐린 거울과 스킨케어 병, 따뜻한 저녁빛, 얼굴 일부만, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+■ 이미지 3. 텃밭에 거름을 고르게 뿌리는 사진
+용도 : '땅이 회복하도록 돕는다' 비유  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+Gloved hands scattering dark compost evenly over a small vegetable garden bed with young leafy plants, soft morning light, close-up, no faces, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+장갑 낀 손이 어린 채소가 자라는 텃밭에 검은 거름을 고르게 뿌리는 클로즈업, 부드러운 아침빛, 얼굴 없음, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+대신 키우는 것이 아니라, 회복을 돕는 방식
+
+■ 이미지 4. 리쥬란 상담 전 체크 메모 사진
+용도 : 시작 전 셀프 체크  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+A hand ticking a short checklist on a small notepad on a light wooden table, a glass of water and a phone beside it, handwriting blurred and unreadable, soft daylight, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+밝은 원목 테이블 위 작은 메모장 체크리스트에 체크하는 손, 옆에 물컵과 휴대폰, 글씨는 흐리게, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+상담 전 셀프 체크
+
+■ 이미지 5. 시술 후 일정 비우고 쉬는 저녁 사진
+용도 : '시술 후 모습과 일정' 문단  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+A Korean woman in her 30s relaxing at home in the evening on a sofa with a blanket and a cup of herbal tea, a calendar on the wall with a blank week, warm lamp light, face turned away from camera, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+저녁에 담요를 덮고 허브티를 들고 소파에서 쉬는 30대 한국 여성, 벽에 비워 둔 주간 달력, 따뜻한 조명, 얼굴은 카메라 반대쪽, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+■ 이미지 6. 리쥬란 후 피할 물건 탑뷰 사진
+용도 : '이것만은 하지 마십시오'  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+Top-down flat lay on a grey surface: a glass of beer, a rolled sauna towel, a facial massage device and a pack of peeling pads, neatly spaced, unbranded, soft even light, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+회색 바탕 탑뷰: 맥주잔, 말아 둔 사우나 수건, 얼굴 마사지 기기, 필링 패드를 간격 두고 배치, 상표 없음, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+시술 당일 피하기: 음주 · 사우나 · 마사지
+
+■ 이미지 7. 순한 보습제를 손바닥으로 바르는 사진
+용도 : '보습제를 충분히'  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+Close-up of a Korean woman pressing a gentle moisturizer onto her cheek with her palm, not rubbing, soft bathroom light, face partly out of frame, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+손바닥으로 볼에 순한 보습제를 문지르지 않고 눌러 바르는 한국 여성 클로즈업, 부드러운 욕실 조명, 얼굴 일부만, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+■ 이미지 8. 리쥬란 상담 책상 사진
+용도 : '피부과에서는' 상담 장면  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+Over-the-shoulder view across a clean consultation desk, a doctor in a white coat visible only from the chest down writing on a notepad, the patient's hands holding a small hand mirror on the desk, no faces, no medical equipment, no needles or syringes, soft daylight, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+상담 책상 너머 어깨 뒤 구도, 가슴 아래만 보이는 흰 가운 의사가 메모, 환자 손에 손거울, 얼굴·의료장비·주사기 없음, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+■ 이미지 9. 리쥬란 시술 간격 메모 달력 사진
+용도 : Q&A 횟수·간격  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+A desk calendar spread over two months with a few evenly spaced dates marked by small teal dots, a pen and a cup of tea beside it, warm daylight, writing blurred and unreadable, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+두 달이 펼쳐진 탁상 달력에 일정한 간격의 작은 청록 점, 옆에 펜과 찻잔, 글씨는 흐리게, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+간격을 두고 계획하기
+
+━━━━━━━━━━━━━━━━━━━━━━
+천안피부과 | 쥬베룩, 필러처럼 바로 차오릅니까? 받기 전에 알아 둘 점
+━━━━━━━━━━━━━━━━━━━━━━
+
+■ 이미지 1. 대표 썸네일 (쥬베룩)
+용도 : 대표 썸네일  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+A Korean woman in her 30s in profile by a bright window, softly lit cheek and jawline, calm expression, light beige top, minimal warm background, large empty space in the upper third for a title, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+밝은 창가의 30대 한국 여성 옆모습, 부드럽게 빛 받는 볼과 턱선, 차분한 표정, 연베이지 상의, 위쪽 3분의 1 제목 여백, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+쥬베룩, 바로 차오를까?
+
+■ 이미지 2. 거울 앞에서 볼을 살피는 30대 사진
+용도 : 도입 공감 장면  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+A Korean woman in her 30s leaning toward a round wall mirror examining her cheek under soft side light, one fingertip lightly touching the skin, face partly turned away, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+둥근 벽거울 앞에서 옆빛 아래 볼을 살피는 30대 한국 여성, 손끝으로 피부를 가볍게 만짐, 얼굴 일부만, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+■ 이미지 3. 덩굴식물과 지지대 비유 사진
+용도 : '지지대를 세워 두면 스스로 자란다' 비유  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+A young climbing plant in a terracotta pot winding its tendrils around a thin bamboo support stick, soft daylight by a window, close-up, no people, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+토분의 어린 덩굴식물이 가는 대나무 지지대를 덩굴손으로 감고 오르는 클로즈업, 창가 자연광, 사람 없음, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+지지대가 있으면 식물이 스스로 자랍니다
+
+■ 이미지 4. 빈 그릇에 물을 붓는 비유 사진
+용도 : '필러는 바로 채우는 방식' 비유  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+A hand pouring clear water from a glass pitcher into an empty white ceramic bowl on a light wooden table, water filling the bowl, soft daylight, close-up, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+밝은 원목 테이블 위 빈 흰 그릇에 유리 주전자로 맑은 물을 붓는 손 클로즈업, 물이 차오름, 자연광, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+필러는 바로 채우고, 쥬베룩은 시간을 기다립니다
+
+■ 이미지 5. 쥬베룩 상담 전 체크 메모 사진
+용도 : 시작 전 셀프 체크  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+A hand holding a pen over a checklist card next to a small calendar and a list of past treatments on a desk, handwriting blurred and unreadable, warm daylight, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+책상 위 체크리스트 카드에 펜을 든 손, 옆에 작은 달력과 이전 시술 메모, 글씨는 흐리게, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+상담 전 셀프 체크
+
+■ 이미지 6. 쥬베룩 후 피할 물건 탑뷰 사진
+용도 : '이것만은 하지 마십시오'  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+Top-down flat lay on a grey surface: a glass of red wine, a rolled sauna towel, a pair of running shoes and a facial massage roller, neatly spaced, unbranded, soft even light, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+회색 바탕 탑뷰: 레드와인 잔, 말아 둔 사우나 수건, 러닝화, 얼굴 마사지 롤러를 간격 두고 배치, 상표 없음, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+시술 당일 피하기: 음주 · 사우나 · 격한 운동
+
+■ 이미지 7. 겨울 외출 전 선크림 바르는 사진
+용도 : '자외선 차단 이어 가기'  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+A Korean woman in a winter coat at her front door applying sunscreen from an unbranded tube onto her cheek, a wool hat in her other hand, bright morning light, face partly out of frame, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+현관에서 겨울 코트를 입고 상표 없는 튜브로 볼에 선크림을 바르는 한국 여성, 다른 손에 털모자, 밝은 아침빛, 얼굴 일부만, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+■ 이미지 8. 쥬베룩 상담 책상 사진
+용도 : '피부과에서는' 상담 장면  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+Over-the-shoulder view across a clean consultation desk, a doctor in a white coat visible only from the chest down pointing a pen at a simple face outline sketch on paper, the patient's hands folded on the desk, no faces, no medical equipment, no needles or syringes, soft daylight, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+상담 책상 너머 어깨 뒤 구도, 가슴 아래만 보이는 흰 가운 의사가 종이 위 얼굴 윤곽 스케치를 펜으로 가리킴, 환자 손, 얼굴·의료장비·주사기 없음, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+■ 이미지 9. 변화 기록용 사진 일정 달력 사진
+용도 : Q&A 변화는 서서히  /  실사 사진  /  비율 4:5
+
+[영문 프롬프트]
+A wall calendar over several months with a small camera icon sticker on a few spaced dates, a smartphone on a stand facing a window below it, soft daylight, writing blurred and unreadable, photorealistic photograph, clear natural skin with no visible acne, wounds or injection marks, editorial lifestyle photograph, soft natural window light, muted palette of soft teal, warm white and light grey, clean minimal Korean apartment interior, realistic natural skin texture with visible pores, no heavy retouching, candid moment, 35mm lens, f/2.8, subtle film grain, vertical 4:5 aspect ratio
+
+[한글 프롬프트]
+여러 달이 보이는 벽 달력의 간격을 둔 날짜에 작은 카메라 스티커, 아래 창가를 향한 거치대의 스마트폰, 글씨는 흐리게, 4:5 세로 실사 사진
+
+[제외할 요소]
+plastic skin, airbrushed, over-saturated, extra fingers, distorted hands, uncanny face, text, letters, watermark, logo, brand names, before-and-after comparison, hospital or surgery scene, needles, blood, exaggerated acne or lesions
+
+[글자 넣기 - 캔바·미리캔버스에서]
+같은 장소, 같은 조명에서 기록하기

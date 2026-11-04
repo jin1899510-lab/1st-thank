@@ -2,7 +2,7 @@
  "clinic_name": "CNP차앤박피부과의원 천안시청점",
  "map_query": "CNP차앤박피부과 천안시청점",
  "page_title": "차앤박 천안시청 블로그 미리보기",
- "header_title": "CNP차앤박피부과의원 천안시청점 · 원고 9편 (11월 원고 6~9번)",
+ "header_title": "CNP차앤박피부과의원 천안시청점 · 원고 11편",
  "byline": "CNP차앤박피부과의원 천안시청점",
  "byline_sub": "피부과 전문의 진료 · 피부 건강 정보",
  "avatar": "C",
@@ -42,6 +42,14 @@
   {
    "category": "여드름",
    "short": "수능 후 여드름"
+  },
+  {
+   "category": "스킨부스터",
+   "short": "리쥬란"
+  },
+  {
+   "category": "스킨부스터",
+   "short": "쥬베룩"
   }
  ],
  "done": [
