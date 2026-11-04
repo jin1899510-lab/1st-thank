@@ -166,11 +166,9 @@ body.clean .note{display:none}
 const DATA = %%DATA%%;
 let cur = 0;
 const tabs=[...document.querySelectorAll('.tab')], posts=[...document.querySelectorAll('.post')], pastes=[...document.querySelectorAll('.paste')];
-function show(i){cur=i;tabs.forEach((t,k)=>t.setAttribute('aria-selected',k===i));posts.forEach((p,k)=>p.hidden=k!==i);pastes.forEach((p,k)=>p.hidden=k!==i);
-  try{localStorage.setItem('cnp-tab',i)}catch(e){}}
+function show(i){cur=i;tabs.forEach(t=>t.setAttribute('aria-selected',+t.dataset.i===i));posts.forEach(p=>p.hidden=p.id!=='post'+i);pastes.forEach(p=>p.hidden=p.id!=='paste'+i);}
 tabs.forEach(t=>t.addEventListener('click',()=>show(+t.dataset.i)));
-let start=0;try{start=+(localStorage.getItem('cnp-tab')||0)}catch(e){}
-show(start>=0&&start<posts.length?start:0);
+show(+tabs[0].dataset.i);
 const views=[...document.querySelectorAll('.view')];
 function mode(m){document.body.classList.toggle('mode-paste',m==='paste');document.body.classList.toggle('mode-view',m==='view');
   views.forEach(v=>v.setAttribute('aria-pressed',v.dataset.mode===m));try{localStorage.setItem('cnp-mode',m)}catch(e){}}

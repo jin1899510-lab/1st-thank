@@ -196,13 +196,15 @@ for n, f in enumerate(files):
     posts.append(dict(n=n, titles=titles, body=body, tags=tags, cat=CATS[n], short=SHORT[n], copy=copy, tagline=' '.join(tags), paste=paste))
 
 DONE = {n - 1 for n in CFG.get('done', [])}
+# 게시 전 원고를 앞에, 게시 완료 원고를 뒤에 (각 그룹 안에서는 최신 번호부터)
+ORDER = sorted(posts, key=lambda p: (p['n'] in DONE, -p['n']))
 tpl = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'template.html'), encoding='utf-8').read()
 tpl = tpl.replace('%%PAGE_TITLE%%', e(CFG['page_title'])).replace('%%HEADER_TITLE%%', e(CFG['header_title']))
-tabs = ''.join(f'<button class="tab{" done" if p["n"] in DONE else ""}" role="tab" id="tab{p["n"]}" aria-controls="post{p["n"]}" data-i="{p["n"]}"><span class="tn">{"✓" if p["n"] in DONE else p["n"]+1}</span>{e(p["short"])}{"<span class=\"dl\">완료</span>" if p["n"] in DONE else ""}</button>' for p in posts)
+tabs = ''.join(f'<button class="tab{" done" if p["n"] in DONE else ""}" role="tab" id="tab{p["n"]}" aria-controls="post{p["n"]}" data-i="{p["n"]}"><span class="tn">{"✓" if p["n"] in DONE else p["n"]+1}</span>{e(p["short"])}{"<span class=\"dl\">완료</span>" if p["n"] in DONE else ""}</button>' for p in ORDER)
 status = f'<div class="status"><span class="bar"><span style="width:{len(DONE)*100//len(posts)}%"></span></span><span><b>{len(DONE)}/{len(posts)}</b> 게시 완료</span></div>'
 BANNER = '<div class="donebar"><span class="ck">✓</span>네이버 블로그 게시 완료</div>'
 arts = ''
-for p in posts:
+for p in ORDER:
     alts = ''.join(f'<li>{e(t)}</li>' for t in p['titles'][1:])
     chips = ''.join(f'<span class="chip">{e(t)}</span>' for t in p['tags'])
     ban = BANNER if p['n'] in DONE else ''
