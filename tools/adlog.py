@@ -69,3 +69,27 @@ def search_volume(s, keywords):
         out[c[1]] = {"pc": num(c[2]), "mobile": num(c[3]), "total": num(c[4]),
                      "click_pc": c[5], "click_mobile": c[6], "ctr_pc": c[7], "ctr_mobile": c[8]}
     return out
+
+
+BID_COLS = ["keyword", "search_pc", "search_mobile", "search_total", "click_pc", "click_mobile",
+            "ctr_pc", "ctr_mobile", "competition", "ads_shown",
+            "bid_pc_1", "bid_pc_2", "bid_pc_3", "bid_mobile_1", "bid_mobile_2", "bid_mobile_3", "date"]
+
+
+def keyword_bids(s, keywords):
+    """키워드별 검색량·클릭·경쟁도·파워링크 1~3위 예상 입찰가(PC·모바일). 애드로그 입찰가 도구."""
+    s.headers["Referer"] = BASE + "naver_keyword_bid.php"
+    for kw in keywords:
+        s.post(BASE + "ajax_search.php", data={"api_section": 11, "api_type": 40, "group_no": 0,
+                                                 "keyword": kw.replace(" ", ""), "keyword2": "", "ad_bid": 10}, timeout=60)
+        time.sleep(1.2)
+    r = s.get(BASE + "naver_keyword_bid.php")
+    r.encoding = "utf-8"
+    table = BeautifulSoup(r.text, "html.parser").find_all("table")[0]
+    want = {k.replace(" ", "") for k in keywords}
+    out = {}
+    for tr in table.find_all("tr"):
+        c = [td.get_text(" ", strip=True) for td in tr.find_all("td")]
+        if len(c) > 17 and c[1] in want and c[1] not in out:
+            out[c[1]] = dict(zip(BID_COLS, c[1:18]))
+    return out
