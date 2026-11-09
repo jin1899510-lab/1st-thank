@@ -33,9 +33,37 @@ python3 tools/collect.py --slug <영문이름> --place-id <플레이스 ID> \
 
 결과는 `data/`에 텍스트로 저장한다 (`gm_*.txt`, `gs_*.txt`, `ai_search_*.md`).
 
+## 2-1. 파워컨텐츠 키워드 (RULES.md '파워컨텐츠 키워드')
+```bash
+python tools/browser_collect.py pc-candidates --slug <slug> --middle <중분류 예: 법률> --pattern "<분야 단어|...>" --exclude "<뺄 단어>"
+python tools/naver_ad.py --slug <slug> --keywords "<후보에서 고른 키워드>" --out naver_ad_powercontents.json   # 월간 검색수 (애드로그 대신, 호출 한도 없음)
+python tools/browser_collect.py powercontents --slug <slug> --keywords "<후보에서 고른 키워드>"
+```
+- 결과: `data/powercontents_candidates.json`, `data/adlog_powercontents_candidates.json`, `data/naver_powercontents_purchasable.json` (구매 가능 여부·지금 광고주).
+- 대표님이 새 목록 엑셀을 주면 같은 폴더에 `powercontents_keywords_<YYYY-MM>.csv`로 저장한다.
+
+## 2-1-1. 플레이스·리뷰 분석 (매장 업체, RULES.md)
+```bash
+python tools/browser_collect.py place-analysis --slug <slug> --place-id <플레이스 ID>   # 경쟁 매장은 ranks.json 상위 5곳 자동
+```
+- `data/place_analysis.md`: 우리 vs 경쟁 매장 키워드 순위·히든 키워드·최근 리뷰·리뷰 키워드·메뉴/특징 언급. 경쟁사 상세·키워드 × 채널·성공 사례 장에 쓴다.
+
+## 2-2. 경쟁사 상세 (RULES.md '경쟁사 상세 조사')
+```bash
+python tools/browser_collect.py competitors --slug <slug> --keywords "<대표 키워드 3–6개>"   # --place-ids 없으면 ranks.json 상위 매장
+```
+- `data/competitor_events.md`를 먼저 읽고, 경쟁사별 광고 문구·혜택 단어·쿠폰·이벤트 소식을 '경쟁사 상세 ①·②' 장으로 옮긴다. 유튜브·인스타·홈페이지는 검색으로 덧붙인다.
+
 ## 3. 검색 트렌드 (브라우저)
 - 구글 트렌드 + 네이버 데이터랩 검색어트렌드, 조건은 RULES.md '검색 트렌드' 항목.
-- 대표님 PC 브라우저(ego-browser, Aside 등)가 연결돼 있으면 직접 조회한다. 아니면 조회 요청문을 드리고 결과 파일을 받는다. 클라우드에서는 403·429로 막힌다.
+- 대표님 PC(ego-browser 연결)에서는 한 줄로 수집한다:
+```bash
+python tools/browser_collect.py trends --slug <slug> --keywords "키워드1,키워드2,키워드3,키워드4"   --naver-groups "키워드1:키워드1,비슷한말;키워드2:키워드2,비슷한말"
+```
+  → `trend_summary.md`(최고점 주·1년 변화율·관련 검색어·지역)를 먼저 읽고 장을 쓴다.
+- 브라우저가 연결돼 있지 않으면 조회 요청문을 드리고 결과 파일을 받는다. 클라우드에서는 403·429로 막힌다.
+- 월간 검색수는 네이버 검색광고 API(`tools/naver_ad.py`)를 먼저 쓴다. 애드로그는 호출 한도가 있어 순위별 입찰가가 필요할 때만 쓴다: `python tools/browser_collect.py adlog --slug <slug> --keywords "..."` (`ADLOG_PW` 없이)
+- 검색 화면 캡처(휴대폰 크기): `python tools/browser_collect.py capture --slug <slug> --keywords "..."` → `data/capture/*.png`. 경쟁사 광고·우리 업체 미노출·홈페이지 문제를 장에 그림으로 넣을 때 쓴다.
 - 수치를 추정해서 채우지 않는다.
 
 ## 4. 상권분석
@@ -50,6 +78,8 @@ python3 tools/collect.py --slug <영문이름> --place-id <플레이스 ID> \
 ## 6. 원고
 - `proposals/<slug>/slides.md` — 기존 제안서(`proposals/nekonomura/slides.md`)의 장 구성을 틀로 쓴다.
 - 상품은 대표님이 말한 것 → 없으면 노션 상품 기준. 가격은 마지막 장만.
+- 트렌드에 이슈 때 검색이 몰리면 '이슈 대응' 장을 넣는다 (RULES.md).
+- '경쟁사 상세 ①·②'와 '월별 실행 계획 ①(첫 달 주 단위)·②(12개월)·월간 보고서' 장을 모든 업체에 넣는다 (RULES.md).
 - 쓰고 나서 금지 문구 확인: `grep -nE "브랜드 블로그|1건당|매일 바|미노출|부가세|설문|구글폼" proposals/<slug>/slides.md`
 - **검토 에이전트**: `proposal-reviewer` 에이전트(`.claude/agents/proposal-reviewer.md`)에 원고와 `data/`를 넘겨 검토받는다. 쓴 쪽과 분리된 검토라 숫자 불일치·근거 없는 단정·다른 고객 정보 섞임을 잡는다. [치명]·[숫자]는 모두 고치고, [근거 없음]은 근거를 찾거나 문장을 약하게 고치거나 `[확인 필요]`로 바꾼다.
 - 대표님께 `[확인 필요]` 목록과 함께 보내고 확정을 받는다. 확정 전에는 젠스파크를 부르지 않는다.
