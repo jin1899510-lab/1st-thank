@@ -1,0 +1,402 @@
+{
+ "collected": "2026-11-09",
+ "note": "네이버 모바일 플레이스 목록 상위 10 (중심 좌표: 부산=센텀, 서울=삼성동)",
+ "keywords": {
+  "부산 변호사": {
+   "center": [
+    "129.1290",
+    "35.1710"
+   ],
+   "total": 565,
+   "top10": [
+    {
+     "id": "1804123711",
+     "name": "로엘법무법인 부산분사무소 형사이혼전문변호사",
+     "category": "법률사무소",
+     "visitorReviewCount": "221",
+     "blogCafeReviewCount": "6,639",
+     "distance": "5.5km",
+     "roadAddress": "법원로 12 로윈타워 11층"
+    },
+    {
+     "id": "1977760825",
+     "name": "법무법인오현 부산분사무소 형사전문",
+     "category": "법률사무소",
+     "visitorReviewCount": "207",
+     "blogCafeReviewCount": "6,705",
+     "distance": "5.5km",
+     "roadAddress": "법원로 12 로윈타워빌딩 12층"
+    },
+    {
+     "id": "1019176503",
+     "name": "법무법인 YK 부산 분사무소 형사부동산상속이혼전문변호사",
+     "category": "법률사무소",
+     "visitorReviewCount": "396",
+     "blogCafeReviewCount": "8,518",
+     "distance": "4.6km",
+     "roadAddress": "월드컵대로 125 더웰타워 17층"
+    },
+    {
+     "id": "1549581331",
+     "name": "법무법인 대륜 부산분사무소 기업형사민사이혼전문변호사",
+     "category": "법률사무소",
+     "visitorReviewCount": "586",
+     "blogCafeReviewCount": "6,408",
+     "distance": "530m",
+     "roadAddress": "센텀중앙로 90 큐비e센텀 2407호~2412호"
+    },
+    {
+     "id": "2066602705",
+     "name": "법무법인 슬기",
+     "category": "법률사무소",
+     "visitorReviewCount": "221",
+     "blogCafeReviewCount": "1,801",
+     "distance": "5.4km",
+     "roadAddress": "법원남로 9 8층"
+    },
+    {
+     "id": "396634765",
+     "name": "부산이혼전문변호사 형사전문변호사 김이영 법률사무소 일상",
+     "category": "법률사무소",
+     "visitorReviewCount": "180",
+     "blogCafeReviewCount": "1,359",
+     "distance": "5.5km",
+     "roadAddress": "법원로 34 정림빌딩 804호, 805호"
+    },
+    {
+     "id": "33907234",
+     "name": "이혼전문변호사 변경민 법무법인 구제",
+     "category": "법률사무소",
+     "visitorReviewCount": "127",
+     "blogCafeReviewCount": "3,577",
+     "distance": "5.5km",
+     "roadAddress": "법원남로15번길 6 은하빌딩 101호"
+    },
+    {
+     "id": "1282597447",
+     "name": "법무법인 베테랑 부산분사무소",
+     "category": "법률사무소",
+     "visitorReviewCount": "339",
+     "blogCafeReviewCount": "6,616",
+     "distance": "5.4km",
+     "roadAddress": "법원로32번길 9 201호"
+    },
+    {
+     "id": "1102055404",
+     "name": "법무법인 로베리 형사부동산 손해배상전문 부산변호사사무소",
+     "category": "법률사무소",
+     "visitorReviewCount": "199",
+     "blogCafeReviewCount": "4,483",
+     "distance": "5.5km",
+     "roadAddress": "법원남로15번길 26 301호 (거제동, 위너스빌딩)"
+    },
+    {
+     "id": "1972056045",
+     "name": "법무법인프런티어 성범죄형사이혼상간교통사고전문변호사 부산",
+     "category": "법률사무소",
+     "visitorReviewCount": "213",
+     "blogCafeReviewCount": "16,760",
+     "distance": "5.6km",
+     "roadAddress": "수영로 180 대연아이홈 상가 3층 법무법인 프런티어 부산사무소"
+    }
+   ]
+  },
+  "부산 기업 변호사": {
+   "center": [
+    "129.1290",
+    "35.1710"
+   ],
+   "total": 18,
+   "top10": [
+    {
+     "id": "1549581331",
+     "name": "법무법인 대륜 부산분사무소 기업형사민사이혼전문변호사",
+     "category": "법률사무소",
+     "visitorReviewCount": "586",
+     "blogCafeReviewCount": "6,408",
+     "distance": "530m",
+     "roadAddress": "센텀중앙로 90 큐비e센텀 2407호~2412호"
+    },
+    {
+     "id": "2093415668",
+     "name": "법무법인 성안",
+     "category": "법률사무소",
+     "visitorReviewCount": "4",
+     "blogCafeReviewCount": "45",
+     "distance": "320m",
+     "roadAddress": "센텀5로 55 215호"
+    },
+    {
+     "id": "1042031601",
+     "name": "법률사무소 태운",
+     "category": "법률사무소",
+     "visitorReviewCount": "1",
+     "blogCafeReviewCount": "7",
+     "distance": "5.4km",
+     "roadAddress": "법원남로 16 협성법조빌딩 501호"
+    },
+    {
+     "id": "37725838",
+     "name": "법무법인 세진",
+     "category": "법률사무소",
+     "visitorReviewCount": "2",
+     "blogCafeReviewCount": "11",
+     "distance": "5.4km",
+     "roadAddress": "법원로 38 7층 법무법인 세진"
+    },
+    {
+     "id": "1927450257",
+     "name": "법무법인 디에이치 부산 분사무소",
+     "category": "법률사무소",
+     "visitorReviewCount": "94",
+     "blogCafeReviewCount": "4,577",
+     "distance": "5.5km",
+     "roadAddress": "법원로 34 2층 207호"
+    },
+    {
+     "id": "1186079117",
+     "name": "법무법인 브라이트",
+     "category": "법률사무소",
+     "visitorReviewCount": "5",
+     "blogCafeReviewCount": "7,130",
+     "distance": "1.9km",
+     "roadAddress": "마린시티2로 2 11층 1101호"
+    },
+    {
+     "id": "1655346741",
+     "name": "법률사무소 단금",
+     "category": "법률사무소",
+     "visitorReviewCount": null,
+     "blogCafeReviewCount": "0",
+     "distance": "5.4km",
+     "roadAddress": "법원로32번길 18 302호, 602호"
+    },
+    {
+     "id": "1995287648",
+     "name": "드림법률사무소",
+     "category": "법률사무소",
+     "visitorReviewCount": "1",
+     "blogCafeReviewCount": "11",
+     "distance": "5.5km",
+     "roadAddress": "법원남로15번길 6 은하빌딩 3층 301호"
+    },
+    {
+     "id": "1075243344",
+     "name": "변호사최지현법률사무소",
+     "category": "법률사무소",
+     "visitorReviewCount": "2",
+     "blogCafeReviewCount": "10",
+     "distance": "12km",
+     "roadAddress": "대청로 121-1 102동 202호"
+    },
+    {
+     "id": "2078842753",
+     "name": "공동법률사무소 양정",
+     "category": "법률사무소",
+     "visitorReviewCount": "14",
+     "blogCafeReviewCount": "56",
+     "distance": "5.2km",
+     "roadAddress": "연수로 5 10층"
+    }
+   ]
+  },
+  "중대재해 변호사": {
+   "center": [
+    "127.0590",
+    "37.5100"
+   ],
+   "total": 15,
+   "top10": [
+    {
+     "id": "2029221798",
+     "name": "법무법인 하이로",
+     "category": "법률사무소",
+     "visitorReviewCount": "3",
+     "blogCafeReviewCount": "379",
+     "distance": "2.4km",
+     "roadAddress": "테헤란로 141 역삼KR타워 15층"
+    },
+    {
+     "id": "2097711209",
+     "name": "법무법인 송",
+     "category": "법률사무소",
+     "visitorReviewCount": null,
+     "blogCafeReviewCount": "0",
+     "distance": "60m",
+     "roadAddress": "테헤란로87길 22 5층 503~504호"
+    },
+    {
+     "id": "1136718624",
+     "name": "법률사무소 공감",
+     "category": "법률사무소",
+     "visitorReviewCount": null,
+     "blogCafeReviewCount": "5",
+     "distance": "2.9km",
+     "roadAddress": "봉은사로5길 12 2층 201호"
+    },
+    {
+     "id": "1972482544",
+     "name": "법무법인 율샘",
+     "category": "법률사무소",
+     "visitorReviewCount": "5",
+     "blogCafeReviewCount": "97",
+     "distance": "4.5km",
+     "roadAddress": "서초중앙로 119 KETI 빌딩 8층"
+    },
+    {
+     "id": "13332630",
+     "name": "법무법인 나눔",
+     "category": "법률사무소",
+     "visitorReviewCount": null,
+     "blogCafeReviewCount": "24",
+     "distance": "4.5km",
+     "roadAddress": "법원로4길 23 대덕빌딩 501호"
+    },
+    {
+     "id": "2040969722",
+     "name": "법률사무소 동촌",
+     "category": "법률사무소",
+     "visitorReviewCount": null,
+     "blogCafeReviewCount": "0",
+     "distance": "4.9km",
+     "roadAddress": "반포대로 138 5층"
+    },
+    {
+     "id": "1137094030",
+     "name": "법무법인 로얄",
+     "category": "법률사무소",
+     "visitorReviewCount": null,
+     "blogCafeReviewCount": "38",
+     "distance": "4.5km",
+     "roadAddress": "법원로2길 7-4 동용빌딩 503호"
+    },
+    {
+     "id": "1276825010",
+     "name": "법률사무소 조안전",
+     "category": "법률사무소",
+     "visitorReviewCount": null,
+     "blogCafeReviewCount": "0",
+     "distance": "4.8km",
+     "roadAddress": "서초대로45길 20 4층 408호"
+    },
+    {
+     "id": "1438233105",
+     "name": "법무법인 필 웅진관",
+     "category": "법률사무소",
+     "visitorReviewCount": null,
+     "blogCafeReviewCount": "6",
+     "distance": "4.5km",
+     "roadAddress": "반포대로30길 81 14층"
+    },
+    {
+     "id": "1405632313",
+     "name": "법무법인율린 신혜원변호사",
+     "category": "법률사무소",
+     "visitorReviewCount": null,
+     "blogCafeReviewCount": "121",
+     "distance": "24km",
+     "roadAddress": "광교중앙로248번길 7-2 비동 701호, 702호"
+    }
+   ]
+  },
+  "강남 기업 변호사": {
+   "center": [
+    "127.0590",
+    "37.5100"
+   ],
+   "total": 241,
+   "top10": [
+    {
+     "id": "1008062091",
+     "name": "법무법인대륜 서울강남분사무소 기업형사민사이혼전문변호사",
+     "category": "법률사무소",
+     "visitorReviewCount": "42",
+     "blogCafeReviewCount": "2,392",
+     "distance": "770m",
+     "roadAddress": "테헤란로114길 38 동일타워 12층"
+    },
+    {
+     "id": "13475832",
+     "name": "법무법인 원",
+     "category": "법률사무소",
+     "visitorReviewCount": "10",
+     "blogCafeReviewCount": "80",
+     "distance": "3.2km",
+     "roadAddress": "강남대로 308 랜드마크타워 8F, 11F"
+    },
+    {
+     "id": "1378437282",
+     "name": "법무법인 미션",
+     "category": "법률사무소",
+     "visitorReviewCount": null,
+     "blogCafeReviewCount": "6",
+     "distance": "480m",
+     "roadAddress": "봉은사로 541 6층"
+    },
+    {
+     "id": "1167049511",
+     "name": "법무법인 승본",
+     "category": "법률사무소",
+     "visitorReviewCount": "8",
+     "blogCafeReviewCount": "4",
+     "distance": "60m",
+     "roadAddress": "테헤란로87길 36 501호"
+    },
+    {
+     "id": "87020613",
+     "name": "법무법인 가온",
+     "category": "법률사무소",
+     "visitorReviewCount": null,
+     "blogCafeReviewCount": "0",
+     "distance": "1.8km",
+     "roadAddress": "테헤란로 223 19층"
+    },
+    {
+     "id": "1357331791",
+     "name": "법무법인 휘명",
+     "category": "법률사무소",
+     "visitorReviewCount": "3",
+     "blogCafeReviewCount": "0",
+     "distance": "900m",
+     "roadAddress": "테헤란로63길 11 이노센스빌딩 8층"
+    },
+    {
+     "id": "964297286",
+     "name": "법무법인더킴로펌 서울사무소",
+     "category": "법률사무소",
+     "visitorReviewCount": "56",
+     "blogCafeReviewCount": "8,263",
+     "distance": "410m",
+     "roadAddress": "테헤란로 447 KB우준타워 8층"
+    },
+    {
+     "id": "1204894755",
+     "name": "법무법인 바를정 주사무소",
+     "category": "법률사무소",
+     "visitorReviewCount": null,
+     "blogCafeReviewCount": "40",
+     "distance": "3.4km",
+     "roadAddress": "강남대로 262 10층 캠코양재타워"
+    },
+    {
+     "id": "1210847657",
+     "name": "법무법인 위온 서울주사무소",
+     "category": "법률사무소",
+     "visitorReviewCount": "4",
+     "blogCafeReviewCount": "93",
+     "distance": "850m",
+     "roadAddress": "테헤란로 414 L&B타워 8층"
+    },
+    {
+     "id": "1057262545",
+     "name": "법무법인 선운 서울 분사무소",
+     "category": "법률사무소",
+     "visitorReviewCount": null,
+     "blogCafeReviewCount": "23",
+     "distance": "2.4km",
+     "roadAddress": "테헤란로 141 8층"
+    }
+   ]
+  }
+ }
+}
