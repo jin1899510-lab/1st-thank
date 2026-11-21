@@ -48,6 +48,12 @@ python tools/browser_collect.py place-analysis --slug <slug> --place-id <플레�
 ```
 - `data/place_analysis.md`: 우리 vs 경쟁 매장 키워드 순위·히든 키워드·최근 리뷰·리뷰 키워드·메뉴/특징 언급. 경쟁사 상세·키워드 × 채널·성공 사례 장에 쓴다.
 
+## 2-1-2. 경쟁사·소구점 분석 (모든 업체, APPEAL_GUIDE.md)
+```bash
+python tools/appeal.py --slug <slug> --place "<플레이스 링크>"   # 30분~1시간, 네이버가 잠시 막으면 기다렸다 다시 시도
+```
+- `data/appeal/appeal_data.md` → `APPEAL_GUIDE.md` 대로 `appeal_report.md` → 검토 에이전트 → E드라이브 차별화 파일 갱신
+
 ## 2-2. 경쟁사 상세 (RULES.md '경쟁사 상세 조사')
 ```bash
 python tools/browser_collect.py competitors --slug <slug> --keywords "<대표 키워드 3–6개>"   # --place-ids 없으면 ranks.json 상위 매장

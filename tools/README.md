@@ -7,6 +7,7 @@
 | `naver_place.py` | 네이버 플레이스·모바일 통합검색 수집 함수 |
 | `browser_collect.py` | 대표님 PC 브라우저(ego-browser)로 수집: 구글 트렌드·네이버 데이터랩(`trends`), 애드로그 검색량·입찰가(`adlog`, 브라우저 로그인 사용), 파워컨텐츠 구매 가능 후보(`pc-candidates`), 파워컨텐츠 광고주(`powercontents`), 경쟁사 광고 문구·쿠폰·이벤트·소식(`competitors`), 애드로그 플레이스 종합분석·히든 키워드·리뷰 + 네이버 리뷰 키워드(`place-analysis`), 상권 인구·세대·연령·주변 시설(`area`, 플레이스 링크만 넣으면 됨), 휴대폰 화면 캡처(`capture`), 한 번에(`all`) |
 | `data/powercontents_keywords_*.csv` | 네이버 파워컨텐츠 구매 가능 키워드 목록 (대표님 제공 엑셀을 변환, 최신 파일을 씀) |
+| `appeal.py` | 경쟁사·소구점 분석 자료 수집 (우리·경쟁사·전국 같은 업종의 메뉴·가격·리뷰 본문·방문 상황·쿠폰·소식·상권 유형) → `data/appeal/` |
 | `naver_ad.py` | 네이버 검색광고 API로 키워드 월간 검색수·클릭·경쟁 정도 (애드로그 호출 한도 없이). 키는 환경 변수 `NAVER_AD_*` 또는 `~/.naver_ad.json` |
 | `adlog.py` | 애드로그 로그인·플레이스 분석·키워드 검색량 함수 (`ADLOG_ID`, `ADLOG_PW` 필요) |
 
