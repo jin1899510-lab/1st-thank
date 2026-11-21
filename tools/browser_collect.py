@@ -28,6 +28,10 @@
         → place_analysis.json / .md: 우리·경쟁 매장의 애드로그 종합분석(키워드 순위)·히든 키워드·최근 방문자 리뷰,
           네이버 리뷰 '이런 점이 좋았어요'·메뉴·특징 언급 수. 경쟁 매장은 ranks.json 상위에서 자동 (애드로그 로그인 필요)
 
+    python tools/browser_collect.py area --slug nekonomura --place "https://m.place.naver.com/restaurant/1573719918"
+        → area.json / area.md: 플레이스 주소로 동을 찾아 주민등록 인구·세대·세대당 인구·1인 세대·연령대·65세 이상·인구증감
+          (시군구 전체와 비교), 주변 아파트·오피스텔·지하철역·학교·학원·마트·병원·공원 가까운 10곳
+
     python tools/browser_collect.py all --slug song-law --trend-keywords "..." --keywords "..."
         → trends + adlog + powercontents 를 한 번에 (pc-candidates 결과가 있으면 그 키워드도 포함)
 
@@ -586,6 +590,227 @@ def place_analysis(slug, place_id, competitor_ids=None, top_n=5):
     return obj
 
 
+# ---------------------------------------------------------------- area (상권: 인구·세대·연령·주변 시설)
+SIDO = {"서울": "서울특별시", "부산": "부산광역시", "대구": "대구광역시", "인천": "인천광역시", "광주": "전남광주통합특별시",
+        "대전": "대전광역시", "울산": "울산광역시", "세종": "세종특별자치시", "경기": "경기도", "강원": "강원특별자치도",
+        "충북": "충청북도", "충남": "충청남도", "전북": "전북특별자치도", "전남": "전남광주통합특별시", "경북": "경상북도",
+        "경남": "경상남도", "제주": "제주특별자치도"}
+
+JUMIN_JS = r"""
+const want = __WANT__;
+await page.goto("https://jumin.mois.go.kr/statMonth.do", { timeout: 60000 });
+await page.waitForFunction(() => { const s = document.querySelector("select[name=sltOrgLvl1]"); return s && s.options.length > 2; }, undefined, { timeout: 20000 });
+const lvl1 = await page.evaluate((name) => { const o = [...document.querySelector("select[name=sltOrgLvl1]").options].find(o => o.text.trim() === name); return o ? o.value : null; }, want.sido);
+result = { lvl1, lvl2: null, ym: null, tables: {} };
+if (lvl1) {
+  await page.selectOption("select[name=sltOrgLvl1]", lvl1);
+  await page.waitForFunction(() => document.querySelector("select[name=sltOrgLvl2]").options.length > 2, undefined, { timeout: 15000 });
+  const opts = await page.evaluate(() => [...document.querySelector("select[name=sltOrgLvl2]").options].map(o => [o.value, o.text.trim()]));
+  const hit = opts.find(o => o[1] === want.sgg2) || opts.find(o => o[1] === want.sgg) || opts.find(o => o[1].startsWith(want.sgg));
+  result.lvl2 = hit ? hit : null; result.lvl2_options = opts.map(o => o[1]);
+  if (hit) {
+    const parse = (h) => page.evaluate((h) => { const d = new DOMParser().parseFromString(h, "text/html"); const t = [...d.querySelectorAll("table")].sort((a, b) => b.rows.length - a.rows.length)[0]; return t ? [...t.rows].map(r => [...r.cells].map(c => c.textContent.trim().replace(/\s+/g, " "))) : []; }, h);
+    for (const ym of want.months) {
+      const body = new URLSearchParams({ sltOrgType: "2", sltOrgLvl1: lvl1, sltOrgLvl2: hit[0], sltUndefType: "", searchYearMonth: "month",
+        searchYearStart: ym[0], searchMonthStart: ym[1], searchYearEnd: ym[0], searchMonthEnd: ym[1], gender: "gender", genderPer: "genderPer",
+        generation: "generation", sltOrderType: "1", sltOrderValue: "ASC", category: "month", sltArgTypes: "10", sltArgTypeA: "0", sltArgTypeB: "100" }).toString();
+      const tables = {};
+      for (const p of want.pages) {
+        const r = await page.fetch("/" + p, { method: "POST", headers: { "content-type": "application/x-www-form-urlencoded" }, body, timeout: 60000 });
+        tables[p] = r.status === 200 ? await parse(String(r.body)) : [];
+      }
+      const rows = (tables["statMonth.do"] || []).filter(r => r.length > 4 && /\d/.test(r[2] || ""));
+      if (rows.length) { result.ym = ym; result.tables = tables; break; }
+    }
+  }
+}
+"""
+
+JUMIN_PAGES = {"statMonth.do": "행정동 인구·세대", "etcStatHouseholds.do": "행정동 세대원수별 세대", "ageStatMonth.do": "행정동 연령별 인구",
+               "etcStatAvgAge.do": "행정동 평균연령", "etcStatUpDown.do": "행정동 인구증감", "etcStatChYouth.do": "행정동 아동·청소년·청년",
+               "etcStatOldAge.do": "행정동 고령(65+)", "ppltHshdStus.do": "법정동 인구·세대", "hsmbHshd.do": "법정동 세대원수별 세대",
+               "agePpltStus.do": "법정동 연령별 인구"}
+
+AREA_FACILITIES = ["아파트", "오피스텔", "지하철역", "초등학교", "중학교", "학원", "대형마트", "병원", "공원"]
+
+
+def _num(s):
+    s = str(s).replace(",", "").strip()
+    try:
+        return float(s)
+    except ValueError:
+        return None
+
+
+def _place_id(link):
+    m = re.search(r"/(\d{5,})", link) or re.fullmatch(r"(\d{5,})", link.strip())
+    if m:
+        return m.group(1)
+    import requests
+    r = requests.get(link, allow_redirects=True, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
+    m = re.search(r"/(\d{5,})", r.url) or re.search(r"place/(\d{5,})", r.text)
+    if not m:
+        sys.exit(f"플레이스 ID를 찾지 못했습니다: {link}")
+    return m.group(1)
+
+
+def area(slug, place):
+    """플레이스 링크 → 주소 → 동 인구·세대·세대당 인구·연령·1인 세대·인구증감 + 주변 아파트·역·학교·학원·마트 등."""
+    sys.path.insert(0, str(TOOLS))
+    import naver_place as np_
+    d = data_dir(slug)
+    pid = _place_id(place)
+    me = np_.place_detail(pid)
+    addr = me.get("address") or ""
+    parts = addr.split()
+    if len(parts) < 3:
+        sys.exit(f"주소를 나누지 못했습니다: {addr}")
+    sido = SIDO.get(parts[0][:2], parts[0])
+    sgg, sgg2 = parts[1], (parts[1] + " " + parts[2] if parts[2].endswith(("구", "군")) else parts[1])
+    dong_i = 3 if sgg2 != sgg else 2
+    bdong = parts[dong_i] if len(parts) > dong_i else ""
+    today = date.today()
+    months = []
+    y, m = today.year, today.month
+    for _ in range(3):
+        m -= 1
+        if m == 0:
+            y, m = y - 1, 12
+        months.append([str(y), f"{m:02d}"])
+    want = {"sido": sido, "sgg": sgg, "sgg2": sgg2, "months": months, "pages": list(JUMIN_PAGES)}
+    res = run_ego(ego_script(f"collect {slug} area", JUMIN_JS.replace("__WANT__", json.dumps(want, ensure_ascii=False))), timeout=300)
+    if not res.get("ym"):
+        print(f"주민등록 통계를 찾지 못했습니다 (시도 {sido}, 시군구 {sgg2}). 선택지: {res.get('lvl2_options')}")
+    T = res.get("tables", {})
+
+    base = re.sub(r"(\d+)?(동|가|리|읍|면)$", "", bdong)
+
+    def rows(p):
+        return [r for r in T.get(p, []) if len(r) > 3 and _num(r[2]) is not None]
+
+    def pick(p):
+        rs = rows(p)
+        total = rs[0] if rs else None
+        mine = [r for r in rs[1:] if r[1] == bdong or (base and re.fullmatch(re.escape(base) + r"\d*(제\d+)?동", r[1]))]
+        return total, mine, rs[1:]
+
+    out = {"collected": today.isoformat(), "place_id": pid, "name": me.get("name"), "address": addr,
+           "road_address": me.get("road_address"), "x": me.get("x"), "y": me.get("y"),
+           "sido": sido, "sigungu": sgg2, "legal_dong": bdong, "jumin_month": "-".join(res["ym"]) if res.get("ym") else None,
+           "jumin": {p: T.get(p, []) for p in JUMIN_PAGES}}
+
+    # 인구·세대·세대당 인구
+    tot, mine, alls = pick("statMonth.do")
+    if not mine:  # 행정동 이름이 법정동과 다르면 법정동 표로
+        tot, mine, alls = pick("ppltHshdStus.do")
+    hh_tot, hh_mine, _ = pick("etcStatHouseholds.do")
+    if not hh_mine:
+        hh_tot, hh_mine, _ = pick("hsmbHshd.do")
+    age_tot, age_mine, _ = pick("ageStatMonth.do")
+    if not age_mine:
+        age_tot, age_mine, _ = pick("agePpltStus.do")
+    avg_tot, avg_mine, _ = pick("etcStatAvgAge.do")
+    ud_tot, ud_mine, _ = pick("etcStatUpDown.do")
+    old_tot, old_mine, _ = pick("etcStatOldAge.do")
+
+    def pop_row(r):
+        return {"name": r[1], "pop": _num(r[2]), "hh": _num(r[3]), "per_hh": _num(r[4])}
+
+    def hh_row(r):
+        v = [_num(x) for x in r[2:13]]
+        return {"name": r[1], "hh": v[0], "one": v[1], "two": v[2], "three": v[3], "four_plus": sum(x or 0 for x in v[4:])}
+
+    def age_row(r):
+        v = [_num(x) for x in r[2:]]
+        if len(v) < 26:
+            return None
+        male, female = v[2:13], v[15:26]
+        tot_ = [(a or 0) + (b or 0) for a, b in zip(male, female)]
+        s = sum(tot_) or 1
+        labels = ["0~9", "10대", "20대", "30대", "40대", "50대", "60대", "70대", "80대", "90대", "100+"]
+        return {"name": r[1], "share": {l: round(x / s * 100, 1) for l, x in zip(labels, tot_)}}
+    summary = []
+    for label, t_, m_ in (("시군구", tot, []), ("우리 동", None, mine)):
+        pass
+    area_rows = []
+    if tot:
+        area_rows.append(("시군구 전체", tot))
+    for r in mine:
+        area_rows.append(("우리 동", r))
+    for kind, r in area_rows:
+        p = pop_row(r)
+        h = next((hh_row(x) for x in ([hh_tot] if kind == "시군구 전체" else hh_mine) if x and (kind == "시군구 전체" or x[1] == r[1])), None)
+        a = next((age_row(x) for x in ([age_tot] if kind == "시군구 전체" else age_mine) if x and (kind == "시군구 전체" or x[1] == r[1])), None)
+        av = next((x for x in ([avg_tot] if kind == "시군구 전체" else avg_mine) if x and (kind == "시군구 전체" or x[1] == r[1])), None)
+        ud = next((x for x in ([ud_tot] if kind == "시군구 전체" else ud_mine) if x and (kind == "시군구 전체" or x[1] == r[1])), None)
+        od = next((x for x in ([old_tot] if kind == "시군구 전체" else old_mine) if x and (kind == "시군구 전체" or x[1] == r[1])), None)
+        summary.append({"kind": kind, **p,
+                        "one_person_pct": round(h["one"] / h["hh"] * 100, 1) if h and h["hh"] else None,
+                        "two_person_pct": round(h["two"] / h["hh"] * 100, 1) if h and h["hh"] else None,
+                        "four_plus_pct": round(h["four_plus"] / h["hh"] * 100, 1) if h and h["hh"] else None,
+                        "age_share": a["share"] if a else None,
+                        "avg_age": f"남 {av[2]} / 여 {av[3]}" if av and len(av) > 3 else None,
+                        "pop_change": ud[-1] if ud else None,
+                        "age65_pct": round(_num(od[5]) / _num(od[2]) * 100, 1) if od and len(od) > 5 and _num(od[2]) else None})
+    out["summary"] = summary
+    # 시군구 안 순위 (세대당 인구)
+    ranked = sorted((pop_row(r) for r in alls if _num(r[4]) is not None), key=lambda x: -x["per_hh"])
+    out["dong_rank_per_hh"] = [f"{x['name']} {x['per_hh']}" for x in ranked]
+
+    # 주변 시설 (네이버 플레이스, 가까운 10곳)
+    fac = {}
+    for q in AREA_FACILITIES:
+        try:
+            r = np_.place_list(q, me["x"], me["y"])
+            fac[q] = {"total": r["total"], "nearest": [f"{i['name']} {i['distance']}" for i in r["items"]]}
+        except Exception as e:  # noqa: BLE001
+            fac[q] = {"error": str(e)[:80]}
+        np_.pause()
+    out["facilities"] = fac
+    (d / "area.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    # 요약 md
+    md = [f"# 상권 기초 분석 — {out['name']} ({today.isoformat()})", "",
+          f"- 주소: {addr} (도로명 {out['road_address'] or '-'}) → {sido} {sgg2}, 법정동 {bdong}",
+          f"- 주민등록 인구통계 {out['jumin_month'] or '-'} 기준 (외국인 제외, 매달 갱신) — 원본 표는 `area.json`의 jumin", "",
+          "| 구분 | 인구 | 세대 | 세대당 인구 | 1인 세대 | 2인 | 4인 이상 | 65세 이상 | 평균연령 | 전월 대비 |", "|---|---|---|---|---|---|---|---|---|---|"]
+    for s in summary:
+        f = lambda v, suf="": "-" if v is None else (f"{int(v):,}{suf}" if isinstance(v, float) and v.is_integer() else f"{v}{suf}")
+        md.append(f"| {s['kind']} {s['name']} | {f(s['pop'])} | {f(s['hh'])} | {s['per_hh']} | {f(s['one_person_pct'], '%')} | {f(s['two_person_pct'], '%')} | {f(s['four_plus_pct'], '%')} | {f(s['age65_pct'], '%')} | {s['avg_age'] or '-'} | {s['pop_change'] or '-'} |")
+    md += ["", "## 연령대 비중 (%)", "| 구분 | " + " | ".join(["0~9", "10대", "20대", "30대", "40대", "50대", "60대", "70대+"]) + " |", "|---" * 9 + "|"]
+    for s in summary:
+        a = s["age_share"]
+        if a:
+            md.append(f"| {s['kind']} {s['name']} | " + " | ".join(str(a[k]) for k in ["0~9", "10대", "20대", "30대", "40대", "50대", "60대"]) +
+                      f" | {round(a['70대'] + a['80대'] + a['90대'] + a['100+'], 1)} |")
+    # 읽는 법 (자동 힌트)
+    hints = []
+    gu = next((s for s in summary if s["kind"] == "시군구 전체"), None)
+    for s in (x for x in summary if x["kind"] == "우리 동"):
+        if s["one_person_pct"] and s["one_person_pct"] >= 45:
+            hints.append(f"{s['name']}: 1인 세대 {s['one_person_pct']}% → 혼밥·포장·배달·소용량 메뉴, 저녁·야간 시간대")
+        if s["per_hh"] and s["per_hh"] >= 2.4:
+            hints.append(f"{s['name']}: 세대당 {s['per_hh']}명 → 가족 단위(주말·외식·키즈), 4인 이상 {s['four_plus_pct']}%")
+        a = s["age_share"] or {}
+        top = sorted(((k, v) for k, v in a.items()), key=lambda kv: -kv[1])[:2]
+        if top:
+            hints.append(f"{s['name']}: 많은 연령대 {top[0][0]}({top[0][1]}%)·{top[1][0]}({top[1][1]}%)")
+        if gu and s["per_hh"] and gu["per_hh"]:
+            hints.append(f"{s['name']}: 세대당 인구 {s['per_hh']} (구 평균 {gu['per_hh']}) — 구 안 순위는 `area.json` dong_rank_per_hh")
+    md += ["", "## 읽는 법 (자동 힌트 — 대표님 판단으로 고치기)"] + [f"- {h}" for h in hints or ["- 우리 동을 표에서 찾지 못했습니다. area.json의 jumin 표에서 직접 고르세요."]]
+    md += ["", "## 주변 시설 (네이버 플레이스, 매장 기준 가까운 10곳)", "| 종류 | 가까운 곳 (거리) |", "|---|---|"]
+    for q, v in fac.items():
+        md.append(f"| {q} | {', '.join(v.get('nearest', [])[:10]) or v.get('error', '-')} |")
+    md += ["", "## 직접 확인할 것 (자동 수집 아님)",
+           "- SGIS 생활권역 통계지도: https://sgis.mods.go.kr/view/catchmentArea/main — 매장 지점 → 도보·차량 범위 안 인구·가구·주택·사업체",
+           "- SGIS 대화형 통계지도: 주택 종류(아파트·단독·연립)·사업체·종사자(직장인구)",
+           "- 소상공인 상권분석 자료(대표님 첨부): 유동인구·추정매출·업소 수",
+           "- 지하철·버스 승하차 인원: 공공데이터포털·각 시 교통공사"]
+    (d / "area.md").write_text("\n".join(md) + "\n", encoding="utf-8")
+    print(f"상권 기초 분석 저장: {d / 'area.md'}")
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser(description="ego-browser 로 제안서 자료 수집")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -596,6 +821,7 @@ def main():
     s = sub.add_parser("capture"); s.add_argument("--slug", required=True); s.add_argument("--keywords", default=""); s.add_argument("--url", action="append")
     cp = sub.add_parser("competitors"); cp.add_argument("--slug", required=True); cp.add_argument("--keywords", default=""); cp.add_argument("--place-ids", default=""); cp.add_argument("--top", type=int, default=8)
     pa = sub.add_parser("place-analysis"); pa.add_argument("--slug", required=True); pa.add_argument("--place-id", required=True); pa.add_argument("--competitor-ids", default=""); pa.add_argument("--top", type=int, default=5)
+    ar = sub.add_parser("area"); ar.add_argument("--slug", required=True); ar.add_argument("--place", required=True, help="플레이스 링크 또는 ID")
     al = sub.add_parser("all"); al.add_argument("--slug", required=True); al.add_argument("--trend-keywords", required=True); al.add_argument("--keywords", required=True); al.add_argument("--naver-groups")
     x = ap.parse_args()
     if x.cmd == "trends":
@@ -612,6 +838,8 @@ def main():
         competitors(x.slug, split_kw(x.keywords), split_kw(x.place_ids), x.top)
     elif x.cmd == "place-analysis":
         place_analysis(x.slug, x.place_id, split_kw(x.competitor_ids), x.top)
+    elif x.cmd == "area":
+        area(x.slug, x.place)
     elif x.cmd == "all":
         kws = split_kw(x.keywords)
         cand = data_dir(x.slug) / "powercontents_candidates.json"
